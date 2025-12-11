@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Creative Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #0f172a; /* Dark background */
+            color: #f8fafc; /* Light text */
+            background-image: radial-gradient(#1e293b 1px, transparent 1px); /* Darker dots */
+            background-size: 24px 24px;
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: gradientMove 4s linear infinite;
+        }
+        
+        /* Updated for dark mode */
+        .profile-shape {
+            border-radius: 24px;
+            transform: rotate(-3deg);
+            transition: all 0.4s ease;
+            box-shadow: 16px 16px 0px 0px #be185d; /* Darker pink shadow */
+        }
+        
+        .profile-shape:hover {
+            transform: rotate(0deg) scale(1.02);
+            box-shadow: 8px 8px 0px 0px #7e22ce; /* Darker purple shadow */
+        }
+
+        /* Updated for dark mode */
+        .bento-card {
+            background: #1e293b; /* Dark card background */
+            border: 1px solid #334155; /* Darker border */
+            border-radius: 24px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bento-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, #ec4899, #8b5cf6, #06b6d4);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .bento-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3); /* Darker shadow */
+            border-color: #475569; /* Lighter border on hover */
+        }
+
+        .bento-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* Updated for dark mode */
+        .nav-blur {
+            background: rgba(15, 23, 42, 0.8); /* Dark translucent background */
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255,255,255,0.05); /* Light border */
+        }
+
+        .blob {
+            position: absolute;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.5;
+            animation: float 10s infinite ease-in-out;
+        }
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(20px, -20px); }
+        }
+    </style>
+</head>
+<body class="selection:bg-pink-500 selection:text-white">
+
+    <!-- Decorative Blobs (Opacity adjusted for dark mode) -->
+    <div class="blob w-96 h-96 bg-purple-600 top-0 left-0 rounded-full mix-blend-multiply opacity-20"></div>
+    <div class="blob w-96 h-96 bg-pink-600 bottom-0 right-0 rounded-full mix-blend-multiply opacity-20"></div>
+    <div class="blob w-80 h-80 bg-cyan-600 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full mix-blend-multiply opacity-20"></div>
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 nav-blur">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex justify-between items-center relative">
+            <!-- Logo -->
+            <a href="#" class="text-xl font-bold tracking-tight text-white flex items-center gap-2 z-50">
+                <div class="w-8 h-8 bg-gradient-to-tr from-pink-500 to-purple-600 rounded-lg flex items-center justify-center text-white shadow-lg shadow-pink-500/30">
+                    <!-- Replaced spark icon with </> text -->
+                    <span class="font-mono font-bold text-xs tracking-tighter">&lt;/&gt;</span>
+                </div>
+                <span id="nav-name">PORTFOLIO</span>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 text-sm font-semibold text-slate-300">
+                <a href="#home" class="hover:text-white transition-colors">Home</a>
+                <a href="#work" class="hover:text-white transition-colors">Projects</a>
+                <a href="#stack" class="hover:text-white transition-colors">Capabilities</a>
+                <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+            </div>
+            
+            <!-- Desktop Action Button -->
+            <div class="hidden md:block">
+                <a href="#contact" class="px-6 py-2.5 bg-white hover:bg-slate-100 text-slate-900 rounded-full text-xs font-bold tracking-wide transition shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+                    HIRE ME
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-white p-2 z-50 focus:outline-none">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden absolute top-0 left-0 w-full bg-slate-900/95 backdrop-blur-xl border-b border-slate-800 p-6 pt-24 flex flex-col gap-6 shadow-2xl transition-all duration-300 ease-in-out">
+            <a href="#home" class="mobile-link text-lg font-semibold text-slate-300 hover:text-white transition-colors">Home</a>
+            <a href="#work" class="mobile-link text-lg font-semibold text-slate-300 hover:text-white transition-colors">Projects</a>
+            <a href="#stack" class="mobile-link text-lg font-semibold text-slate-300 hover:text-white transition-colors">Capabilities</a>
+            <a href="#contact" class="mobile-link text-lg font-semibold text-slate-300 hover:text-white transition-colors">Contact</a>
+            <hr class="border-slate-800">
+            <a href="#contact" class="mobile-link w-full text-center py-3 bg-white text-slate-900 rounded-xl font-bold tracking-wide shadow-lg active:scale-95 transition-transform">
+                HIRE ME
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 md:pt-40 pb-24 relative">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+            
+            <!-- Left: Text Content -->
+            <div class="order-2 md:order-1">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-purple-400 text-xs font-bold tracking-wide mb-8 shadow-sm">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-500 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-purple-600"></span>
+                    </span>
+                    OPEN TO WORK / INTERNSHIPS
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6 text-white tracking-tight">
+                    Hi, I'm <span id="hero-name" class="text-gradient">Unknown</span>. <br> 
+                    <span class="text-4xl md:text-6xl text-slate-300">Exploring Code & Design.</span>
+                </h1>
+                
+                <p class="text-lg text-slate-400 mb-10 max-w-lg leading-relaxed">
+                    I'm a student and aspiring engineer. I work with <strong>Java logic</strong>, explore <strong>Data insights</strong>, and design <strong>User Experiences</strong>. I may not know everything yet, but I learn by building.
+                </p>
+
+                <div class="flex flex-wrap gap-4">
+                    <a href="#work" class="px-8 py-3.5 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white rounded-xl font-bold transition shadow-xl shadow-purple-500/20 flex items-center gap-2 transform hover:-translate-y-1 w-full md:w-auto justify-center md:justify-start">
+                        View Projects <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                    </a>
+                    <a href="https://github.com/abhishek18-blog/" target="_blank" class="px-8 py-3.5 bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 rounded-xl font-bold transition flex items-center gap-2 shadow-sm hover:shadow-md transform hover:-translate-y-1 w-full md:w-auto justify-center md:justify-start">
+                        <i data-lucide="github" class="w-4 h-4"></i> GitHub
+                    </a>
+                </div>
+
+                <!-- Mini Stats -->
+                <div class="mt-16 flex gap-12 border-t border-slate-800 pt-8">
+                    <div>
+                        <h4 class="text-3xl font-bold text-white">Learner</h4>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-pink-400 mt-1">Always Curious</p>
+                    </div>
+                    <div>
+                        <h4 class="text-3xl font-bold text-white">Versatile</h4>
+                        <p class="text-xs font-semibold uppercase tracking-wider text-purple-400 mt-1">Dev + Design</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Profile Photo -->
+            <div class="relative flex justify-center md:justify-end order-1 md:order-2 mb-8 md:mb-0">
+                <div class="relative w-64 h-64 md:w-96 md:h-96">
+                    <!-- TODO: REPLACE THE SRC BELOW WITH YOUR OWN PHOTO -->
+                    <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?fit=crop&w=800&q=80" 
+                         alt="Profile Photo" 
+                         class="w-full h-full object-cover profile-shape relative z-10 bg-slate-800">
+                    
+                    <!-- Floating Badge -->
+                    <div class="absolute -bottom-6 -left-6 z-20 bg-slate-800 border border-slate-700 p-4 rounded-2xl shadow-xl flex items-center gap-4 animate-bounce" style="animation-duration: 4s;">
+                        <div class="bg-gradient-to-br from-cyan-900 to-blue-900 p-3 rounded-xl text-cyan-400"><i data-lucide="book-open" class="w-6 h-6"></i></div>
+                        <div>
+                            <p class="text-xs text-slate-400 font-bold uppercase tracking-wide">Status</p>
+                            <p class="text-sm font-bold text-white">Learning Daily</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="stack" class="py-24 bg-slate-900/50 border-y border-slate-800 relative">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <span class="text-purple-400 font-bold text-sm tracking-widest uppercase mb-2 block">My Stack</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Capability Toolkit</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto text-lg">
+                    I have hands-on experience with these tools and am constantly adding more to my arsenal.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- Card 1: Coding -->
+                <div class="bento-card p-8 group">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="p-3 bg-purple-900/30 rounded-2xl text-purple-400 group-hover:bg-purple-600 group-hover:text-white transition-colors duration-300">
+                            <i data-lucide="terminal" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Development</h3>
+                            <p class="text-xs text-purple-400 font-bold uppercase tracking-wide">Logic & Backend</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 text-sm mb-8 leading-relaxed">
+                        Comfortable writing clean, object-oriented code. I use Linux for dev, Git for version control, and **Firebase** for backend services.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800 group-hover:bg-purple-900/20 transition-colors"><i class="devicon-java-plain colored text-2xl"></i> <span class="text-sm text-slate-300 font-medium">Java</span></div>
+                        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800 group-hover:bg-purple-900/20 transition-colors"><i class="devicon-firebase-plain colored text-2xl"></i> <span class="text-sm text-slate-300 font-medium">Firebase</span></div>
+                        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800 group-hover:bg-purple-900/20 transition-colors"><i class="devicon-linux-plain colored text-2xl"></i> <span class="text-sm text-slate-300 font-medium">Linux</span></div>
+                        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800 group-hover:bg-purple-900/20 transition-colors"><i class="devicon-git-plain colored text-2xl"></i> <span class="text-sm text-slate-300 font-medium">Git</span></div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Hardware -->
+                <div class="bento-card p-8 group">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="p-3 bg-teal-900/30 rounded-2xl text-teal-400 group-hover:bg-teal-600 group-hover:text-white transition-colors duration-300">
+                            <i data-lucide="cpu" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Embedded Systems</h3>
+                            <p class="text-xs text-teal-400 font-bold uppercase tracking-wide">Hardware & IoT</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 text-sm mb-8 leading-relaxed">
+                        I enjoy bridging software with the physical world using sensors and microcontrollers.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800 group-hover:bg-teal-900/20 transition-colors"><i class="devicon-arduino-plain colored text-2xl"></i> <span class="text-sm text-slate-300 font-medium">Arduino</span></div>
+                        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800 group-hover:bg-teal-900/20 transition-colors"><i class="devicon-cplusplus-plain colored text-2xl"></i> <span class="text-sm text-slate-300 font-medium">C++</span></div>
+                        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800 group-hover:bg-teal-900/20 transition-colors"><i data-lucide="radio" class="w-6 h-6 text-slate-500"></i> <span class="text-sm text-slate-300 font-medium">Sensors</span></div>
+                        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800 group-hover:bg-teal-900/20 transition-colors"><i data-lucide="circuit-board" class="w-6 h-6 text-slate-500"></i> <span class="text-sm text-slate-300 font-medium">Circuits</span></div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Design -->
+                <div class="bento-card p-8 group">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="p-3 bg-pink-900/30 rounded-2xl text-pink-400">
+                            <i data-lucide="palette" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Design & Web</h3>
+                            <p class="text-xs text-pink-400 font-bold uppercase tracking-wide">UI/UX & Frontend</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 text-sm mb-8 leading-relaxed">
+                        Designing prototypes in Figma and bringing them to life with clean HTML & CSS.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800 group-hover:bg-pink-900/20 transition-colors"><i class="devicon-figma-plain colored text-2xl"></i> <span class="text-sm text-slate-300 font-medium">Figma</span></div>
+                        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800 group-hover:bg-pink-900/20 transition-colors"><i class="devicon-canva-original colored text-2xl"></i> <span class="text-sm text-slate-300 font-medium">Canva</span></div>
+                        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800 group-hover:bg-pink-900/20 transition-colors"><i class="devicon-html5-plain colored text-2xl"></i> <span class="text-sm text-slate-300 font-medium">HTML5</span></div>
+                        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800 group-hover:bg-pink-900/20 transition-colors"><i class="devicon-css3-plain colored text-2xl"></i> <span class="text-sm text-slate-300 font-medium">CSS3</span></div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Data -->
+                <div class="bento-card p-8 group">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="p-3 bg-blue-900/30 rounded-2xl text-blue-400">
+                            <i data-lucide="bar-chart-2" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Data Analysis</h3>
+                            <p class="text-xs text-blue-400 font-bold uppercase tracking-wide">Insights & Querying</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 text-sm mb-8 leading-relaxed">
+                        Learning to query databases efficiently and visualize trends using Python libraries.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800 group-hover:bg-blue-900/20 transition-colors"><i class="devicon-mysql-plain colored text-2xl"></i> <span class="text-sm text-slate-300 font-medium">SQL</span></div>
+                        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800 group-hover:bg-blue-900/20 transition-colors"><i class="devicon-pandas-plain colored text-2xl"></i> <span class="text-sm text-slate-300 font-medium">Pandas</span></div>
+                        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800 group-hover:bg-blue-900/20 transition-colors"><i class="devicon-python-plain colored text-2xl"></i> <span class="text-sm text-slate-300 font-medium">Python</span></div>
+                        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800 group-hover:bg-blue-900/20 transition-colors"><i data-lucide="pie-chart" class="w-6 h-6 text-slate-500"></i> <span class="text-sm text-slate-300 font-medium">Charts</span></div>
+                    </div>
+                </div>
+
+                <!-- Card 5: System Design (UML) -->
+                <div class="bento-card p-8 group md:col-span-2">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="p-3 bg-orange-900/30 rounded-2xl text-orange-400 group-hover:bg-orange-600 group-hover:text-white transition-colors duration-300">
+                            <i data-lucide="workflow" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">System Architecture</h3>
+                            <p class="text-xs text-orange-400 font-bold uppercase tracking-wide">Planning & Diagrams</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 text-sm mb-8 leading-relaxed">
+                        Before coding, I plan. I use <strong>UML diagrams</strong> to visualize software structure, database relationships (ERD), and user flows. This ensures organized and scalable development.
+                    </p>
+                    <div class="grid grid-cols-4 gap-4">
+                        <div class="flex flex-col items-center gap-2 p-3 rounded-lg bg-slate-800 group-hover:bg-orange-900/20 transition-colors">
+                            <i data-lucide="network" class="w-8 h-8 text-slate-500 group-hover:text-orange-400 transition"></i>
+                            <span class="text-xs text-slate-300 font-medium">UML Class</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-2 p-3 rounded-lg bg-slate-800 group-hover:bg-orange-900/20 transition-colors">
+                            <i data-lucide="git-merge" class="w-8 h-8 text-slate-500 group-hover:text-orange-400 transition"></i>
+                            <span class="text-xs text-slate-300 font-medium">Flowcharts</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-2 p-3 rounded-lg bg-slate-800 group-hover:bg-orange-900/20 transition-colors">
+                            <i data-lucide="database" class="w-8 h-8 text-slate-500 group-hover:text-orange-400 transition"></i>
+                            <span class="text-xs text-slate-300 font-medium">ER Diagrams</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-2 p-3 rounded-lg bg-slate-800 group-hover:bg-orange-900/20 transition-colors">
+                            <i data-lucide="layout" class="w-8 h-8 text-slate-500 group-hover:text-orange-400 transition"></i>
+                            <span class="text-xs text-slate-300 font-medium">Use Cases</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="work" class="py-24">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-16 text-center">Projects I've Built</h2>
+
+            <div class="space-y-12">
+                
+                <!-- Project 1 (Game Design) with Video Button -->
+                <div class="bento-card overflow-hidden group hover:border-pink-400 transition duration-300">
+                    <div class="flex flex-col md:flex-row h-full">
+                        <!-- Image Container -->
+                        <div class="md:w-2/5 bg-slate-900 flex items-center justify-center min-h-[240px] border-b md:border-b-0 md:border-r border-slate-800 relative overflow-hidden">
+                            <!-- TODO: Replace with your App Design screenshot -->
+                            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop" 
+                                 alt="App Design Preview" 
+                                 class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition duration-500">
+                        </div>
+                        
+                        <div class="md:w-3/5 p-8 md:p-10 flex flex-col justify-center">
+                            <h3 class="text-2xl font-bold text-white mb-3">Game Design Prototype</h3>
+                            <p class="text-slate-300 text-sm mb-6 leading-relaxed">
+                                I designed a concept for a Game app using <strong>Figma</strong>. I focused on making it easy to use and creating a consistent look using colors and fonts.
+                            </p>
+                            <div class="flex gap-3 mb-6">
+                                <span class="px-3 py-1 bg-pink-900/30 text-pink-400 text-xs font-bold rounded-lg border border-pink-800">Figma</span>
+                                <span class="px-3 py-1 bg-pink-900/30 text-pink-400 text-xs font-bold rounded-lg border border-pink-800">Prototyping</span>
+                            </div>
+                            
+                            <!-- ACTIONS CONTAINER -->
+                            <div class="flex flex-wrap items-center gap-6 mt-2">
+                                
+                                <!-- Watch Demo Button (Triggers Modal) -->
+                                <button onclick="openVideoModal('./Dinoride.mp4')" class="text-slate-400 font-bold hover:text-white inline-flex items-center gap-2 transition hover:scale-105">
+                                    <i data-lucide="play-circle" class="w-5 h-5 text-pink-500"></i> 
+                                    <span>Watch Demo</span>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 (Sales Data) -->
+                <div class="bento-card overflow-hidden group hover:border-blue-400 transition duration-300">
+                    <div class="flex flex-col md:flex-row h-full">
+                        <!-- Image Container -->
+                        <div class="md:w-2/5 bg-slate-900 flex items-center justify-center min-h-[240px] border-b md:border-b-0 md:border-r border-slate-800 relative overflow-hidden">
+                            <!-- TODO: Replace with your Data Dashboard screenshot -->
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop" 
+                                 alt="Data Dashboard Preview" 
+                                 class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition duration-500">
+                        </div>
+
+                        <div class="md:w-3/5 p-8 md:p-10 flex flex-col justify-center">
+                            <h3 class="text-2xl font-bold text-white mb-3">Sales Data Dashboard</h3>
+                            <p class="text-slate-300 text-sm mb-6 leading-relaxed">
+                                I used <strong>Python</strong> and <strong>SQL</strong> to take a raw sales dataset and turn it into charts. It helped me understand how to find trends in numbers and visualize them.
+                            </p>
+                            <div class="flex gap-3 mb-6">
+                                <span class="px-3 py-1 bg-blue-900/30 text-blue-400 text-xs font-bold rounded-lg border border-blue-800">Python</span>
+                                <span class="px-3 py-1 bg-blue-900/30 text-blue-400 text-xs font-bold rounded-lg border border-blue-800">Data Viz</span>
+                            </div>
+                            <a href="#" class="text-white font-bold hover:text-blue-400 inline-flex items-center gap-2 transition group-hover:translate-x-1">
+                                View Analysis <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 (Arduino) -->
+                <div class="bento-card overflow-hidden group hover:border-teal-400 transition duration-300">
+                    <div class="flex flex-col md:flex-row h-full">
+                        <!-- Image Container -->
+                        <div class="md:w-2/5 bg-slate-900 flex items-center justify-center min-h-[240px] border-b md:border-b-0 md:border-r border-slate-800 relative overflow-hidden">
+                            <!-- TODO: Replace with your Circuit/Hardware photo -->
+                            <img src="https://images.unsplash.com/photo-1555664424-778a1e5e1b48?q=80&w=1000&auto=format&fit=crop" 
+                                 alt="Arduino Project Preview" 
+                                 class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition duration-500">
+                        </div>
+
+                        <div class="md:w-3/5 p-8 md:p-10 flex flex-col justify-center">
+                            <h3 class="text-2xl font-bold text-white mb-3">Arduino Smart Sensor</h3>
+                            <p class="text-slate-300 text-sm mb-6 leading-relaxed">
+                                A project where I connected sensors to an <strong>Arduino</strong> board to read environmental data. It was my first step into understanding how software (C++) talks to hardware.
+                            </p>
+                            <div class="flex gap-3 mb-6">
+                                <span class="px-3 py-1 bg-teal-900/30 text-teal-400 text-xs font-bold rounded-lg border border-teal-800">C++</span>
+                                <span class="px-3 py-1 bg-teal-900/30 text-teal-400 text-xs font-bold rounded-lg border border-teal-800">IoT</span>
+                            </div>
+                            <a href="#" class="text-white font-bold hover:text-teal-400 inline-flex items-center gap-2 transition group-hover:translate-x-1">
+                                View Code <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 (Java CLI) -->
+                 <div class="bento-card overflow-hidden group hover:border-indigo-400 transition duration-300">
+                    <div class="flex flex-col md:flex-row h-full">
+                        <!-- Image Container -->
+                        <div class="md:w-2/5 bg-slate-900 flex items-center justify-center min-h-[240px] border-b md:border-b-0 md:border-r border-slate-800 relative overflow-hidden">
+                            <!-- TODO: Replace with your Terminal/Code screenshot -->
+                            <img src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?q=80&w=1000&auto=format&fit=crop" 
+                                 alt="Code Preview" 
+                                 class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition duration-500">
+                        </div>
+
+                        <div class="md:w-3/5 p-8 md:p-10 flex flex-col justify-center">
+                            <h3 class="text-2xl font-bold text-white mb-3">Java CLI Tool</h3>
+                            <p class="text-slate-300 text-sm mb-6 leading-relaxed">
+                                A command-line file manager built to demonstrate core OOP principles like inheritance and polymorphism.
+                            </p>
+                            <div class="flex gap-3 mb-6">
+                                <span class="px-3 py-1 bg-indigo-900/30 text-indigo-400 text-xs font-bold rounded-lg border border-indigo-800">Java</span>
+                                <span class="px-3 py-1 bg-indigo-900/30 text-indigo-400 text-xs font-bold rounded-lg border border-indigo-800">OOP</span>
+                            </div>
+                            <a href="#" class="text-white font-bold hover:text-indigo-400 inline-flex items-center gap-2 transition group-hover:translate-x-1">
+                                View Code <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: UML Models -->
+                <div class="bento-card overflow-hidden group hover:border-orange-400 transition duration-300">
+                    <div class="flex flex-col md:flex-row h-full">
+                        <!-- Image Container -->
+                        <div class="md:w-2/5 bg-slate-900 flex items-center justify-center min-h-[240px] border-b md:border-b-0 md:border-r border-slate-800 relative overflow-hidden">
+                            <!-- TODO: Replace with your Diagram screenshot -->
+                            <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=1000&auto=format&fit=crop" 
+                                 alt="Architecture Diagram Preview" 
+                                 class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition duration-500">
+                        </div>
+
+                        <div class="md:w-3/5 p-8 md:p-10 flex flex-col justify-center">
+                            <h3 class="text-2xl font-bold text-white mb-3">System Architecture Models</h3>
+                            <p class="text-slate-300 text-sm mb-6 leading-relaxed">
+                                Comprehensive UML Class and Sequence diagrams designed for a University Management System to plan robust software architecture.
+                            </p>
+                            <div class="flex gap-3 mb-6">
+                                <span class="px-3 py-1 bg-orange-900/30 text-orange-400 text-xs font-bold rounded-lg border border-orange-800">UML</span>
+                                <span class="px-3 py-1 bg-orange-900/30 text-orange-400 text-xs font-bold rounded-lg border border-orange-800">System Design</span>
+                            </div>
+                            <a href="#" class="text-white font-bold hover:text-orange-400 inline-flex items-center gap-2 transition group-hover:translate-x-1">
+                                View Diagrams <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="py-24 bg-slate-950 text-white mt-12 relative overflow-hidden">
+        <!-- Background accents -->
+        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500"></div>
+        <div class="absolute bottom-0 right-0 w-64 h-64 bg-purple-500/10 rounded-full blur-[80px]"></div>
+
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Let's Create Something Cool</h2>
+            <p class="text-slate-400 mb-10 max-w-lg mx-auto leading-relaxed">
+                I am looking for an internship where I can learn, make mistakes, and improve. If you have an opportunity, I'd love to hear from you.
+            </p>
+            
+            <a href="mailto:abhishek.des674@gmail.com" class="inline-block px-10 py-4 bg-white text-slate-900 rounded-full font-bold hover:bg-purple-400 hover:text-white transition transform hover:-translate-y-1 shadow-xl">
+                Send me an Email
+            </a>
+
+            <!-- Social Links -->
+            <div class="mt-16 flex justify-center gap-8">
+                <a href="https://www.linkedin.com/in/abhishek-deshmukh-7b9b55245/" class="text-slate-400 hover:text-white transition-colors">
+                    <i data-lucide="linkedin" class="w-6 h-6"></i>
+                </a>
+                <a href="https://github.com/abhishek18-blog/" class="text-slate-400 hover:text-white transition-colors">
+                    <i data-lucide="github" class="w-6 h-6"></i>
+                </a>
+              
+                <a href="abhishek.des674@gmail.com" class="text-slate-400 hover:text-white transition-colors">
+                    <i data-lucide="mail" class="w-6 h-6"></i>
+                </a>
+            </div>
+
+            <div class="mt-16 pt-8 border-t border-slate-800 text-slate-500 text-sm">
+                &copy; <span id="year">2024</span> <span id="footer-name">Abhishek Deshmukh</span>. Built with code & curiosity.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Video Modal (Hidden by Default) -->
+    <div id="video-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/90 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+        <div class="relative w-full max-w-4xl mx-4">
+            <!-- Close Button -->
+            <button onclick="closeVideoModal()" class="absolute -top-12 right-0 text-white hover:text-pink-500 transition-colors">
+                <i data-lucide="x" class="w-8 h-8"></i>
+            </button>
+            
+            <!-- Video Container -->
+            <div class="relative pt-[56.25%] bg-black rounded-2xl overflow-hidden shadow-2xl border border-slate-700">
+                <video id="modal-video-player" controls class="absolute top-0 left-0 w-full h-full">
+                    <source src="Dinoride.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 1. Initialize Lucide Icons
+        lucide.createIcons();
+
+        // 2. Dynamic Year Update
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // 3. Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // 4. Video Modal Logic
+        const modal = document.getElementById('video-modal');
+        const videoPlayer = document.getElementById('modal-video-player');
+
+        function openVideoModal(videoSrc) {
+            if(!modal || !videoPlayer) return;
+            
+            // Set source and show
+            videoPlayer.src = videoSrc;
+            modal.classList.remove('hidden');
+            
+            // Small delay to allow display:block to apply before opacity transition
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+            }, 10);
+
+            // Auto play
+            videoPlayer.play().catch(e => console.log("Auto-play prevented:", e));
+        }
+
+        function closeVideoModal() {
+            if(!modal || !videoPlayer) return;
+
+            // Fade out
+            modal.classList.add('opacity-0');
+            
+            // Wait for transition to finish before hiding
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                videoPlayer.pause();
+                videoPlayer.src = ''; // Reset source
+            }, 300);
+        }
+
+        // Close modal when clicking outside the video content
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeVideoModal();
+            }
+        });
+
+        // Add Escape key listener to close modal
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeVideoModal();
+        });
+
+        // 5. Easy Configuration for Users
+        // Change the values below to update the site instantly
+        const userConfig = {
+            name: "Abhishek Deshmukh",  
+            navTitle: "ABHI.DEV" 
+        };
+
+        // Apply Configuration
+        if (userConfig.name) {
+            const heroNameEl = document.getElementById('hero-name');
+            const footerNameEl = document.getElementById('footer-name');
+            if(heroNameEl) heroNameEl.textContent = userConfig.name;
+            if(footerNameEl) footerNameEl.textContent = userConfig.name;
+        }
+
+        if (userConfig.navTitle) {
+            const navNameEl = document.getElementById('nav-name');
+            if(navNameEl) navNameEl.textContent = userConfig.navTitle;
+        }
+    </script>
+</body>
+</html>
