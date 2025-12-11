@@ -109,20 +109,37 @@
                 <span id="nav-name">PORTFOLIO</span>
             </a>
             
-            <!-- Desktop Menu (Always Visible) -->
-            <div class="flex space-x-8 text-sm font-semibold text-slate-300">
+            <!-- Desktop Menu (Hidden on mobile) -->
+            <div class="hidden md:flex space-x-8 text-sm font-semibold text-slate-300">
                 <a href="#home" class="hover:text-white transition-colors">Home</a>
                 <a href="#work" class="hover:text-white transition-colors">Projects</a>
                 <a href="#stack" class="hover:text-white transition-colors">Capabilities</a>
                 <a href="#contact" class="hover:text-white transition-colors">Contact</a>
             </div>
             
-            <!-- Desktop Action Button (Always Visible) -->
-            <div class="block">
+            <!-- Desktop Action Button (Hidden on mobile) -->
+            <div class="hidden md:block">
                 <a href="#contact" class="px-6 py-2.5 bg-white hover:bg-slate-100 text-slate-900 rounded-full text-xs font-bold tracking-wide transition shadow-lg hover:shadow-xl hover:-translate-y-0.5">
                     HIRE ME
                 </a>
             </div>
+
+            <!-- Hamburger Button (Visible on mobile) -->
+            <button id="mobile-menu-btn" class="md:hidden text-white p-2 z-50 focus:outline-none">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden absolute top-20 left-0 w-full bg-slate-900/95 backdrop-blur-xl border-b border-slate-800 p-6 flex flex-col gap-6 shadow-2xl transition-all duration-300 ease-in-out md:hidden items-center text-center">
+            <a href="#home" class="mobile-link text-lg font-semibold text-slate-300 hover:text-white transition-colors">Home</a>
+            <a href="#work" class="mobile-link text-lg font-semibold text-slate-300 hover:text-white transition-colors">Projects</a>
+            <a href="#stack" class="mobile-link text-lg font-semibold text-slate-300 hover:text-white transition-colors">Capabilities</a>
+            <a href="#contact" class="mobile-link text-lg font-semibold text-slate-300 hover:text-white transition-colors">Contact</a>
+            <hr class="border-slate-800 w-full max-w-xs">
+            <a href="#contact" class="mobile-link w-full max-w-xs text-center py-3 bg-white text-slate-900 rounded-xl font-bold tracking-wide shadow-lg active:scale-95 transition-transform">
+                HIRE ME
+            </a>
         </div>
     </nav>
 
@@ -547,6 +564,24 @@
 
         // 2. Dynamic Year Update
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        // 3. Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        if (mobileBtn && mobileMenu) {
+            mobileBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu when a link is clicked
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
 
         // 4. Video Modal Logic
         const modal = document.getElementById('video-modal');
