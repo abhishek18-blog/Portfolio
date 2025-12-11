@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Abhishek Deshmukh</title>
+    <title>Portfolio | Creative Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
         
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
@@ -97,11 +97,6 @@
     <div class="blob w-96 h-96 bg-pink-600 bottom-0 right-0 rounded-full mix-blend-multiply opacity-20"></div>
     <div class="blob w-80 h-80 bg-cyan-600 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full mix-blend-multiply opacity-20"></div>
 
-    <!-- Decorative Blobs (Opacity adjusted for dark mode) -->
-    <div class="blob w-96 h-96 bg-purple-600 top-0 left-0 rounded-full mix-blend-multiply opacity-20"></div>
-    <div class="blob w-96 h-96 bg-pink-600 bottom-0 right-0 rounded-full mix-blend-multiply opacity-20"></div>
-    <div class="blob w-80 h-80 bg-cyan-600 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full mix-blend-multiply opacity-20"></div>
-
     <!-- Navbar -->
     <nav class="fixed top-0 w-full z-50 nav-blur">
         <div class="max-w-6xl mx-auto px-6 h-20 flex justify-between items-center relative">
@@ -129,12 +124,24 @@
                 </a>
             </div>
 
-           
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-white p-2 z-50 focus:outline-none">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
         </div>
 
-     
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden absolute top-0 left-0 w-full bg-slate-900/95 backdrop-blur-xl border-b border-slate-800 p-6 pt-24 flex flex-col gap-6 shadow-2xl transition-all duration-300 ease-in-out">
+            <a href="#home" class="mobile-link text-lg font-semibold text-slate-300 hover:text-white transition-colors">Home</a>
+            <a href="#work" class="mobile-link text-lg font-semibold text-slate-300 hover:text-white transition-colors">Projects</a>
+            <a href="#stack" class="mobile-link text-lg font-semibold text-slate-300 hover:text-white transition-colors">Capabilities</a>
+            <a href="#contact" class="mobile-link text-lg font-semibold text-slate-300 hover:text-white transition-colors">Contact</a>
+            <hr class="border-slate-800">
+            <a href="#contact" class="mobile-link w-full text-center py-3 bg-white text-slate-900 rounded-xl font-bold tracking-wide shadow-lg active:scale-95 transition-transform">
+                HIRE ME
+            </a>
+        </div>
     </nav>
-
 
     <!-- Hero Section -->
     <section id="home" class="pt-32 md:pt-40 pb-24 relative">
@@ -185,7 +192,7 @@
             <div class="relative flex justify-center md:justify-end order-1 md:order-2 mb-8 md:mb-0">
                 <div class="relative w-64 h-64 md:w-96 md:h-96">
                     <!-- TODO: REPLACE THE SRC BELOW WITH YOUR OWN PHOTO -->
-                    <img src="pic.png" 
+                    <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?fit=crop&w=800&q=80" 
                          alt="Profile Photo" 
                          class="w-full h-full object-cover profile-shape relative z-10 bg-slate-800">
                     
