@@ -11,6 +11,13 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
         
+        /* FIXED: Added html/body width constraints to prevent horizontal scroll */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
             background-color: #0f172a; /* Dark background */
@@ -80,7 +87,7 @@
         .blob {
             position: absolute;
             filter: blur(80px);
-            z-index: -1;
+            /* z-index removed here as it is handled by container */
             opacity: 0.5;
             animation: float 10s infinite ease-in-out;
         }
@@ -90,12 +97,15 @@
         }
     </style>
 </head>
-<body class="selection:bg-pink-500 selection:text-white overflow-x-hidden">
+<body class="selection:bg-pink-500 selection:text-white">
 
-    <!-- Decorative Blobs (Opacity adjusted for dark mode) -->
-    <div class="blob w-96 h-96 bg-purple-600 top-0 left-0 rounded-full mix-blend-multiply opacity-20"></div>
-    <div class="blob w-96 h-96 bg-pink-600 bottom-0 right-0 rounded-full mix-blend-multiply opacity-20"></div>
-    <div class="blob w-80 h-80 bg-cyan-600 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full mix-blend-multiply opacity-20"></div>
+    <!-- FIXED: Wrapped Blobs in a fixed container to absolutely prevent layout shift -->
+    <div class="fixed inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
+        <!-- Decorative Blobs (Opacity adjusted for dark mode) -->
+        <div class="blob w-96 h-96 bg-purple-600 top-0 left-0 rounded-full mix-blend-multiply opacity-20"></div>
+        <div class="blob w-96 h-96 bg-pink-600 bottom-0 right-0 rounded-full mix-blend-multiply opacity-20"></div>
+        <div class="blob w-80 h-80 bg-cyan-600 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full mix-blend-multiply opacity-20"></div>
+    </div>
 
     <!-- Navbar -->
     <nav class="fixed top-0 w-full z-50 nav-blur">
@@ -144,7 +154,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="pt-28 md:pt-40 pb-20 md:pb-24 relative">
+    <section id="home" class="pt-28 md:pt-40 pb-20 md:pb-24 relative z-10">
         <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
             
             <!-- Left: Text Content -->
@@ -210,7 +220,7 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="stack" class="py-16 md:py-24 bg-slate-900/50 border-y border-slate-800 relative">
+    <section id="stack" class="py-16 md:py-24 bg-slate-900/50 border-y border-slate-800 relative z-10">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-12 md:mb-20">
                 <span class="text-purple-400 font-bold text-sm tracking-widest uppercase mb-2 block">My Stack</span>
@@ -349,7 +359,7 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="work" class="py-16 md:py-24">
+    <section id="work" class="py-16 md:py-24 relative z-10">
         <div class="max-w-6xl mx-auto px-6">
             <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 md:mb-16 text-center">Projects I've Built</h2>
 
@@ -503,7 +513,7 @@
     </section>
 
     <!-- Footer -->
-    <footer id="contact" class="py-24 bg-slate-950 text-white mt-12 relative overflow-hidden">
+    <footer id="contact" class="py-24 bg-slate-950 text-white mt-12 relative overflow-hidden z-10">
         <!-- Background accents -->
         <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500"></div>
         <div class="absolute bottom-0 right-0 w-64 h-64 bg-purple-500/10 rounded-full blur-[80px]"></div>
