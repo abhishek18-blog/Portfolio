@@ -357,38 +357,38 @@
         </div>
     </section>
 
-<div class="space-y-12">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 lg:space-y-12">
     <!-- Project: Campus Navigation (Orange Theme) -->
-    <div class="bento-card overflow-hidden group hover:border-orange-400 transition duration-300 border border-slate-800 rounded-2xl bg-slate-900/50">
-        <div class="flex flex-col md:flex-row h-full">
-            <!-- Image Container -->
-            <div class="md:w-2/5 bg-slate-900 flex items-center justify-center min-h-[200px] md:min-h-[240px] border-b md:border-b-0 md:border-r border-slate-800 relative overflow-hidden">
+    <div class="bento-card h-[320px] md:h-[280px] lg:h-[300px] overflow-hidden group hover:border-orange-400 transition-all duration-300 border border-slate-800 rounded-2xl bg-slate-900/50">
+        <div class="flex flex-col h-full md:flex-row">
+            <!-- Image Container - Fixed aspect ratio -->
+            <div class="md:w-2/5 h-[50%] md:h-full bg-slate-900 flex items-center justify-center border-b md:border-b-0 md:border-r border-slate-800 relative overflow-hidden">
                 <img src="campus_nav.png" 
                      alt="Campus Navigator Preview" 
-                     class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition duration-500">
+                     class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
             </div>
             
-            <div class="md:w-3/5 p-6 md:p-10 flex flex-col justify-center">
-                <h3 class="text-2xl font-bold text-white mb-3">GBS Campus Navigator</h3>
-                <p class="text-slate-300 text-sm mb-6 leading-relaxed">
-                    Developed as a <strong>2-person group project</strong>, this real-time GPS tool provides a digital twin of the GBS campus. We integrated the Geolocation API to offer precise user tracking and an optimized POI directory for locating laboratories and administrative offices instantly.
-                </p>
-                <div class="flex flex-wrap gap-3 mb-6">
-                    <span class="px-3 py-1 bg-orange-900/30 text-orange-400 text-xs font-bold rounded-lg border border-orange-800">Android Development-Java</span>
-                    <span class="px-3 py-1 bg-orange-900/30 text-orange-400 text-xs font-bold rounded-lg border border-orange-800">XML</span>
-                    <span class="px-3 py-1 bg-orange-900/30 text-orange-400 text-xs font-bold rounded-lg border border-orange-800">Firebase & Firestore</span>
+            <!-- Content - Takes remaining space -->
+            <div class="flex-1 md:w-3/5 p-6 md:p-8 lg:p-10 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl md:text-2xl lg:text-2xl font-bold text-white mb-3 line-clamp-2">GBS Campus Navigator</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed line-clamp-3">
+                        Developed as a <strong>2-person group project</strong>, this real-time GPS tool provides a digital twin of the GBS campus. We integrated the Geolocation API to offer precise user tracking and an optimized POI directory.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="px-3 py-1.5 bg-orange-900/30 text-orange-400 text-xs font-bold rounded-lg border border-orange-800">Android-Java</span>
+                        <span class="px-3 py-1.5 bg-orange-900/30 text-orange-400 text-xs font-bold rounded-lg border border-orange-800">XML</span>
+                        <span class="px-3 py-1.5 bg-orange-900/30 text-orange-400 text-xs font-bold rounded-lg border border-orange-800">Firebase</span>
+                    </div>
                 </div>
-                
-                <!-- ACTIONS CONTAINER -->
-                <div class="flex flex-wrap items-center gap-6 mt-2">
-                    <!-- Watch Demo Button -->
-                    <button onclick="openVideoModal('campus_demo.mp4')" class="text-slate-400 font-bold hover:text-white inline-flex items-center gap-2 transition hover:scale-105">
+                <!-- Fixed bottom actions -->
+                <div class="flex items-center gap-4 mt-4 pt-4 border-t border-slate-800">
+                    <button onclick="openVideoModal('campus_demo.mp4')" class="text-slate-400 font-bold hover:text-white inline-flex items-center gap-2 transition-all hover:scale-105">
                         <i data-lucide="navigation" class="w-5 h-5 text-orange-500"></i> 
-                        <span>View Navigation Demo</span>
+                        <span class="text-sm">Demo</span>
                     </button>
-                    <!-- GitHub Link -->
-                    <a href="https://github.com/abhishek18-blog/GPS4GBS" target="_blank" class="text-orange-500 font-bold hover:text-orange-400 inline-flex items-center gap-2 transition group-hover:translate-x-1">
-                        View code <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    <a href="https://github.com/abhishek18-blog/GPS4GBS" target="_blank" class="text-orange-500 font-bold hover:text-orange-400 inline-flex items-center gap-2 transition-all group-hover:translate-x-1">
+                        Code <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
                 </div>
             </div>
@@ -396,70 +396,63 @@
     </div>
 
     <!-- Project: Game Design (Pink Theme) -->
-    <div class="bento-card overflow-hidden group hover:border-pink-400 transition duration-300 border border-slate-800 rounded-2xl bg-slate-900/50">
-        <div class="flex flex-col md:flex-row h-full">
-            <!-- Image Container -->
-            <div class="md:w-2/5 bg-slate-900 flex items-center justify-center min-h-[200px] md:min-h-[240px] border-b md:border-b-0 md:border-r border-slate-800 relative overflow-hidden">
+    <div class="bento-card h-[320px] md:h-[280px] lg:h-[300px] overflow-hidden group hover:border-pink-400 transition-all duration-300 border border-slate-800 rounded-2xl bg-slate-900/50">
+        <div class="flex flex-col h-full md:flex-row">
+            <div class="md:w-2/5 h-[50%] md:h-full bg-slate-900 flex items-center justify-center border-b md:border-b-0 md:border-r border-slate-800 relative overflow-hidden">
                 <img src="game.png" 
                      alt="Game Design Preview" 
-                     class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition duration-500">
+                     class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
             </div>
-            
-            <div class="md:w-3/5 p-6 md:p-10 flex flex-col justify-center">
-                <h3 class="text-2xl font-bold text-white mb-3">Game Design Prototype</h3>
-                <p class="text-slate-300 text-sm mb-6 leading-relaxed">
-                    Inspired by Chrome-Dino and Hill Climb Racing, I designed a concept for a game using <strong>Figma</strong>. I focused on making it easy to use and creating a consistent look using colors and fonts.
-                </p>
-                <div class="flex flex-wrap gap-3 mb-6">
-                    <span class="px-3 py-1 bg-pink-900/30 text-pink-400 text-xs font-bold rounded-lg border border-pink-800">Figma</span>
-                    <span class="px-3 py-1 bg-pink-900/30 text-pink-400 text-xs font-bold rounded-lg border border-pink-800">Wireframes</span>
-                    <span class="px-3 py-1 bg-pink-900/30 text-pink-400 text-xs font-bold rounded-lg border border-pink-800">Prototyping</span>
+            <div class="flex-1 md:w-3/5 p-6 md:p-8 lg:p-10 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl md:text-2xl lg:text-2xl font-bold text-white mb-3 line-clamp-2">Game Design Prototype</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed line-clamp-3">
+                        Inspired by Chrome-Dino and Hill Climb Racing, designed a game concept using <strong>Figma</strong>. Focused on intuitive UX and consistent visual design.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="px-3 py-1.5 bg-pink-900/30 text-pink-400 text-xs font-bold rounded-lg border border-pink-800">Figma</span>
+                        <span class="px-3 py-1.5 bg-pink-900/30 text-pink-400 text-xs font-bold rounded-lg border border-pink-800">Wireframes</span>
+                        <span class="px-3 py-1.5 bg-pink-900/30 text-pink-400 text-xs font-bold rounded-lg border border-pink-800">Prototyping</span>
+                    </div>
                 </div>
-                
-                <!-- ACTIONS CONTAINER -->
-                <div class="flex flex-wrap items-center gap-6 mt-2">
-                    <!-- Watch Demo Button -->
-                    <button onclick="openVideoModal('Dinoride.mp4')" class="text-slate-400 font-bold hover:text-white inline-flex items-center gap-2 transition hover:scale-105">
+                <div class="flex items-center gap-4 mt-4 pt-4 border-t border-slate-800">
+                    <button onclick="openVideoModal('Dinoride.mp4')" class="text-slate-400 font-bold hover:text-white inline-flex items-center gap-2 transition-all hover:scale-105">
                         <i data-lucide="play-circle" class="w-5 h-5 text-pink-500"></i> 
-                        <span>Watch Demo</span>
+                        <span class="text-sm">Watch Demo</span>
                     </button>
                 </div>
             </div>
         </div>
     </div>
 
-
+    <!-- Apply SAME structure to remaining projects for consistency -->
     <!-- Project: Artisan's Canvas (Blue Theme) -->
-    <div class="bento-card overflow-hidden group hover:border-blue-400 transition duration-300 border border-slate-800 rounded-2xl bg-slate-900/50">
-        <div class="flex flex-col md:flex-row h-full">
-            <div class="md:w-2/5 bg-slate-900 flex items-center justify-center min-h-[200px] md:min-h-[240px] border-b md:border-b-0 md:border-r border-slate-800 relative overflow-hidden">
-                <img src="web.png" 
-                     alt="Artisan Canvas Preview" 
-                     class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition duration-500">
+    <div class="bento-card h-[320px] md:h-[280px] lg:h-[300px] overflow-hidden group hover:border-blue-400 transition-all duration-300 border border-slate-800 rounded-2xl bg-slate-900/50">
+        <div class="flex flex-col h-full md:flex-row">
+            <div class="md:w-2/5 h-[50%] md:h-full bg-slate-900 flex items-center justify-center border-b md:border-b-0 md:border-r border-slate-800 relative overflow-hidden">
+                <img src="web.png" alt="Artisan Canvas Preview" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
             </div>
-
-            <div class="md:w-3/5 p-6 md:p-8 flex flex-col justify-center">
-                <h3 class="text-2xl font-bold text-white mb-2">Artisan's Canvas</h3>
-                <p class="text-slate-300 text-sm mb-4 leading-relaxed">
-                    Developed a fully responsive website for a local artist's business showcasing handmade digital and physical artworks. Deployed on Vercel, featuring interactive galleries and direct contact links for bespoke buying inquiries.
-                </p>
-                <div class="flex flex-wrap gap-2 mb-6">
-                    <span class="px-3 py-1 bg-blue-900/30 text-blue-400 text-[10px] font-bold rounded-lg border border-blue-800">HTML</span>
-                    <span class="px-3 py-1 bg-blue-900/30 text-blue-400 text-[10px] font-bold rounded-lg border border-blue-800">TailwindCSS</span>
-                    <span class="px-3 py-1 bg-blue-900/30 text-blue-400 text-[10px] font-bold rounded-lg border border-blue-800">Firebase</span>
+            <div class="flex-1 md:w-3/5 p-6 md:p-8 lg:p-10 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl md:text-2xl lg:text-2xl font-bold text-white mb-2 line-clamp-2">Artisan's Canvas</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed line-clamp-3">Fully responsive artist portfolio deployed on Vercel with interactive galleries and contact forms.</p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="px-3 py-1.5 bg-blue-900/30 text-blue-400 text-xs font-bold rounded-lg border border-blue-800">HTML</span>
+                        <span class="px-3 py-1.5 bg-blue-900/30 text-blue-400 text-xs font-bold rounded-lg border border-blue-800">Tailwind</span>
+                        <span class="px-3 py-1.5 bg-blue-900/30 text-blue-400 text-xs font-bold rounded-lg border border-blue-800">Firebase</span>
+                    </div>
                 </div>
-                <div class="flex flex-wrap items-center gap-6">
-                    <a href="https://canvas-art-five.vercel.app/" target="_blank" class="text-blue-500 text-sm font-bold hover:text-blue-400 inline-flex items-center gap-2 transition group-hover:translate-x-1">
-                        View Website <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                <div class="flex items-center gap-4 mt-4 pt-4 border-t border-slate-800">
+                    <a href="https://canvas-art-five.vercel.app/" target="_blank" class="text-blue-500 text-sm font-bold hover:text-blue-400 inline-flex items-center gap-2 transition-all group-hover:translate-x-1">
+                        Live <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
-                    <a href="https://github.com/abhishek18-blog/canvas-art" target="_blank" class="text-slate-400 text-sm font-bold hover:text-white inline-flex items-center gap-2 transition">
-                        View code <i data-lucide="github" class="w-4 h-4"></i>
+                    <a href="https://github.com/abhishek18-blog/canvas-art" target="_blank" class="text-slate-400 text-sm font-bold hover:text-white inline-flex items-center gap-2 transition-all">
+                        Code <i data-lucide="github" class="w-4 h-4"></i>
                     </a>
                 </div>
             </div>
         </div>
     </div>
-
     <!-- Project: Travel India (Yellow Theme) -->
     <div class="bento-card overflow-hidden group hover:border-yellow-400 transition duration-300 border border-slate-800 rounded-2xl bg-slate-900/50">
         <div class="flex flex-col md:flex-row h-full">
