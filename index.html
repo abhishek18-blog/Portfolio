@@ -72,9 +72,11 @@
         #mobile-nav-overlay {
             clip-path: circle(0% at 100% 0%);
             transition: clip-path 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
         }
         #mobile-nav-overlay.active {
             clip-path: circle(150% at 100% 0%);
+            pointer-events: auto;
         }
 
         /* Animation System */
@@ -90,6 +92,12 @@
 
         .text-gradient {
             background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.6) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gradient-dark {
+            background: linear-gradient(180deg, #1d1d1f 0%, #424245 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -126,6 +134,41 @@
             transform: translateX(4px);
         }
 
+        /* Project Mini Cards (Tech Tags) - Refined */
+        .tech-tag {
+            padding: 6px 14px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            min-height: 32px;
+        }
+        .tech-tag span {
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: rgba(255,255,255,0.7);
+            line-height: 1;
+        }
+        .tech-tag i, .tech-tag svg {
+            width: 14px !important;
+            height: 14px !important;
+            font-size: 14px !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: inherit;
+        }
+        .tech-tag:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
         .btn-apple {
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -153,7 +196,7 @@
                 <a href="#stack" class="hover:text-white transition-colors">Capabilities</a>
                 <a href="#work" class="hover:text-white transition-colors">Projects</a>
                 <a href="#contact" class="hover:text-white transition-colors">Contact</a>
-                <a href="resume.pdf" download class="bg-white text-black px-6 py-2 rounded-full hover:bg-[#0071e3] hover:text-white transition-all">Download CV</a>
+                <a href="resume.pdf" download class="bg-white text-black px-6 py-2 rounded-full hover:bg-[#0071e3] hover:text-white transition-all text-[10px] font-bold tracking-widest uppercase">Download CV</a>
             </div>
 
             <!-- Hamburger Button -->
@@ -166,18 +209,17 @@
     <!-- Mobile Navigation Overlay -->
     <div id="mobile-nav-overlay" class="fixed inset-0 z-[190] bg-black/95 backdrop-blur-3xl md:hidden flex flex-col justify-center items-center p-10">
         <div class="flex flex-col gap-10 text-center w-full">
-            <a href="#about" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors" onclick="toggleMenu()">Home</a>
-            <a href="#stack" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors" onclick="toggleMenu()">Capabilities</a>
-            <a href="#work" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors" onclick="toggleMenu()">Projects</a>
-            <a href="#contact" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors" onclick="toggleMenu()">Contact</a>
+            <a href="#about" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors">Home</a>
+            <a href="#stack" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors">Capabilities</a>
+            <a href="#work" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors">Projects</a>
+            <a href="#contact" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors">Contact</a>
             <div class="h-px bg-white/10 w-full my-4"></div>
-            <a href="resume.pdf" download class="w-full py-4 bg-white text-black rounded-full font-bold uppercase tracking-widest text-sm" onclick="toggleMenu()">Download CV</a>
+            <a href="resume.pdf" download class="mobile-link w-full py-4 bg-white text-black rounded-full font-bold uppercase tracking-widest text-sm">Download CV</a>
         </div>
     </div>
 
-      <main class="relative z-10">
+    <main class="relative z-10">
         
-        <!-- Hero Section -->
         <section id="about" class="min-h-screen flex flex-col justify-center px-6 pt-24 md:pt-20 max-w-7xl mx-auto relative">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center reveal active">
                 
@@ -515,7 +557,6 @@
         </footer>
 
     </main>
-    </main>
 
     <!-- Video Modal -->
     <div id="video-modal" class="fixed inset-0 z-[300] flex items-center justify-center bg-black/95 backdrop-blur-2xl hidden opacity-0 transition-opacity duration-500">
@@ -536,31 +577,34 @@
 
         // Mobile Menu Toggle Logic
         let isMenuOpen = false;
+        const mobileNav = document.getElementById('mobile-nav-overlay');
+        const menuIcon = document.getElementById('menu-icon');
 
         function toggleMenu() {
-            const mobileNav = document.getElementById('mobile-nav-overlay');
-            const menuIcon = document.getElementById('menu-icon');
-            
             isMenuOpen = !isMenuOpen;
             
-            // Toggle Overlay Visibility
             if (isMenuOpen) {
                 mobileNav.classList.add('active');
                 document.body.style.overflow = 'hidden';
+                menuIcon.setAttribute('data-lucide', 'x');
             } else {
                 mobileNav.classList.remove('active');
                 document.body.style.overflow = '';
+                menuIcon.setAttribute('data-lucide', 'menu');
             }
             
-            // Update Icon
-            menuIcon.setAttribute('data-lucide', isMenuOpen ? 'x' : 'menu');
-            lucide.createIcons();
-            
-            // Animation
+            lucide.createIcons(); 
             menuIcon.style.transform = isMenuOpen ? 'rotate(90deg)' : 'rotate(0deg)';
         }
 
         document.getElementById('menu-toggle').addEventListener('click', toggleMenu);
+
+        // Ensure icon resets if a link is clicked
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if(isMenuOpen) toggleMenu();
+            });
+        });
 
         // Cursor Glow System
         const glow = document.getElementById('cursor-glow');
