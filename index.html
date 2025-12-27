@@ -209,15 +209,19 @@
                 </div>
 
                 <!-- Photo Container -->
-                <div class="lg:col-span-5 profile-photo-container">
+               <!-- Photo Container: order-1 (Top on Mobile), lg:order-2 (Right on Desktop) -->
+                <div class="lg:col-span-5 profile-photo-container order-1 lg:order-2">
                     <div class="bento-card aspect-[1/1] md:aspect-[4/5] relative group !bg-transparent !border-transparent">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10 opacity-60"></div>
-                        <img src="abhi.jpeg"
+                        <!-- Removed dark gradient div and grayscale class -->
+                        <img src="abhi.jpeg" 
                              alt="Abhishek Profile" 
-                             class="w-full h-full object-cover rounded-[2.2rem] grayscale group-hover:grayscale-0 transition-all duration-700">
+                             class="w-full h-full object-cover rounded-[2.5rem] transition-all duration-1000 shadow-2xl"
+                             onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2000&auto=format&fit=crop'">
                         <div class="absolute bottom-8 left-8 z-20">
                             <p class="text-[10px] font-black uppercase tracking-[0.4em] text-white/40">Abhishek Deshmukh</p>
-                            <p class="text-sm font-bold text-white">Lead Systems Architect</p>
+                            <div class="flex items-center gap-2 text-sm font-bold text-white">
+                                <i data-lucide="book-open" class="w-4 h-4 text-[#0071e3]"></i> Status: Learning Daily
+                            </div>
                         </div>
                     </div>
                 </div>
