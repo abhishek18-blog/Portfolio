@@ -3,675 +3,588 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Abhishek Deshmukh</title>
+    <title>Abhishek | Designer & Engineer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
-        
-        /* FIXED: Added html/body width constraints to prevent horizontal scroll */
-        html, body {
+        :root {
+            --apple-blue: #0071e3;
+            --apple-gray: #1d1d1f;
+            --bg-dark: #000000;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-dark);
+            color: #f5f5f7;
+            -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
-            width: 100%;
-            position: relative;
         }
 
-        body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: #0f172a; /* Dark background */
-            color: #f8fafc; /* Light text */
-            background-image: radial-gradient(#1e293b 1px, transparent 1px); /* Darker dots */
-            background-size: 24px 24px;
-        }
-        
-        .text-gradient {
-            background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #06b6d4 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-size: 200% auto;
-            animation: gradientMove 4s linear infinite;
-        }
-        
-        /* Updated for dark mode */
-        .profile-shape {
-            border-radius: 24px;
-            transform: rotate(-3deg);
-            transition: all 0.4s ease;
-            box-shadow: 16px 16px 0px 0px #be185d; /* Darker pink shadow */
-        }
-        
-        .profile-shape:hover {
-            transform: rotate(0deg) scale(1.02);
-            box-shadow: 8px 8px 0px 0px #7e22ce; /* Darker purple shadow */
+        /* Typography */
+        .heading-monumental {
+            font-size: clamp(2.5rem, 10vw, 8.5rem);
+            line-height: 0.9;
+            letter-spacing: -0.06em;
+            font-weight: 900;
         }
 
-        /* Updated for dark mode */
+        /* Frosted Glass Navigation */
+        .glass-nav {
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Bento Grid Architecture */
         .bento-card {
-            background: #1e293b; /* Dark card background */
-            border: 1px solid #334155; /* Darker border */
-            border-radius: 24px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #0a0a0a;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 2.5rem;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
+            height: 100%;
         }
-        
-        .bento-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; height: 4px;
-            background: linear-gradient(90deg, #ec4899, #8b5cf6, #06b6d4);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-        
+
         .bento-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3); /* Darker shadow */
-            border-color: #475569; /* Lighter border on hover */
+            border-color: rgba(255, 255, 255, 0.2);
+            background: #111112;
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5);
         }
 
-        .bento-card:hover::before {
-            transform: scaleX(1);
+        /* Spotlight Effect */
+        #cursor-glow {
+            position: fixed;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 113, 227, 0.07) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            transform: translate(-50%, -50%);
         }
 
-        /* Updated for dark mode */
-        .nav-blur {
-            background: rgba(15, 23, 42, 0.8); /* Dark translucent background */
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(255,255,255,0.05); /* Light border */
+        /* Mobile Menu */
+        #mobile-nav-overlay {
+            clip-path: circle(0% at 100% 0%);
+            transition: clip-path 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        #mobile-nav-overlay.active {
+            clip-path: circle(150% at 100% 0%);
         }
 
-        .blob {
-            position: absolute;
-            filter: blur(80px);
-            /* z-index removed here as it is handled by container */
-            opacity: 0.5;
-            animation: float 10s infinite ease-in-out;
+        /* Animation System */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
         }
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(20px, -20px); }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .text-gradient {
+            background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.6) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .status-pill {
+            background: rgba(48, 209, 88, 0.1);
+            border: 1px solid rgba(48, 209, 88, 0.2);
+            color: #30d158;
+            padding: 8px 16px;
+            border-radius: 99px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .profile-photo-container {
+            position: relative;
+            perspective: 2000px;
+        }
+
+        .tool-icon-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px;
+            transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .tool-icon-box:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateX(4px);
+        }
+
+        .btn-apple {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-apple:hover {
+            transform: scale(1.03);
         }
     </style>
 </head>
-<body class="selection:bg-pink-500 selection:text-white">
+<body>
 
-    <!-- FIXED: Wrapped Blobs in a fixed container to absolutely prevent layout shift -->
-    <div class="fixed inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
-        <!-- Decorative Blobs (Opacity adjusted for dark mode) -->
-        <div class="blob w-96 h-96 bg-purple-600 top-0 left-0 rounded-full mix-blend-multiply opacity-20"></div>
-        <div class="blob w-96 h-96 bg-pink-600 bottom-0 right-0 rounded-full mix-blend-multiply opacity-20"></div>
-        <div class="blob w-80 h-80 bg-cyan-600 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full mix-blend-multiply opacity-20"></div>
-    </div>
+    <div id="cursor-glow"></div>
 
-    <!-- Navbar -->
-    <nav class="fixed top-0 w-full z-50 nav-blur">
-        <div class="max-w-6xl mx-auto px-6 h-20 flex justify-between items-center relative">
-            <!-- Logo -->
-            <a href="#" class="text-xl font-bold tracking-tight text-white flex items-center gap-2 z-50">
-                <div class="w-8 h-8 bg-gradient-to-tr from-pink-500 to-purple-600 rounded-lg flex items-center justify-center text-white shadow-lg shadow-pink-500/30">
-                    <!-- Replaced spark icon with </> text -->
-                    <span class="font-mono font-bold text-xs tracking-tighter">&lt;/&gt;</span>
+    <!-- Global Navigation -->
+    <nav class="fixed top-0 w-full z-[200] glass-nav h-16 flex items-center px-6 md:px-12">
+        <div class="max-w-7xl mx-auto w-full flex justify-between items-center relative">
+            <div class="flex items-center gap-2 font-bold text-lg tracking-tight group cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center text-black group-hover:scale-110 transition-transform">
+                    <span class="font-mono font-bold text-xs">&lt;/&gt;</span>
                 </div>
-                <span id="nav-name">PORTFOLIO</span>
-            </a>
+                <span>ABHISHEK</span>
+            </div>
             
-            <!-- Desktop Menu (Hidden on mobile) -->
-            <div class="hidden md:flex space-x-8 text-sm font-semibold text-slate-300">
-                <a href="#home" class="hover:text-white transition-colors">Home</a>
-                <a href="#work" class="hover:text-white transition-colors">Projects</a>
+            <div class="hidden md:flex items-center gap-10 text-[11px] font-bold uppercase tracking-[0.2em] text-white/50">
+                <a href="#about" class="hover:text-white transition-colors">Home</a>
                 <a href="#stack" class="hover:text-white transition-colors">Capabilities</a>
+                <a href="#work" class="hover:text-white transition-colors">Projects</a>
                 <a href="#contact" class="hover:text-white transition-colors">Contact</a>
-            </div>
-            
-            <!-- Desktop Action Button (Hidden on mobile) -->
-            <div class="hidden md:block">
-                <a href="#contact" class="px-6 py-2.5 bg-white hover:bg-slate-100 text-slate-900 rounded-full text-xs font-bold tracking-wide transition shadow-lg hover:shadow-xl hover:-translate-y-0.5">
-                    HIRE ME
-                </a>
+                <a href="resume.pdf" download class="bg-white text-black px-6 py-2 rounded-full hover:bg-[#0071e3] hover:text-white transition-all">Download CV</a>
             </div>
 
-            <!-- Hamburger Button (Visible on mobile) -->
-            <button id="mobile-menu-btn" class="md:hidden text-white p-2 z-50 focus:outline-none">
-                <i data-lucide="menu" class="w-6 h-6"></i>
+            <!-- Hamburger Button -->
+            <button id="menu-toggle" class="md:hidden text-white p-2 focus:outline-none z-[210]">
+                <i data-lucide="menu" id="menu-icon" class="w-6 h-6 transition-transform"></i>
             </button>
-        </div>
-
-        <!-- Mobile Menu (Moved outside the inner container to span full width) -->
-        <div id="mobile-menu" class="hidden absolute top-20 left-0 w-full bg-slate-900/95 backdrop-blur-xl border-b border-slate-800 p-6 flex flex-col gap-6 shadow-2xl transition-all duration-300 ease-in-out md:hidden items-center text-center">
-            <a href="#home" class="mobile-link text-lg font-semibold text-slate-300 hover:text-white transition-colors">Home</a>
-            <a href="#work" class="mobile-link text-lg font-semibold text-slate-300 hover:text-white transition-colors">Projects</a>
-            <a href="#stack" class="mobile-link text-lg font-semibold text-slate-300 hover:text-white transition-colors">Capabilities</a>
-            <a href="#contact" class="mobile-link text-lg font-semibold text-slate-300 hover:text-white transition-colors">Contact</a>
-            <hr class="border-slate-800 w-full max-w-xs">
-            <a href="#contact" class="mobile-link w-full max-w-xs text-center py-3 bg-white text-slate-900 rounded-xl font-bold tracking-wide shadow-lg active:scale-95 transition-transform">
-                HIRE ME
-            </a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="pt-28 md:pt-40 pb-20 md:pb-24 relative z-10">
-        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-            
-            <!-- Left: Text Content -->
-            <div class="order-2 md:order-1">
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-purple-400 text-xs font-bold tracking-wide mb-6 md:mb-8 shadow-sm">
-                    <span class="relative flex h-2 w-2">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-500 opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-2 w-2 bg-purple-600"></span>
-                    </span>
-                    OPEN TO WORK / INTERNSHIPS
-                </div>
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-nav-overlay" class="fixed inset-0 z-[190] bg-black/95 backdrop-blur-3xl md:hidden flex flex-col justify-center items-center p-10">
+        <div class="flex flex-col gap-10 text-center w-full">
+            <a href="#about" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors" onclick="toggleMenu()">Home</a>
+            <a href="#stack" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors" onclick="toggleMenu()">Capabilities</a>
+            <a href="#work" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors" onclick="toggleMenu()">Projects</a>
+            <a href="#contact" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors" onclick="toggleMenu()">Contact</a>
+            <div class="h-px bg-white/10 w-full my-4"></div>
+            <a href="resume.pdf" download class="w-full py-4 bg-white text-black rounded-full font-bold uppercase tracking-widest text-sm" onclick="toggleMenu()">Download CV</a>
+        </div>
+    </div>
+
+    <main class="relative z-10">
+        
+        <!-- Hero: Order Adjusted (Photo Top on Mobile) -->
+        
+        <!-- Hero: The "Product" Reveal with Photo -->
+        <section id="about" class="min-h-screen flex flex-col justify-center px-6 pt-20 max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center reveal active">
                 
-                <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold leading-tight mb-4 md:mb-6 text-white tracking-tight">
-                    Hi, I'm <span id="hero-name" class="text-gradient">Abhishek Deshmukh</span>. <br> 
-                    <span class="text-3xl md:text-4xl lg:text-6xl text-slate-300">Exploring Code & Design.</span>
-                </h1>
-                
-                <p class="text-base md:text-lg text-slate-400 mb-8 md:mb-10 max-w-lg leading-relaxed">
-                    I'm a student and aspiring engineer. I work with <strong>Java logic</strong>, explore <strong>Data insights</strong>, and design <strong>User Experiences</strong>. 
-
-                <div class="flex flex-wrap gap-4">
-                    <a href="#work" class="px-8 py-3.5 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white rounded-xl font-bold transition shadow-xl shadow-purple-500/20 flex items-center gap-2 transform hover:-translate-y-1 w-full md:w-auto justify-center md:justify-start">
-                        View Projects <i data-lucide="arrow-down" class="w-4 h-4"></i>
-                    </a>
-                    <a href="https://github.com/abhishek18-blog" target="_blank" class="px-8 py-3.5 bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 rounded-xl font-bold transition flex items-center gap-2 shadow-sm hover:shadow-md transform hover:-translate-y-1 w-full md:w-auto justify-center md:justify-start">
-                        <i data-lucide="github" class="w-4 h-4"></i> GitHub
-                    </a>
-                </div>
-
-                <!-- Mini Stats -->
-                <div class="mt-12 md:mt-16 flex gap-12 border-t border-slate-800 pt-8">
-                    <div>
-                        <h4 class="text-3xl font-bold text-white">Learner</h4>
-                        <p class="text-xs font-semibold uppercase tracking-wider text-pink-400 mt-1">Always Curious</p>
+                <!-- Identity Text -->
+                <div class="lg:col-span-7 space-y-8 text-left">
+                    <div class="status-pill inline-flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-[#30d158] animate-pulse"></span>
+                        System Online: 2025 Edition
                     </div>
-                    <div>
-                        <h4 class="text-3xl font-bold text-white">Versatile</h4>
-                        <p class="text-xs font-semibold uppercase tracking-wider text-purple-400 mt-1">Dev + Design</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right: Profile Photo -->
-            <div class="relative flex justify-center md:justify-end order-1 md:order-2 mb-0">
-                <div class="relative w-64 h-64 md:w-96 md:h-96">
-
-                    <img src="abhi.jpeg" 
-                         alt="Profile Photo" 
-                         class="w-full h-full object-cover profile-shape relative z-10 bg-slate-800">
                     
-                    <!-- Floating Badge -->
-                    <div class="absolute -bottom-6 -left-6 z-20 bg-slate-800 border border-slate-700 p-4 rounded-2xl shadow-xl flex items-center gap-4 animate-bounce" style="animation-duration: 4s;">
-                        <div class="bg-gradient-to-br from-cyan-900 to-blue-900 p-3 rounded-xl text-cyan-400"><i data-lucide="book-open" class="w-6 h-6"></i></div>
-                        <div>
-                            <p class="text-xs text-slate-400 font-bold uppercase tracking-wide">Status</p>
-                            <p class="text-sm font-bold text-white">Learning Daily</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="stack" class="py-16 md:py-24 bg-slate-900/50 border-y border-slate-800 relative z-10">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-12 md:mb-20">
-                <span class="text-purple-400 font-bold text-sm tracking-widest uppercase mb-2 block">My Stack</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Capability Toolkit</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto text-lg">
-                    I have hands-on experience with these tools and am constantly adding more to my arsenal.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                
-                <!-- Card 1: Coding -->
-                <div class="bento-card p-6 md:p-8 group">
-                    <div class="flex items-center gap-4 mb-8">
-                        <div class="p-3 bg-purple-900/30 rounded-2xl text-purple-400 group-hover:bg-purple-600 group-hover:text-white transition-colors duration-300">
-                            <i data-lucide="terminal" class="w-6 h-6"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-white">Development</h3>
-                            <p class="text-xs text-purple-400 font-bold uppercase tracking-wide">Logic & Backend</p>
-                        </div>
-                    </div>
-                    <p class="text-slate-300 text-sm mb-8 leading-relaxed">
-                        Comfortable writing clean, object-oriented code. I use Linux for dev, Git for version control, and Firebase for backend services.
+                    <h1 class="heading-monumental text-gradient">
+                        DESIGNER.<br/>ENGINEER.
+                    </h1>
+                    
+                    <p class="max-w-xl text-xl md:text-2xl font-medium text-white/60 leading-relaxed">
+                        I architect digital environments where <span class="text-white">technical complexity</span> is refined into <span class="text-white">seamless human experiences</span>.
                     </p>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800 group-hover:bg-purple-900/20 transition-colors"><i class="devicon-java-plain colored text-2xl"></i> <span class="text-sm text-slate-300 font-medium">Java</span></div>
-                        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800 group-hover:bg-purple-900/20 transition-colors"><i class="devicon-firebase-plain colored text-2xl"></i> <span class="text-sm text-slate-300 font-medium">Firebase</span></div>
-                        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800 group-hover:bg-purple-900/20 transition-colors"><i class="devicon-linux-plain colored text-2xl"></i> <span class="text-sm text-slate-300 font-medium">Linux</span></div>
-                        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800 group-hover:bg-purple-900/20 transition-colors"><i class="devicon-git-plain colored text-2xl"></i> <span class="text-sm text-slate-300 font-medium">Git</span></div>
+
+                    <div class="flex flex-wrap gap-6 pt-6">
+                        <a href="#work" class="px-10 py-4 bg-white text-black rounded-full font-bold text-sm tracking-widest uppercase hover:scale-105 transition-transform shadow-2xl">
+                            Explore Projects
+                        </a>
+                        <button id="copy-email" class="px-10 py-4 bg-white/5 border border-white/10 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-white/10 transition-all flex items-center gap-3">
+                            <i data-lucide="mail" class="w-4 h-4"></i> Copy Email
+                        </button>
                     </div>
                 </div>
 
-                <!-- Card 2: Hardware -->
-                <div class="bento-card p-6 md:p-8 group">
-                    <div class="flex items-center gap-4 mb-8">
-                        <div class="p-3 bg-teal-900/30 rounded-2xl text-teal-400 group-hover:bg-teal-600 group-hover:text-white transition-colors duration-300">
-                            <i data-lucide="cpu" class="w-6 h-6"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-white">Embedded Systems</h3>
-                            <p class="text-xs text-teal-400 font-bold uppercase tracking-wide">Hardware & IoT</p>
-                        </div>
-                    </div>
-                    <p class="text-slate-300 text-sm mb-8 leading-relaxed">
-                        I enjoy bridging software with the physical world using sensors and microcontrollers.
-                    </p>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800 group-hover:bg-teal-900/20 transition-colors"><i class="devicon-arduino-plain colored text-2xl"></i> <span class="text-sm text-slate-300 font-medium">Arduino</span></div>
-                        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800 group-hover:bg-teal-900/20 transition-colors"><i class="devicon-cplusplus-plain colored text-2xl"></i> <span class="text-sm text-slate-300 font-medium">C++</span></div>
-                        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800 group-hover:bg-teal-900/20 transition-colors"><i data-lucide="radio" class="w-6 h-6 text-slate-500"></i> <span class="text-sm text-slate-300 font-medium">Sensors</span></div>
-                        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800 group-hover:bg-teal-900/20 transition-colors"><i data-lucide="circuit-board" class="w-6 h-6 text-slate-500"></i> <span class="text-sm text-slate-300 font-medium">Circuits</span></div>
-                    </div>
-                </div>
-
-                <!-- Card 3: Design -->
-                <div class="bento-card p-6 md:p-8 group">
-                    <div class="flex items-center gap-4 mb-8">
-                        <div class="p-3 bg-pink-900/30 rounded-2xl text-pink-400">
-                            <i data-lucide="palette" class="w-6 h-6"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-white">Design App & Web</h3>
-                            <p class="text-xs text-pink-400 font-bold uppercase tracking-wide">UI/UX & Frontend</p>
-                        </div>
-                    </div>
-                    <p class="text-slate-300 text-sm mb-8 leading-relaxed">
-                        Designing prototypes in Figma .
-                    </p>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800 group-hover:bg-pink-900/20 transition-colors"><i class="devicon-figma-plain colored text-2xl"></i> <span class="text-sm text-slate-300 font-medium">Figma</span></div>
-                        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800 group-hover:bg-pink-900/20 transition-colors"><i class="devicon-canva-original colored text-2xl"></i> <span class="text-sm text-slate-300 font-medium">Canva</span></div>
-                        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800 group-hover:bg-pink-900/20 transition-colors"><i class="devicon-html5-plain colored text-2xl"></i> <span class="text-sm text-slate-300 font-medium">HTML5</span></div>
-                        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800 group-hover:bg-pink-900/20 transition-colors"><i class="devicon-css3-plain colored text-2xl"></i> <span class="text-sm text-slate-300 font-medium">CSS3</span></div>
-                    </div>
-                </div>
-
-                <!-- Card 4: Data -->
-                <div class="bento-card p-6 md:p-8 group">
-                    <div class="flex items-center gap-4 mb-8">
-                        <div class="p-3 bg-blue-900/30 rounded-2xl text-blue-400">
-                            <i data-lucide="bar-chart-2" class="w-6 h-6"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-white">Data Analysis</h3>
-                            <p class="text-xs text-blue-400 font-bold uppercase tracking-wide">Insights & Querying</p>
-                        </div>
-                    </div>
-                    <p class="text-slate-300 text-sm mb-8 leading-relaxed">
-                        Learning to query databases efficiently and visualize trends using Python libraries.
-                    </p>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800 group-hover:bg-blue-900/20 transition-colors"><i class="devicon-mysql-plain colored text-2xl"></i> <span class="text-sm text-slate-300 font-medium">SQL</span></div>
-                        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800 group-hover:bg-blue-900/20 transition-colors"><i class="devicon-pandas-plain colored text-2xl"></i> <span class="text-sm text-slate-300 font-medium">Pandas</span></div>
-                        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800 group-hover:bg-blue-900/20 transition-colors"><i class="devicon-python-plain colored text-2xl"></i> <span class="text-sm text-slate-300 font-medium">Python</span></div>
-                        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-800 group-hover:bg-blue-900/20 transition-colors"><i data-lucide="pie-chart" class="w-6 h-6 text-slate-500"></i> <span class="text-sm text-slate-300 font-medium">Charts</span></div>
-                    </div>
-                </div>
-
-                <!-- Card 5: System Design (UML) -->
-                <div class="bento-card p-6 md:p-8 group md:col-span-2">
-                    <div class="flex items-center gap-4 mb-8">
-                        <div class="p-3 bg-orange-900/30 rounded-2xl text-orange-400 group-hover:bg-orange-600 group-hover:text-white transition-colors duration-300">
-                            <i data-lucide="workflow" class="w-6 h-6"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-white">System Architecture</h3>
-                            <p class="text-xs text-orange-400 font-bold uppercase tracking-wide">Planning & Diagrams</p>
-                        </div>
-                    </div>
-                    <p class="text-slate-300 text-sm mb-8 leading-relaxed">
-                        Before coding, I plan. I use <strong>UML diagrams</strong> to visualize software structure, database relationships (ERD), and user flows. This ensures organized and scalable development.
-                    </p>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <div class="flex flex-col items-center gap-2 p-3 rounded-lg bg-slate-800 group-hover:bg-orange-900/20 transition-colors">
-                            <i data-lucide="network" class="w-8 h-8 text-slate-500 group-hover:text-orange-400 transition"></i>
-                            <span class="text-xs text-slate-300 font-medium">UML Class</span>
-                        </div>
-                        <div class="flex flex-col items-center gap-2 p-3 rounded-lg bg-slate-800 group-hover:bg-orange-900/20 transition-colors">
-                            <i data-lucide="git-merge" class="w-8 h-8 text-slate-500 group-hover:text-orange-400 transition"></i>
-                            <span class="text-xs text-slate-300 font-medium">Flowcharts</span>
-                        </div>
-                        <div class="flex flex-col items-center gap-2 p-3 rounded-lg bg-slate-800 group-hover:bg-orange-900/20 transition-colors">
-                            <i data-lucide="database" class="w-8 h-8 text-slate-500 group-hover:text-orange-400 transition"></i>
-                            <span class="text-xs text-slate-300 font-medium">ER Diagrams</span>
-                        </div>
-                        <div class="flex flex-col items-center gap-2 p-3 rounded-lg bg-slate-800 group-hover:bg-orange-900/20 transition-colors">
-                            <i data-lucide="layout" class="w-8 h-8 text-slate-500 group-hover:text-orange-400 transition"></i>
-                            <span class="text-xs text-slate-300 font-medium">Use Cases</span>
+                <!-- Photo Container -->
+                <div class="lg:col-span-5 profile-photo-container">
+                    <div class="bento-card aspect-[4/5] relative group p-1">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10 opacity-60"></div>
+                        <img src="abhi.jpeg"
+                             alt="Abhishek Profile" 
+                             class="w-full h-full object-cover rounded-[2.2rem] grayscale group-hover:grayscale-0 transition-all duration-700">
+                        <div class="absolute bottom-8 left-8 z-20">
+                            <p class="text-[10px] font-black uppercase tracking-[0.4em] text-white/40">Abhishek Deshmukh</p>
+                            <p class="text-sm font-bold text-white">Lead Systems Architect</p>
                         </div>
                     </div>
                 </div>
-
             </div>
-        </div>
-    </section>
 
-<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 lg:space-y-12">
-    <!-- Project: Campus Navigation (Orange Theme) -->
-    <div class="bento-card h-[320px] md:h-[280px] lg:h-[300px] overflow-hidden group hover:border-orange-400 transition-all duration-300 border border-slate-800 rounded-2xl bg-slate-900/50">
-        <div class="flex flex-col h-full md:flex-row">
-            <!-- Image Container - Fixed aspect ratio -->
-            <div class="md:w-2/5 h-[50%] md:h-full bg-slate-900 flex items-center justify-center border-b md:border-b-0 md:border-r border-slate-800 relative overflow-hidden">
-                <img src="campus_nav.png" 
-                     alt="Campus Navigator Preview" 
-                     class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-20">
+                <i data-lucide="chevron-down" class="w-8 h-8"></i>
             </div>
-            
-            <!-- Content - Takes remaining space -->
-            <div class="flex-1 md:w-3/5 p-6 md:p-8 lg:p-10 flex flex-col justify-between">
-                <div>
-                    <h3 class="text-xl md:text-2xl lg:text-2xl font-bold text-white mb-3 line-clamp-2">GBS Campus Navigator</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed line-clamp-3">
-                        Developed as a <strong>2-person group project</strong>, this real-time GPS tool provides a digital twin of the GBS campus. We integrated the Geolocation API to offer precise user tracking and an optimized POI directory.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mt-4">
-                        <span class="px-3 py-1.5 bg-orange-900/30 text-orange-400 text-xs font-bold rounded-lg border border-orange-800">Android-Java</span>
-                        <span class="px-3 py-1.5 bg-orange-900/30 text-orange-400 text-xs font-bold rounded-lg border border-orange-800">XML</span>
-                        <span class="px-3 py-1.5 bg-orange-900/30 text-orange-400 text-xs font-bold rounded-lg border border-orange-800">Firebase</span>
+                    <!-- Mini Stats -->
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-10 border-t border-white/10">
+                        <div class="space-y-1">
+                            <h4 class="text-2xl font-black italic">B.Tech CS</h4>
+                            <p class="text-[9px] font-black uppercase text-[#0071e3] tracking-widest leading-tight">GBS Institute • 2025</p>
+                        </div>
+                        <div class="space-y-1">
+                            <h4 class="text-2xl font-black italic">3.9 GPA</h4>
+                            <p class="text-[9px] font-black uppercase text-green-500 tracking-widest">Cumulative Score</p>
+                        </div>
+                        <div class="space-y-1">
+                            <h4 class="text-2xl font-black italic">Learner</h4>
+                            <p class="text-[9px] font-black uppercase text-orange-500 tracking-widest">Always Curious</p>
+                        </div>
+                        <div class="space-y-1">
+                            <h4 class="text-2xl font-black italic">Versatile</h4>
+                            <p class="text-[9px] font-black uppercase text-pink-500 tracking-widest">Dev + Design</p>
+                        </div>
+                    </div>
+        </section>
+                    
+        
+        <!-- Tech Stack: Grid layout -->
+        <section id="stack" class="py-32 px-6">
+            <div class="max-w-7xl mx-auto space-y-16">
+                <div class="space-y-4">
+                    <span class="text-[10px] font-black uppercase tracking-[0.6em] text-[#0071e3]">Capability Toolkit</span>
+                    <h2 class="text-5xl md:text-7xl font-black tracking-tighter italic text-white">Technical Stack.</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Card 1: Development -->
+                    <div class="bento-card p-10 md:p-14 flex flex-col justify-between group reveal">
+                        <div class="space-y-6">
+                            <div class="w-14 h-14 bg-purple-600/10 rounded-2xl flex items-center justify-center text-purple-400">
+                                <i data-lucide="terminal" class="w-7 h-7"></i>
+                            </div>
+                            <h3 class="text-3xl font-bold">Development</h3>
+                            <p class="text-white/40 text-lg leading-relaxed">Clean, object-oriented logic for backend services and system tools.</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mt-12">
+                            <div class="tool-icon-box"><i class="devicon-java-plain colored text-xl"></i> <span class="text-xs font-bold uppercase tracking-widest">Java</span></div>
+                            <div class="tool-icon-box"><i class="devicon-firebase-plain colored text-xl"></i> <span class="text-xs font-bold uppercase tracking-widest">Firebase</span></div>
+                            <div class="tool-icon-box"><i class="devicon-linux-plain colored text-xl"></i> <span class="text-xs font-bold uppercase tracking-widest">Linux</span></div>
+                            <div class="tool-icon-box"><i class="devicon-git-plain colored text-xl"></i> <span class="text-xs font-bold uppercase tracking-widest">Git</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Embedded Systems -->
+                    <div class="bento-card p-10 md:p-14 flex flex-col justify-between group reveal">
+                        <div class="space-y-6">
+                            <div class="w-14 h-14 bg-teal-600/10 rounded-2xl flex items-center justify-center text-teal-400">
+                                <i data-lucide="cpu" class="w-7 h-7"></i>
+                            </div>
+                            <h3 class="text-3xl font-bold">Embedded Systems</h3>
+                            <p class="text-white/40 text-lg leading-relaxed">Bridging software with the physical world using microcontrollers and IoT sensors.</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mt-12">
+                            <div class="tool-icon-box"><i class="devicon-arduino-plain colored text-xl"></i> <span class="text-xs font-bold uppercase tracking-widest">Arduino</span></div>
+                            <div class="tool-icon-box"><i class="devicon-cplusplus-plain colored text-xl"></i> <span class="text-xs font-bold uppercase tracking-widest">C++</span></div>
+                            <div class="tool-icon-box"><i data-lucide="radio" class="w-4 h-4 text-teal-400"></i> <span class="text-xs font-bold uppercase tracking-widest">Sensors</span></div>
+                            <div class="tool-icon-box"><i data-lucide="circuit-board" class="w-4 h-4 text-teal-400"></i> <span class="text-xs font-bold uppercase tracking-widest">Circuits</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Design -->
+                    <div class="bento-card p-10 md:p-14 flex flex-col justify-between group reveal">
+                        <div class="space-y-6">
+                            <div class="w-14 h-14 bg-pink-500/10 rounded-2xl flex items-center justify-center text-pink-500">
+                                <i data-lucide="palette" class="w-7 h-7"></i>
+                            </div>
+                            <h3 class="text-3xl font-bold">UI/UX Design</h3>
+                            <p class="text-white/40 text-lg leading-relaxed">Hi-fi prototypes in Figma focused on consistency and high-fidelity visual language.</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mt-12">
+                            <div class="tool-icon-box"><i class="devicon-figma-plain colored text-xl"></i> <span class="text-xs font-bold uppercase tracking-widest">Figma</span></div>
+                            <div class="tool-icon-box"><i class="devicon-canva-original colored text-xl"></i> <span class="text-xs font-bold uppercase tracking-widest">Canva</span></div>
+                            <div class="tool-icon-box"><i class="devicon-html5-plain colored text-xl"></i> <span class="text-xs font-bold uppercase tracking-widest">HTML5</span></div>
+                            <div class="tool-icon-box"><i class="devicon-css3-plain colored text-xl"></i> <span class="text-xs font-bold uppercase tracking-widest">CSS3</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Architecture (UML) -->
+                    <div class="bento-card p-10 md:p-14 flex flex-col justify-between group reveal">
+                        <div class="space-y-6">
+                            <div class="w-14 h-14 bg-orange-600/10 rounded-2xl flex items-center justify-center text-orange-500">
+                                <i data-lucide="workflow" class="w-7 h-7"></i>
+                            </div>
+                            <h3 class="text-3xl font-bold">System Architecture</h3>
+                            <p class="text-white/40 text-lg leading-relaxed">Planning with UML & ER modeling to ensure organized and scalable development.</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mt-12">
+                            <div class="tool-icon-box"><i data-lucide="network" class="w-4 h-4 text-orange-500"></i> <span class="text-xs font-bold uppercase tracking-widest">UML Class</span></div>
+                            <div class="tool-icon-box"><i data-lucide="database" class="w-4 h-4 text-orange-500"></i> <span class="text-xs font-bold uppercase tracking-widest">ER Specs</span></div>
+                            <div class="tool-icon-box"><i data-lucide="git-merge" class="w-4 h-4 text-orange-500"></i> <span class="text-xs font-bold uppercase tracking-widest">Flowcharts</span></div>
+                            <div class="tool-icon-box"><i data-lucide="layout" class="w-4 h-4 text-orange-500"></i> <span class="text-xs font-bold uppercase tracking-widest">Use Cases</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: Data Analysis -->
+                    <div class="bento-card p-10 md:p-14 flex flex-col justify-between group reveal">
+                        <div class="space-y-6">
+                            <div class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-500">
+                                <i data-lucide="bar-chart-2" class="w-7 h-7"></i>
+                            </div>
+                            <h3 class="text-3xl font-bold">Data Analysis</h3>
+                            <p class="text-white/40 text-lg leading-relaxed">Visualizing trends and querying databases using modern Python libraries.</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mt-12">
+                            <div class="tool-icon-box"><i class="devicon-mysql-plain colored text-xl"></i> <span class="text-xs font-bold uppercase tracking-widest">SQL</span></div>
+                            <div class="tool-icon-box"><i class="devicon-pandas-plain colored text-xl"></i> <span class="text-xs font-bold uppercase tracking-widest">Pandas</span></div>
+                            <div class="tool-icon-box"><i class="devicon-python-plain colored text-xl"></i> <span class="text-xs font-bold uppercase tracking-widest">Python</span></div>
+                            <div class="tool-icon-box"><i data-lucide="pie-chart" class="w-4 h-4 text-blue-400"></i> <span class="text-xs font-bold uppercase tracking-widest">Charts</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 6: Tools & Ecosystem -->
+                    <div class="bento-card p-10 md:p-14 flex flex-col justify-between group reveal border-white/10">
+                        <div class="space-y-8">
+                             <div class="flex items-center justify-between">
+                                <div class="space-y-1">
+                                    <h4 class="text-4xl font-black italic tracking-tighter leading-none">Class 2025</h4>
+                                    <p class="text-[10px] font-black uppercase tracking-widest mt-2 text-[#0071e3]">Educational Spec</p>
+                                </div>
+                                <div class="text-right">
+                                    <div class="tool-icon-box inline-flex"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> <span class="text-[10px] font-bold uppercase tracking-widest">Verified</span></div>
+                                </div>
+                             </div>
+                             <div class="h-px bg-white/10 w-full"></div>
+                             <div class="grid grid-cols-2 gap-4">
+                                <div class="tool-icon-box"><i data-lucide="git-branch" class="w-4 h-4 text-[#0071e3]"></i> <span class="text-xs font-bold uppercase tracking-widest">GitHub</span></div>
+                                <div class="tool-icon-box"><i data-lucide="cloud" class="w-4 h-4 text-[#0071e3]"></i> <span class="text-xs font-bold uppercase tracking-widest">Vercel</span></div>
+                                <div class="tool-icon-box"><i data-lucide="monitor" class="w-4 h-4 text-[#0071e3]"></i> <span class="text-xs font-bold uppercase tracking-widest">Linux</span></div>
+                                <div class="tool-icon-box"><i data-lucide="database" class="w-4 h-4 text-[#0071e3]"></i> <span class="text-xs font-bold uppercase tracking-widest">MySQL</span></div>
+                             </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects: Gallery -->
+        <section id="work" class="py-32 bg-[#050505]">
+            <div class="max-w-7xl mx-auto px-6 space-y-24">
+                <div class="space-y-4">
+                    <span class="text-[10px] font-black uppercase tracking-[0.6em] text-orange-500">Portfolio</span>
+                    <h2 class="text-6xl md:text-8xl font-black tracking-tighter italic">Selected Work.</h2>
+                </div>
+
+                <!-- GBS Navigator -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center reveal">
+                    <div class="lg:col-span-7">
+                        <div class="bento-card aspect-video group overflow-hidden border-orange-500/20 shadow-[0_0_80px_rgba(249,115,22,0.1)]">
+                            <img src="campus_nav.png" class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 group-hover:rotate-1" onerror="this.src='https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop'">
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5 space-y-8">
+                        <span class="text-orange-500 font-black text-xs uppercase tracking-[0.5em]">2-Person Team Project</span>
+                        <h3 class="text-4xl md:text-5xl font-bold tracking-tighter italic">GPS4GBS</h3>
+                        <p class="text-xl text-white/50 leading-relaxed">
+                            A real-time GPS tool and digital twin of the GBS campus. Precision user tracking for administrative offices and laboratories.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <button onclick="openVideoModal('campus_demo.mp4')" class="px-8 py-3 bg-[#0071e3] text-white rounded-full font-bold text-xs uppercase tracking-widest btn-apple flex items-center gap-2">
+                                Watch Demo <i data-lucide="play" class="w-3 h-3 fill-white"></i>
+                            </button>
+                            <a href="https://github.com/abhishek18-blog/GPS4GBS" target="_blank" class="px-8 py-3 bg-white/5 border border-white/10 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-white/10 transition-all">
+                                Repo <i data-lucide="github" class="w-4 h-4 ml-2"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <!-- Fixed bottom actions -->
-                <div class="flex items-center gap-4 mt-4 pt-4 border-t border-slate-800">
-                    <button onclick="openVideoModal('campus_demo.mp4')" class="text-slate-400 font-bold hover:text-white inline-flex items-center gap-2 transition-all hover:scale-105">
-                        <i data-lucide="navigation" class="w-5 h-5 text-orange-500"></i> 
-                        <span class="text-sm">Demo</span>
-                    </button>
-                    <a href="https://github.com/abhishek18-blog/GPS4GBS" target="_blank" class="text-orange-500 font-bold hover:text-orange-400 inline-flex items-center gap-2 transition-all group-hover:translate-x-1">
-                        Code <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Project: Game Design (Pink Theme) -->
-    <div class="bento-card h-[320px] md:h-[280px] lg:h-[300px] overflow-hidden group hover:border-pink-400 transition-all duration-300 border border-slate-800 rounded-2xl bg-slate-900/50">
-        <div class="flex flex-col h-full md:flex-row">
-            <div class="md:w-2/5 h-[50%] md:h-full bg-slate-900 flex items-center justify-center border-b md:border-b-0 md:border-r border-slate-800 relative overflow-hidden">
-                <img src="game.png" 
-                     alt="Game Design Preview" 
-                     class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
-            </div>
-            <div class="flex-1 md:w-3/5 p-6 md:p-8 lg:p-10 flex flex-col justify-between">
-                <div>
-                    <h3 class="text-xl md:text-2xl lg:text-2xl font-bold text-white mb-3 line-clamp-2">Game Design Prototype</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed line-clamp-3">
-                        Inspired by Chrome-Dino and Hill Climb Racing, designed a game concept using <strong>Figma</strong>. Focused on intuitive UX and consistent visual design.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mt-4">
-                        <span class="px-3 py-1.5 bg-pink-900/30 text-pink-400 text-xs font-bold rounded-lg border border-pink-800">Figma</span>
-                        <span class="px-3 py-1.5 bg-pink-900/30 text-pink-400 text-xs font-bold rounded-lg border border-pink-800">Wireframes</span>
-                        <span class="px-3 py-1.5 bg-pink-900/30 text-pink-400 text-xs font-bold rounded-lg border border-pink-800">Prototyping</span>
+                <!-- Artisan's Canvas -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center reveal">
+                    <div class="lg:col-span-5 space-y-8 order-2 lg:order-1">
+                        <span class="text-blue-500 font-black text-xs uppercase tracking-[0.5em]">Art Website</span>
+                        <h3 class="text-4xl md:text-5xl font-bold tracking-tighter italic">Artisan's Canvas</h3>
+                        <p class="text-xl text-white/50 leading-relaxed">
+                            A high-performance interface for local artists to showcase bespoke handmade artworks. Deployed on Vercel.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="https://canvas-art-five.vercel.app/" target="_blank" class="px-8 py-3 bg-white text-black rounded-full font-bold text-xs uppercase tracking-widest btn-apple flex items-center gap-2">
+                                Launch Site <i data-lucide="external-link" class="w-3 h-3"></i>
+                            </a>
+                            <a href="https://github.com/abhishek18-blog/canvas-art" target="_blank" class="px-8 py-3 bg-white/5 border border-white/10 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-white/10 transition-all">
+                                Repo <i data-lucide="github" class="w-4 h-4 ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-7 order-1 lg:order-2">
+                        <div class="bento-card aspect-video group overflow-hidden border-blue-500/20 shadow-[0_0_80px_rgba(0,113,227,0.1)]">
+                            <img src="web.png" class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105" onerror="this.src='https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1964&auto=format&fit=crop'">
+                        </div>
                     </div>
                 </div>
-                <div class="flex items-center gap-4 mt-4 pt-4 border-t border-slate-800">
-                    <button onclick="openVideoModal('Dinoride.mp4')" class="text-slate-400 font-bold hover:text-white inline-flex items-center gap-2 transition-all hover:scale-105">
-                        <i data-lucide="play-circle" class="w-5 h-5 text-pink-500"></i> 
-                        <span class="text-sm">Watch Demo</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Apply SAME structure to remaining projects for consistency -->
-    <!-- Project: Artisan's Canvas (Blue Theme) -->
-    <div class="bento-card h-[320px] md:h-[280px] lg:h-[300px] overflow-hidden group hover:border-blue-400 transition-all duration-300 border border-slate-800 rounded-2xl bg-slate-900/50">
-        <div class="flex flex-col h-full md:flex-row">
-            <div class="md:w-2/5 h-[50%] md:h-full bg-slate-900 flex items-center justify-center border-b md:border-b-0 md:border-r border-slate-800 relative overflow-hidden">
-                <img src="web.png" alt="Artisan Canvas Preview" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
-            </div>
-            <div class="flex-1 md:w-3/5 p-6 md:p-8 lg:p-10 flex flex-col justify-between">
-                <div>
-                    <h3 class="text-xl md:text-2xl lg:text-2xl font-bold text-white mb-2 line-clamp-2">Artisan's Canvas</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed line-clamp-3">Fully responsive artist portfolio deployed on Vercel with interactive galleries and contact forms.</p>
-                    <div class="flex flex-wrap gap-2 mt-4">
-                        <span class="px-3 py-1.5 bg-blue-900/30 text-blue-400 text-xs font-bold rounded-lg border border-blue-800">HTML</span>
-                        <span class="px-3 py-1.5 bg-blue-900/30 text-blue-400 text-xs font-bold rounded-lg border border-blue-800">Tailwind</span>
-                        <span class="px-3 py-1.5 bg-blue-900/30 text-blue-400 text-xs font-bold rounded-lg border border-blue-800">Firebase</span>
+                 <!-- Travel India -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center reveal">
+                    <div class="lg:col-span-7">
+                        <div class="bento-card aspect-video group overflow-hidden border-yellow-500/20 shadow-[0_0_80px_rgba(234,179,8,0.1)]">
+                            <img src="travel.png" class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105" onerror="this.src='https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=2070&auto=format&fit=crop'">
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5 space-y-8">
+                        <span class="text-yellow-500 font-black text-xs uppercase tracking-[0.5em]">Web Production</span>
+                        <h3 class="text-4xl md:text-5xl font-bold tracking-tighter italic text-white">Travel India</h3>
+                        <p class="text-xl text-white/50 leading-relaxed">
+                            A fully responsive website showcasing India's breathtaking travel destinations. Features interactive maps, image galleries, and a booking simulator.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="https://travel-india-flame.vercel.app/" target="_blank" class="px-8 py-3 bg-white text-black rounded-full font-bold text-xs uppercase tracking-widest btn-apple flex items-center gap-2">
+                                View Website <i data-lucide="external-link" class="w-3 h-3"></i>
+                            </a>
+                             <a href="https://github.com/abhishek18-blog/Travel-India" target="_blank" class="px-8 py-3 bg-white/5 border border-white/10 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-white/10 transition-all">
+                                Repo <i data-lucide="github" class="w-4 h-4 ml-2"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="flex items-center gap-4 mt-4 pt-4 border-t border-slate-800">
-                    <a href="https://canvas-art-five.vercel.app/" target="_blank" class="text-blue-500 text-sm font-bold hover:text-blue-400 inline-flex items-center gap-2 transition-all group-hover:translate-x-1">
-                        Live <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </a>
-                    <a href="https://github.com/abhishek18-blog/canvas-art" target="_blank" class="text-slate-400 text-sm font-bold hover:text-white inline-flex items-center gap-2 transition-all">
-                        Code <i data-lucide="github" class="w-4 h-4"></i>
-                    </a>
+
+            </div>
+        </section>
+
+       <!-- Refined Compact White Footer -->
+        <footer id="contact" class="py-12 md:py-16 px-6 bg-white text-black relative overflow-hidden border-t border-black/5">
+            <div class="max-w-7xl mx-auto relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-10">
+                    <div class="space-y-4">
+                        <h2 class="text-4xl md:text-6xl font-black tracking-tighter leading-none italic text-gradient-dark uppercase">Initialize.<br/>Refine.</h2>
+                        <p class="text-black/50 text-lg font-medium max-w-sm italic leading-tight">Available for collaboration on meaningful projects.</p>
+                        <a href="mailto:abhishek.des674@gmail.com" class="inline-block px-10 py-4 bg-black text-white rounded-full font-black text-sm uppercase tracking-widest hover:bg-[#0071e3] transition-all shadow-lg btn-apple">
+                            Send Email
+                        </a>
+                    </div>
+                    <div class="flex flex-col lg:items-end">
+                        <div class="grid grid-cols-2 gap-8 text-[10px] font-black uppercase tracking-[0.3em] text-black/40">
+                            <div class="space-y-3">
+                                <p class="text-[#0071e3]">Directory</p>
+                                <a href="#about" class="block hover:text-black transition-colors">Home</a>
+                                <a href="#stack" class="block hover:text-black transition-colors">Stack</a>
+                                <a href="#work" class="block hover:text-black transition-colors">Work</a>
+                            </div>
+                            <div class="space-y-3">
+                                <p class="text-[#0071e3]">Socials</p>
+                                <a href="https://linkedin.com/in/abhishek-deshmukh-7b9b55245/" target="_blank" class="block hover:text-black transition-colors">LinkedIn</a>
+                                <a href="https://github.com/abhishek18-blog/" target="_blank" class="block hover:text-black transition-colors underline decoration-[#0071e3] underline-offset-4">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-8 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-7 h-7 bg-black rounded-lg flex items-center justify-center text-white">
+                            <span class="font-mono text-[10px] font-bold">&lt;/&gt;</span>
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-[0.5em] text-black/30">Abhishek • 2025</span>
+                    </div>
+                    <p class="text-[10px] font-bold uppercase tracking-[0.4em] text-black/20 italic">Built with code & curiosity.</p>
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- Project: Travel India (Yellow Theme) -->
-    <div class="bento-card overflow-hidden group hover:border-yellow-400 transition duration-300 border border-slate-800 rounded-2xl bg-slate-900/50">
-        <div class="flex flex-col md:flex-row h-full">
-            <div class="md:w-2/5 bg-slate-900 flex items-center justify-center min-h-[200px] md:min-h-[240px] border-b md:border-b-0 md:border-r border-slate-800 relative overflow-hidden">
-                <img src="travel.png" 
-                     alt="Travel India Preview" 
-                     class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition duration-500">
-            </div>
-            <div class="md:w-3/5 p-6 md:p-8 flex flex-col justify-center">
-                <h3 class="text-2xl font-bold text-white mb-2">Travel India</h3>
-                <p class="text-slate-300 text-sm mb-4 leading-relaxed">
-                    A fully responsive website showcasing India's breathtaking travel destinations. Features interactive maps, image galleries with smooth animations, and a user-friendly booking simulator.
-                </p>
-                <div class="flex flex-wrap gap-2 mb-6">
-                    <span class="px-3 py-1 bg-yellow-900/30 text-yellow-400 text-[10px] font-bold rounded-lg border border-yellow-800">HTML</span>
-                    <span class="px-3 py-1 bg-yellow-900/30 text-yellow-400 text-[10px] font-bold rounded-lg border border-yellow-800">Weather API</span>
-                    <span class="px-3 py-1 bg-yellow-900/30 text-yellow-400 text-[10px] font-bold rounded-lg border border-yellow-800">Vercel</span>
-                </div>
-                <div class="flex flex-wrap items-center gap-6">
-                    <a href="https://travel-india-flame.vercel.app/" target="_blank" class="text-yellow-500 text-sm font-bold hover:text-yellow-400 inline-flex items-center gap-2 transition group-hover:translate-x-1">
-                        View Website <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+            <!-- Atmospheric gradient -->
+            <div class="absolute -bottom-1/2 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-[#0071e3]/5 blur-[120px] rounded-full pointer-events-none"></div>
+        </footer>
+    </main>
 
-    <!-- Project: Arduino (Teal Theme) -->
-    <div class="bento-card overflow-hidden group hover:border-teal-400 transition duration-300 border border-slate-800 rounded-2xl bg-slate-900/50">
-        <div class="flex flex-col md:flex-row h-full">
-            <div class="md:w-2/5 bg-slate-900 flex items-center justify-center min-h-[200px] md:min-h-[240px] border-b md:border-b-0 md:border-r border-slate-800 relative overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1555664424-778a1e5e1b48?q=80&w=1000&auto=format&fit=crop" 
-                     alt="Arduino Project Preview" 
-                     class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition duration-500">
-            </div>
-            <div class="md:w-3/5 p-6 md:p-8 flex flex-col justify-center">
-                <h3 class="text-2xl font-bold text-white mb-2">Arduino Smart Sensor</h3>
-                <p class="text-slate-300 text-sm mb-4 leading-relaxed">
-                    A project where I connected sensors to an <strong>Arduino</strong> board to read environmental data. It was my first step into understanding how software (C++) talks to hardware.
-                </p>
-                <div class="flex flex-wrap gap-2 mb-6">
-                    <span class="px-3 py-1 bg-teal-900/30 text-teal-400 text-[10px] font-bold rounded-lg border border-teal-800">C++</span>
-                    <span class="px-3 py-1 bg-teal-900/30 text-teal-400 text-[10px] font-bold rounded-lg border border-teal-800">IoT</span>
-                </div>
-                <a href="#" class="text-teal-500 text-sm font-bold hover:text-teal-400 inline-flex items-center gap-2 transition group-hover:translate-x-1">
-                    View Code <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Project: UML Models (Indigo Theme) -->
-    <div class="bento-card overflow-hidden group hover:border-indigo-400 transition duration-300 border border-slate-800 rounded-2xl bg-slate-900/50">
-        <div class="flex flex-col md:flex-row h-full">
-            <div class="md:w-2/5 bg-slate-900 flex items-center justify-center min-h-[200px] md:min-h-[240px] border-b md:border-b-0 md:border-r border-slate-800 relative overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=1000&auto=format&fit=crop" 
-                     alt="Architecture Diagram Preview" 
-                     class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition duration-500">
-            </div>
-            <div class="md:w-3/5 p-6 md:p-8 flex flex-col justify-center">
-                <h3 class="text-2xl font-bold text-white mb-2">System Architecture Models</h3>
-                <p class="text-slate-300 text-sm mb-4 leading-relaxed">
-                    Comprehensive UML Class and Sequence diagrams designed for a University Management System to plan robust software architecture.
-                </p>
-                <div class="flex flex-wrap gap-2 mb-6">
-                    <span class="px-3 py-1 bg-indigo-900/30 text-indigo-400 text-[10px] font-bold rounded-lg border border-indigo-800">UML</span>
-                    <span class="px-3 py-1 bg-indigo-900/30 text-indigo-400 text-[10px] font-bold rounded-lg border border-indigo-800">System Design</span>
-                </div>
-                <a href="#" class="text-indigo-500 text-sm font-bold hover:text-indigo-400 inline-flex items-center gap-2 transition group-hover:translate-x-1">
-                    View Diagrams <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-
-    <!-- Footer -->
-    <footer id="contact" class="py-24 bg-slate-950 text-white mt-12 relative overflow-hidden z-10">
-        <!-- Background accents -->
-        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500"></div>
-        <div class="absolute bottom-0 right-0 w-64 h-64 bg-purple-500/10 rounded-full blur-[80px]"></div>
-
-        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">Let's Create Something Cool</h2>
-            <p class="text-slate-400 mb-10 max-w-lg mx-auto leading-relaxed">
-                I am looking for an internship where I can learn, make mistakes, and improve. If you have an opportunity, I'd love to hear from you.
-            </p>
-            
-            <a href="mailto:abhishek.des674@gmail.com" class="inline-block px-10 py-4 bg-white text-slate-900 rounded-full font-bold hover:bg-purple-400 hover:text-white transition transform hover:-translate-y-1 shadow-xl">
-                Send me an Email
-            </a>
-
-            <!-- Social Links -->
-            <div class="mt-16 flex justify-center gap-8">
-                <a href="https://www.linkedin.com/in/abhishek-deshmukh-7b9b55245/" class="text-slate-400 hover:text-white transition-colors">
-                    <i data-lucide="linkedin" class="w-6 h-6"></i>
-                </a>
-                <a href=" https://github.com/abhishek18-blog/" class="text-slate-400 hover:text-white transition-colors">
-                    <i data-lucide="github" class="w-6 h-6"></i>
-                </a>
-               
-               
-            </div>
-
-            <div class="mt-16 pt-8 border-t border-slate-800 text-slate-500 text-sm">
-                &copy; <span id="year">2025</span> <span id="footer-name">Abhishek Deshmukh</span>. Built with code & curiosity.
-            </div>
-        </div>
-    </footer>
-
-    <!-- Video Modal (Hidden by Default) -->
-    <div id="video-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/90 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
-        <div class="relative w-full max-w-4xl mx-4">
-            <!-- Close Button -->
-            <button onclick="closeVideoModal()" class="absolute -top-12 right-0 text-white hover:text-pink-500 transition-colors">
-                <i data-lucide="x" class="w-8 h-8"></i>
+    <!-- Video Modal -->
+    <div id="video-modal" class="fixed inset-0 z-[300] flex items-center justify-center bg-black/95 backdrop-blur-2xl hidden opacity-0 transition-opacity duration-500">
+        <div class="relative w-full max-w-5xl mx-4">
+            <button onclick="closeVideoModal()" class="absolute -top-16 right-0 text-white/50 hover:text-white transition-all">
+                <i data-lucide="x" class="w-10 h-10"></i>
             </button>
-            
-            <!-- Video Container -->
-            <div class="relative pt-[56.25%] bg-black rounded-2xl overflow-hidden shadow-2xl border border-slate-700">
-                <video id="modal-video-player" controls class="absolute top-0 left-0 w-full h-full">
+            <div class="aspect-video bg-black rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl">
+                <video id="modal-video-player" controls class="w-full h-full">
                     <source src="" type="video/mp4">
-                    Your browser does not support the video tag.
                 </video>
             </div>
         </div>
     </div>
 
     <script>
-        // 1. Initialize Lucide Icons
         lucide.createIcons();
 
-        // 2. Dynamic Year Update
-        document.getElementById('year').textContent = new Date().getFullYear();
+        // Mobile Menu Toggle Logic
+        let isMenuOpen = false;
 
-        // 3. Mobile Menu Toggle
-        const mobileBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-
-        if (mobileBtn && mobileMenu) {
-            mobileBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-
-            // Close mobile menu when a link is clicked
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
-                });
-            });
+        function toggleMenu() {
+            const mobileNav = document.getElementById('mobile-nav-overlay');
+            const menuIcon = document.getElementById('menu-icon');
+            
+            isMenuOpen = !isMenuOpen;
+            
+            // Toggle Overlay Visibility
+            if (isMenuOpen) {
+                mobileNav.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            // Update Icon
+            menuIcon.setAttribute('data-lucide', isMenuOpen ? 'x' : 'menu');
+            lucide.createIcons();
+            
+            // Animation
+            menuIcon.style.transform = isMenuOpen ? 'rotate(90deg)' : 'rotate(0deg)';
         }
 
-        // 4. Video Modal Logic
+        document.getElementById('menu-toggle').addEventListener('click', toggleMenu);
+
+        // Cursor Glow System
+        const glow = document.getElementById('cursor-glow');
+        document.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+
+        // Reveal Animation Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Video Player Modal Logic
         const modal = document.getElementById('video-modal');
         const videoPlayer = document.getElementById('modal-video-player');
-
-        function openVideoModal(videoSrc) {
-            if(!modal || !videoPlayer) return;
-            
-            // Set source and show
-            videoPlayer.src = videoSrc;
+        function openVideoModal(src) {
+            videoPlayer.src = src;
             modal.classList.remove('hidden');
-            
-            // Small delay to allow display:block to apply before opacity transition
-            setTimeout(() => {
-                modal.classList.remove('opacity-0');
-            }, 10);
-
-            // Auto play
-            videoPlayer.play().catch(e => console.log("Auto-play prevented:", e));
+            setTimeout(() => modal.classList.add('opacity-100'), 10);
+            videoPlayer.play();
         }
-
         function closeVideoModal() {
-            if(!modal || !videoPlayer) return;
-
-            // Fade out
-            modal.classList.add('opacity-0');
-            
-            // Wait for transition to finish before hiding
+            modal.classList.remove('opacity-100');
             setTimeout(() => {
                 modal.classList.add('hidden');
                 videoPlayer.pause();
-                videoPlayer.src = ''; // Reset source
-            }, 300);
+                videoPlayer.src = '';
+            }, 500);
         }
 
-        // Close modal when clicking outside the video content
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeVideoModal();
-            }
+        // Parallax depth effect for cards
+        document.querySelectorAll('.bento-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.transform = `perspective(1200px) rotateX(${(y - rect.height/2)/25}deg) rotateY(${(rect.width/2 - x)/25}deg) scale(1.02)`;
+            });
+            card.addEventListener('mouseleave', () => card.style.transform = 'none');
         });
-
-        // Add Escape key listener to close modal
-        window.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeVideoModal();
-        });
-
-        // 5. Easy Configuration for Users
-        // Change the values below to update the site instantly
-        const userConfig = {
-            name: "Abhishek Deshmukh",  
-            navTitle: "ABHISHEK" 
-            
-        };
-
-        // Apply Configuration
-        if (userConfig.name) {
-            const heroNameEl = document.getElementById('hero-name');
-            const footerNameEl = document.getElementById('footer-name');
-            if(heroNameEl) heroNameEl.textContent = userConfig.name;
-            if(footerNameEl) footerNameEl.textContent = userConfig.name;
-        }
-
-        if (userConfig.navTitle) {
-            const navNameEl = document.getElementById('nav-name');
-            if(navNameEl) navNameEl.textContent = userConfig.navTitle;
-        }
     </script>
 </body>
 </html>
