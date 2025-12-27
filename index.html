@@ -196,7 +196,7 @@
                 <a href="#stack" class="hover:text-white transition-colors">Capabilities</a>
                 <a href="#work" class="hover:text-white transition-colors">Projects</a>
                 <a href="#contact" class="hover:text-white transition-colors">Contact</a>
-                <a href="resume.pdf" download class="bg-white text-black px-6 py-2 rounded-full hover:bg-[#0071e3] hover:text-white transition-all text-[10px] font-bold tracking-widest uppercase">Download CV</a>
+                <a href="resume.pdf" download class="bg-white text-black px-6 py-2 rounded-full hover:bg-[#0071e3] hover:text-white transition-all">Download CV</a>
             </div>
 
             <!-- Hamburger Button -->
@@ -209,14 +209,18 @@
     <!-- Mobile Navigation Overlay -->
     <div id="mobile-nav-overlay" class="fixed inset-0 z-[190] bg-black/95 backdrop-blur-3xl md:hidden flex flex-col justify-center items-center p-10">
         <div class="flex flex-col gap-10 text-center w-full">
-            <a href="#about" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors">Home</a>
-            <a href="#stack" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors">Capabilities</a>
-            <a href="#work" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors">Projects</a>
-            <a href="#contact" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors">Contact</a>
+            <a href="#about" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors" onclick="toggleMenu()">Home</a>
+            <a href="#stack" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors" onclick="toggleMenu()">Capabilities</a>
+            <a href="#work" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors" onclick="toggleMenu()">Projects</a>
+            <a href="#contact" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors" onclick="toggleMenu()">Contact</a>
             <div class="h-px bg-white/10 w-full my-4"></div>
-            <a href="resume.pdf" download class="mobile-link w-full py-4 bg-white text-black rounded-full font-bold uppercase tracking-widest text-sm">Download CV</a>
+            <a href="resume.pdf" download class="w-full py-4 bg-white text-black rounded-full font-bold uppercase tracking-widest text-sm" onclick="toggleMenu()">Download CV</a>
         </div>
     </div>
+
+
+
+
 
     <main class="relative z-10">
         
