@@ -50,7 +50,7 @@
             height: 100%;
         }
 
-        .bento-card:hover {
+        .bento-card:hover:not(.static-card) {
             border-color: rgba(255, 255, 255, 0.2);
             background: #111112;
             box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5);
@@ -114,11 +114,6 @@
             letter-spacing: 0.15em;
         }
 
-        .profile-photo-container {
-            position: relative;
-            perspective: 2000px;
-        }
-
         .tool-icon-box {
             display: flex;
             align-items: center;
@@ -134,7 +129,6 @@
             transform: translateX(4px);
         }
 
-        /* Project Mini Cards (Tech Tags) - Refined */
         .tech-tag {
             padding: 6px 14px;
             background: rgba(255,255,255,0.04);
@@ -175,6 +169,18 @@
         .btn-apple:hover {
             transform: scale(1.03);
         }
+
+        /* Prevent Hover effect for specific card */
+        .static-card, .static-card img {
+            transform: none !important;
+            transition: none !important;
+            box-shadow: none !important;
+        }
+        .static-card:hover {
+            transform: none !important;
+            background: #0a0a0a !important;
+            border-color: rgba(255, 255, 255, 0.08) !important;
+        }
     </style>
 </head>
 <body>
@@ -201,7 +207,9 @@
 
             <!-- Hamburger Button -->
             <button id="menu-toggle" class="md:hidden text-white p-2 focus:outline-none z-[210]">
-                <i data-lucide="menu" id="menu-icon" class="w-6 h-6 transition-transform"></i>
+                <span id="menu-icon-container">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </span>
             </button>
         </div>
     </nav>
@@ -209,22 +217,17 @@
     <!-- Mobile Navigation Overlay -->
     <div id="mobile-nav-overlay" class="fixed inset-0 z-[190] bg-black/95 backdrop-blur-3xl md:hidden flex flex-col justify-center items-center p-10">
         <div class="flex flex-col gap-10 text-center w-full">
-            <a href="#about" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors" onclick="toggleMenu()">Home</a>
-            <a href="#stack" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors" onclick="toggleMenu()">Capabilities</a>
-            <a href="#work" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors" onclick="toggleMenu()">Projects</a>
-            <a href="#contact" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors" onclick="toggleMenu()">Contact</a>
+            <a href="#about" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors">Home</a>
+            <a href="#stack" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors">Capabilities</a>
+            <a href="#work" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors">Projects</a>
+            <a href="#contact" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors">Contact</a>
             <div class="h-px bg-white/10 w-full my-4"></div>
-            <a href="resume.pdf" download class="w-full py-4 bg-white text-black rounded-full font-bold uppercase tracking-widest text-sm" onclick="toggleMenu()">Download CV</a>
+            <a href="resume.pdf" download class="mobile-link w-full py-4 bg-white text-black rounded-full font-bold uppercase tracking-widest text-sm">Download CV</a>
         </div>
     </div>
 
-
-
-
-
     <main class="relative z-10">
-        
-       <!-- Hero: The "Product" Reveal with Photo -->
+        <!-- Hero Section -->
         <section id="about" class="min-h-screen flex flex-col justify-center px-6 pt-20 max-w-7xl mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center reveal active">
                 
@@ -232,7 +235,7 @@
                 <div class="lg:col-span-7 space-y-8 text-left">
                     <div class="status-pill inline-flex items-center gap-2">
                         <span class="w-2 h-2 rounded-full bg-[#30d158] animate-pulse"></span>
-AVAILABLE FOR: Internship/Work
+                        AVAILABLE FOR: Internship/Work
                     </div>
                     
                     <h1 class="heading-monumental text-gradient">
@@ -253,13 +256,13 @@ AVAILABLE FOR: Internship/Work
                     </div>
                 </div>
 
-                <!-- Photo Container -->
-                <div class="lg:col-span-5 profile-photo-container">
-                    <div class="bento-card aspect-[4/5] relative group p-1">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10 opacity-60"></div>
+                <!-- Static Photo Container -->
+                <div class="lg:col-span-5">
+                    <div class="bento-card static-card aspect-[4/5] relative p-1">
+                        <!-- Removed black gradient overlay to prevent "black" look -->
                         <img src="abhi.jpeg"
                              alt="Abhishek Profile" 
-                             class="w-full h-full object-cover rounded-[2.2rem] grayscale group-hover:grayscale-0 transition-all duration-700">
+                             class="w-full h-full object-cover rounded-[2.2rem]">
                         <div class="absolute bottom-8 left-8 z-20">
                             <p class="text-[10px] font-black uppercase tracking-[0.4em] text-white/40">Abhishek Deshmukh</p>
                             <p class="text-sm font-bold text-white">UI/UX Designer</p>
@@ -272,28 +275,28 @@ AVAILABLE FOR: Internship/Work
             <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-20">
                 <i data-lucide="chevron-down" class="w-8 h-8"></i>
             </div>
-                    <!-- Mini Stats -->
 
+            <!-- Mini Stats -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-10 border-t border-white/10">
-                        <div class="space-y-1">
-                            <h4 class="text-2xl font-black italic">B.Tech CS</h4>
-                            <p class="text-[9px] font-black uppercase text-[#0071e3] tracking-widest leading-tight">GBS Institute • 2025</p>
-                        </div>
-                        <div class="space-y-1">
-                            <h4 class="text-2xl font-black italic">7.5/10 GPA</h4>
-                            <p class="text-[9px] font-black uppercase text-green-500 tracking-widest">Cumulative Score</p>
-                        </div>
-                        <div class="space-y-1">
-                            <h4 class="text-2xl font-black italic">Learner</h4>
-                            <p class="text-[9px] font-black uppercase text-orange-500 tracking-widest">Always Curious</p>
-                        </div>
-                        <div class="space-y-1">
-                            <h4 class="text-2xl font-black italic">Versatile</h4>
-                            <p class="text-[9px] font-black uppercase text-pink-500 tracking-widest">Dev + Design</p>
-                        </div>
-                    </div>
+                <div class="space-y-1">
+                    <h4 class="text-2xl font-black italic">B.Tech CS</h4>
+                    <p class="text-[9px] font-black uppercase text-[#0071e3] tracking-widest leading-tight">GBS Institute • 2025</p>
+                </div>
+                <div class="space-y-1">
+                    <h4 class="text-2xl font-black italic">7.5/10 GPA</h4>
+                    <p class="text-[9px] font-black uppercase text-green-500 tracking-widest">Cumulative Score</p>
+                </div>
+                <div class="space-y-1">
+                    <h4 class="text-2xl font-black italic">Learner</h4>
+                    <p class="text-[9px] font-black uppercase text-orange-500 tracking-widest">Always Curious</p>
+                </div>
+                <div class="space-y-1">
+                    <h4 class="text-2xl font-black italic">Versatile</h4>
+                    <p class="text-[9px] font-black uppercase text-pink-500 tracking-widest">Dev + Design</p>
+                </div>
+            </div>
         </section>
-                    
+                
         <!-- Technical Stack -->
         <section id="stack" class="py-32 px-6">
             <div class="max-w-7xl mx-auto space-y-16">
@@ -303,7 +306,7 @@ AVAILABLE FOR: Internship/Work
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Card 1: Development -->
+                    <!-- Cards with Tilt effect -->
                     <div class="bento-card p-10 md:p-14 flex flex-col justify-between group reveal">
                         <div class="space-y-6">
                             <div class="w-14 h-14 bg-purple-600/10 rounded-2xl flex items-center justify-center text-purple-400">
@@ -320,7 +323,6 @@ AVAILABLE FOR: Internship/Work
                         </div>
                     </div>
 
-                    <!-- Card 2: Embedded Systems -->
                     <div class="bento-card p-10 md:p-14 flex flex-col justify-between group reveal">
                         <div class="space-y-6">
                             <div class="w-14 h-14 bg-teal-600/10 rounded-2xl flex items-center justify-center text-teal-400">
@@ -337,7 +339,6 @@ AVAILABLE FOR: Internship/Work
                         </div>
                     </div>
 
-                    <!-- Card 3: Design -->
                     <div class="bento-card p-10 md:p-14 flex flex-col justify-between group reveal">
                         <div class="space-y-6">
                             <div class="w-14 h-14 bg-pink-500/10 rounded-2xl flex items-center justify-center text-pink-500">
@@ -354,7 +355,6 @@ AVAILABLE FOR: Internship/Work
                         </div>
                     </div>
 
-                    <!-- Card 4: Architecture (UML) -->
                     <div class="bento-card p-10 md:p-14 flex flex-col justify-between group reveal">
                         <div class="space-y-6">
                             <div class="w-14 h-14 bg-orange-600/10 rounded-2xl flex items-center justify-center text-orange-500">
@@ -370,45 +370,6 @@ AVAILABLE FOR: Internship/Work
                             <div class="tool-icon-box"><i data-lucide="layout" class="w-4 h-4 text-orange-500"></i> <span class="text-xs font-bold uppercase tracking-widest">Use Cases</span></div>
                         </div>
                     </div>
-
-                    <!-- Card 5: Data Analysis -->
-                    <div class="bento-card p-10 md:p-14 flex flex-col justify-between group reveal">
-                        <div class="space-y-6">
-                            <div class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-500">
-                                <i data-lucide="bar-chart-2" class="w-7 h-7"></i>
-                            </div>
-                            <h3 class="text-3xl font-bold text-white">Data Analysis</h3>
-                            <p class="text-white/40 text-lg leading-relaxed">Visualizing trends and querying databases using modern Python libraries.</p>
-                        </div>
-                        <div class="grid grid-cols-2 gap-4 mt-12">
-                            <div class="tool-icon-box"><i class="devicon-mysql-plain colored text-xl"></i> <span class="text-xs font-bold uppercase tracking-widest">SQL</span></div>
-                            <div class="tool-icon-box"><i class="devicon-pandas-plain colored text-xl"></i> <span class="text-xs font-bold uppercase tracking-widest">Pandas</span></div>
-                            <div class="tool-icon-box"><i class="devicon-python-plain colored text-xl"></i> <span class="text-xs font-bold uppercase tracking-widest">Python</span></div>
-                            <div class="tool-icon-box"><i data-lucide="pie-chart" class="w-4 h-4 text-blue-400"></i> <span class="text-xs font-bold uppercase tracking-widest">Charts</span></div>
-                        </div>
-                    </div>
-
-                    <!-- Card 6: Tools & Ecosystem -->
-                    <div class="bento-card p-10 md:p-14 flex flex-col justify-between group reveal border-white/10">
-                        <div class="space-y-8">
-                             <div class="flex items-center justify-between">
-                                <div class="space-y-1">
-                                    <h4 class="text-4xl font-black italic tracking-tighter leading-none text-white">Class 2025</h4>
-                                    <p class="text-[10px] font-black uppercase tracking-widest mt-2 text-[#0071e3]">Educational Spec</p>
-                                </div>
-                                <div class="text-right">
-                                    <div class="tool-icon-box inline-flex"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> <span class="text-[10px] font-bold uppercase tracking-widest text-white">Verified</span></div>
-                                </div>
-                             </div>
-                             <div class="h-px bg-white/10 w-full"></div>
-                             <div class="grid grid-cols-2 gap-4">
-                                <div class="tool-icon-box"><i data-lucide="git-branch" class="w-4 h-4 text-[#0071e3]"></i> <span class="text-xs font-bold uppercase tracking-widest text-white">GitHub</span></div>
-                                <div class="tool-icon-box"><i data-lucide="cloud" class="w-4 h-4 text-[#0071e3]"></i> <span class="text-xs font-bold uppercase tracking-widest text-white">Vercel</span></div>
-                                <div class="tool-icon-box"><i data-lucide="monitor" class="w-4 h-4 text-[#0071e3]"></i> <span class="text-xs font-bold uppercase tracking-widest text-white">Linux</span></div>
-                                <div class="tool-icon-box"><i data-lucide="database" class="w-4 h-4 text-[#0071e3]"></i> <span class="text-xs font-bold uppercase tracking-widest text-white">MySQL</span></div>
-                             </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -421,11 +382,11 @@ AVAILABLE FOR: Internship/Work
                     <h2 class="text-6xl md:text-8xl font-black tracking-tighter italic text-white">Selected Work.</h2>
                 </div>
 
-                <!-- GBS Navigator -->
+                <!-- GPS4GBS -->
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal">
                     <div class="lg:col-span-7">
                         <div class="bento-card aspect-video group overflow-hidden border-orange-500/20 shadow-[0_0_80px_rgba(249,115,22,0.1)]">
-                            <img src="campus_nav.png" class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 group-hover:rotate-1" onerror="this.src='https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop'">
+                            <img src="campus_nav.png" class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105" onerror="this.src='https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop'">
                         </div>
                     </div>
                     <div class="lg:col-span-5 space-y-8 text-left">
@@ -434,12 +395,10 @@ AVAILABLE FOR: Internship/Work
                         <p class="text-xl text-white/50 leading-relaxed">
                             A GPS tool and digital twin of the GBS campus. Precision user tracking for administrative offices and laboratories.
                         </p>
-                        <!-- Tech Stack Mini Cards -->
                         <div class="flex flex-wrap gap-2 pt-2">
                             <div class="tech-tag"><i class="devicon-java-plain colored"></i><span>Java</span></div>
                             <div class="tech-tag"><i class="devicon-firebase-plain colored"></i><span>Firebase</span></div>
-                                                        <div class="tech-tag"><i class="devicon-xml-plain colored"></i><span>XML</span></div>
-
+                            <div class="tech-tag"><i class="devicon-xml-plain colored"></i><span>XML</span></div>
                         </div>
                         <div class="flex flex-wrap gap-4 pt-4">
                             <button onclick="openVideoModal('campus_demo.mp4')" class="px-8 py-3 bg-[#0071e3] text-white rounded-full font-bold text-xs uppercase tracking-widest btn-apple flex items-center gap-2">
@@ -460,7 +419,6 @@ AVAILABLE FOR: Internship/Work
                         <p class="text-xl text-white/50 leading-relaxed">
                             A high-performance interface for local artists to showcase bespoke handmade artworks. Deployed on Vercel.
                         </p>
-                        <!-- Tech Stack Mini Cards -->
                         <div class="flex flex-wrap gap-2 pt-2">
                             <div class="tech-tag"><i class="devicon-html5-plain colored"></i><span>HTML5</span></div>
                             <div class="tech-tag"><i class="devicon-tailwindcss-plain colored"></i><span>Tailwind</span></div>
@@ -481,41 +439,10 @@ AVAILABLE FOR: Internship/Work
                         </div>
                     </div>
                 </div>
-
-                <!-- Travel India -->
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal">
-                    <div class="lg:col-span-7">
-                        <div class="bento-card aspect-video group overflow-hidden border-yellow-500/20 shadow-[0_0_80px_rgba(234,179,8,0.1)]">
-                            <img src="travel.png" class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105" onerror="this.src='https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=2070&auto=format&fit=crop'">
-                        </div>
-                    </div>
-                    <div class="lg:col-span-5 space-y-8 text-left">
-                        <span class="text-yellow-500 font-black text-xs uppercase tracking-[0.5em]">Web Development (Sept-Nov 2025)</span>
-                        <h3 class="text-4xl md:text-5xl font-bold tracking-tighter italic text-white">Travel India</h3>
-                        <p class="text-xl text-white/50 leading-relaxed">
-                            A fully responsive website showcasing India's breathtaking travel destinations. Features interactive maps, image galleries, and a booking simulator.
-                        </p>
-                        <!-- Tech Stack Mini Cards -->
-                        <div class="flex flex-wrap gap-2 pt-2">
-                            <div class="tech-tag"><i class="devicon-html5-plain colored"></i><span>HTML5</span></div>
-                            <div class="tech-tag"><i data-lucide="cloud-sun" class="text-yellow-500"></i><span>Weather API</span></div>
-                            <div class="tech-tag"><i class="devicon-javascript-original text-white"></i><span>Javascript</span></div>
-                        </div>
-                        <div class="flex flex-wrap gap-4 pt-4">
-                            <a href="https://travel-india-flame.vercel.app/" target="_blank" class="px-8 py-3 bg-white text-black rounded-full font-bold text-xs uppercase tracking-widest btn-apple flex items-center gap-2">
-                                View Website <i data-lucide="external-link"></i>
-                            </a>
-                             <a href="https://github.com/abhishek18-blog/Travel-India" target="_blank" class="px-8 py-3 bg-white/5 border border-white/10 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-white/10 transition-all flex items-center gap-2">
-                                Repo <i data-lucide="github"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </section>
 
-        <!-- White Footer -->
+        <!-- Footer -->
         <footer id="contact" class="py-12 md:py-16 px-6 bg-white text-black relative overflow-hidden border-t border-black/5">
             <div class="max-w-7xl mx-auto relative z-10">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-10">
@@ -575,10 +502,10 @@ AVAILABLE FOR: Internship/Work
     <script>
         lucide.createIcons();
 
-        // Mobile Menu Toggle Logic
+        // Debugged Mobile Menu Logic
         let isMenuOpen = false;
         const mobileNav = document.getElementById('mobile-nav-overlay');
-        const menuIcon = document.getElementById('menu-icon');
+        const menuIconContainer = document.getElementById('menu-icon-container');
 
         function toggleMenu() {
             isMenuOpen = !isMenuOpen;
@@ -586,23 +513,25 @@ AVAILABLE FOR: Internship/Work
             if (isMenuOpen) {
                 mobileNav.classList.add('active');
                 document.body.style.overflow = 'hidden';
-                menuIcon.setAttribute('data-lucide', 'x');
+                menuIconContainer.innerHTML = '<i data-lucide="x" class="w-6 h-6"></i>';
             } else {
                 mobileNav.classList.remove('active');
                 document.body.style.overflow = '';
-                menuIcon.setAttribute('data-lucide', 'menu');
+                menuIconContainer.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
             }
             
+            // Re-render icons to ensure "X" vs "Menu" swap works
             lucide.createIcons(); 
-            menuIcon.style.transform = isMenuOpen ? 'rotate(90deg)' : 'rotate(0deg)';
         }
 
         document.getElementById('menu-toggle').addEventListener('click', toggleMenu);
 
-        // Ensure icon resets if a link is clicked
+        // Reset menu state when any link is clicked
         document.querySelectorAll('.mobile-link').forEach(link => {
             link.addEventListener('click', () => {
-                if(isMenuOpen) toggleMenu();
+                if (isMenuOpen) {
+                    toggleMenu(); // Closes menu and resets icon
+                }
             });
         });
 
@@ -639,8 +568,8 @@ AVAILABLE FOR: Internship/Work
             }, 500);
         }
 
-        // Parallax depth effect for cards
-        document.querySelectorAll('.bento-card').forEach(card => {
+        // Parallax depth effect for cards (Excluding static-card)
+        document.querySelectorAll('.bento-card:not(.static-card)').forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
