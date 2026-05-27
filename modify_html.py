@@ -16,7 +16,7 @@ projects_section = """        <!-- Projects Gallery -->
                         <select id="project-filter" class="w-full bg-[#111112] text-white border border-white/10 rounded-xl px-6 py-4 appearance-none outline-none focus:border-white/30 transition-colors font-bold text-sm tracking-widest uppercase cursor-pointer shadow-xl">
                             <option value="all">All Projects</option>
                             <option value="web">Web Development</option>
-                            <option value="ml">Data Science & Machine Learning</option>
+                            <option value="ml">Data Science & AI</option>
                             <option value="iot">IOT</option>
                         </select>
                         <i data-lucide="chevron-down" class="absolute right-6 top-1/2 -translate-y-1/2 w-5 h-5 text-white/50 pointer-events-none"></i>
@@ -90,7 +90,7 @@ projects_section = """        <!-- Projects Gallery -->
                     <!-- Fish Disease Detection -->
                     <div class="project-item grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal" data-category="ml">
                         <div class="lg:col-span-5 space-y-8 order-2 lg:order-1 text-left">
-                            <span class="text-teal-500 font-black text-xs uppercase tracking-[0.5em]">Data Science & Machine Learning</span>
+                            <span class="text-teal-500 font-black text-xs uppercase tracking-[0.5em]">Data Science & AI</span>
                             <h3 class="text-4xl md:text-5xl font-bold tracking-tighter italic text-white">Fish Disease Detection</h3>
                             <p class="text-xl text-white/50 leading-relaxed">
                                 A machine learning system to diagnose fish diseases using Convolutional Neural Networks (CNN), providing real-time health analysis and treatment recommendations.
@@ -140,10 +140,10 @@ projects_section = """        <!-- Projects Gallery -->
                     </div>
 
                     <!-- Natural Language to SQL -->
-                    <div class="project-item grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal" data-category="web">
+                    <div class="project-item grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal" data-category="ml">
                         <div class="lg:col-span-5 space-y-8 order-2 lg:order-1 text-left">
-                            <span class="text-orange-500 font-black text-xs uppercase tracking-[0.5em]">Web Development</span>
-                            <h3 class="text-4xl md:text-5xl font-bold tracking-tighter italic text-white">NL to SQL Agent</h3>
+                            <span class="text-teal-500 font-black text-xs uppercase tracking-[0.5em]">Data Science & AI</span>
+                            <h3 class="text-4xl md:text-5xl font-bold tracking-tighter italic text-white">Agentic Natural Language To SQL</h3>
                             <p class="text-xl text-white/50 leading-relaxed">
                                 A dynamic web application capable of converting natural language queries into accurate SQL statements using AI, executing them across multiple databases, and presenting results directly.
                             </p>
@@ -159,7 +159,7 @@ projects_section = """        <!-- Projects Gallery -->
                             </div>
                         </div>
                         <div class="lg:col-span-7 order-1 lg:order-2">
-                            <div class="bento-card aspect-video group overflow-hidden border-orange-500/20 shadow-[0_0_80px_rgba(249,115,22,0.1)]">
+                            <div class="bento-card aspect-video group overflow-hidden border-teal-500/20 shadow-[0_0_80px_rgba(20,184,166,0.1)]">
                                 <img src="nl_sql.png" class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105" onerror="this.src='https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=2070&auto=format&fit=crop'">
                             </div>
                         </div>

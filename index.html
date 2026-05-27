@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abhishek | Portfolio</title>
+    <title>Abhishek | Designer & Engineer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --apple-blue: #0071e3;
@@ -75,6 +78,7 @@
             transition: clip-path 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             pointer-events: none;
         }
+
         #mobile-nav-overlay.active {
             clip-path: circle(150% at 100% 0%);
             pointer-events: auto;
@@ -86,13 +90,14 @@
             transform: translateY(30px);
             transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
         }
+
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
 
         .text-gradient {
-            background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.6) 100%);
+            background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.6) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -120,20 +125,21 @@
             align-items: center;
             gap: 12px;
             padding: 12px 16px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 16px;
             transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
+
         .tool-icon-box:hover {
-            background: rgba(255,255,255,0.08);
+            background: rgba(255, 255, 255, 0.08);
             transform: translateX(4px);
         }
 
         .tech-tag {
             padding: 6px 14px;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 10px;
             display: inline-flex;
             align-items: center;
@@ -141,15 +147,18 @@
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             min-height: 32px;
         }
+
         .tech-tag span {
             font-size: 10px;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255, 255, 255, 0.7);
             line-height: 1;
         }
-        .tech-tag i, .tech-tag svg {
+
+        .tech-tag i,
+        .tech-tag svg {
             width: 14px !important;
             height: 14px !important;
             font-size: 14px !important;
@@ -158,25 +167,29 @@
             justify-content: center;
             color: inherit;
         }
+
         .tech-tag:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
             transform: translateY(-2px);
         }
 
         .btn-apple {
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
+
         .btn-apple:hover {
             transform: scale(1.03);
         }
 
         /* Prevent Hover effect for specific card */
-        .static-card, .static-card img {
+        .static-card,
+        .static-card img {
             transform: none !important;
             transition: none !important;
             box-shadow: none !important;
         }
+
         .static-card:hover {
             transform: none !important;
             background: #0a0a0a !important;
@@ -184,6 +197,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <div id="cursor-glow"></div>
@@ -191,20 +205,25 @@
     <!-- Global Navigation -->
     <nav class="fixed top-0 w-full z-[200] glass-nav h-16 flex items-center px-6 md:px-12">
         <div class="max-w-7xl mx-auto w-full flex justify-between items-center relative">
-            <div class="flex items-center gap-2 font-bold text-lg tracking-tight group cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center text-black group-hover:scale-110 transition-transform">
+            <div class="flex items-center gap-2 font-bold text-lg tracking-tight group cursor-pointer"
+                onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <div
+                    class="w-8 h-8 bg-white rounded-lg flex items-center justify-center text-black group-hover:scale-110 transition-transform">
                     <span class="font-mono font-bold text-xs">&lt;/&gt;</span>
                 </div>
                 <span>ABHISHEK</span>
             </div>
-            
-            <div class="hidden md:flex items-center gap-10 text-[11px] font-bold uppercase tracking-[0.2em] text-white/50">
+
+            <div
+                class="hidden md:flex items-center gap-10 text-[11px] font-bold uppercase tracking-[0.2em] text-white/50">
                 <a href="#about" class="hover:text-white transition-colors">Home</a>
                 <a href="#stack" class="hover:text-white transition-colors">Capabilities</a>
                 <a href="#work" class="hover:text-white transition-colors">Projects</a>
                 <a href="#achievements" class="hover:text-white transition-colors">Achievements</a>
                 <a href="#contact" class="hover:text-white transition-colors">Contact</a>
-                <a href="ABHCV.pdf" download class="bg-white text-black px-6 py-2 rounded-full hover:bg-[#0071e3] hover:text-white transition-all">Download Resume</a>
+                <a href="Abhishek_Vasant_Deshmukh_Resume.pdf" download
+                    class="bg-white text-black px-6 py-2 rounded-full hover:bg-[#0071e3] hover:text-white transition-all">Download
+                    Resume</a>
             </div>
 
             <!-- Hamburger Button -->
@@ -217,15 +236,23 @@
     </nav>
 
     <!-- Mobile Navigation Overlay -->
-    <div id="mobile-nav-overlay" class="fixed inset-0 z-[190] bg-black/95 backdrop-blur-3xl md:hidden flex flex-col justify-center items-center p-10">
+    <div id="mobile-nav-overlay"
+        class="fixed inset-0 z-[190] bg-black/95 backdrop-blur-3xl md:hidden flex flex-col justify-center items-center p-10">
         <div class="flex flex-col gap-10 text-center w-full">
-            <a href="#about" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors">Home</a>
-            <a href="#stack" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors">Capabilities</a>
-            <a href="#work" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors">Projects</a>
-            <a href="#achievements" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors">Achievements</a>
-            <a href="#contact" class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors">Contact</a>
+            <a href="#about"
+                class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors">Home</a>
+            <a href="#stack"
+                class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors">Capabilities</a>
+            <a href="#work"
+                class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors">Projects</a>
+            <a href="#achievements"
+                class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors">Achievements</a>
+            <a href="#contact"
+                class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors">Contact</a>
             <div class="h-px bg-white/10 w-full my-4"></div>
-            <a href="ABHICV.pdf" download class="mobile-link w-full py-4 bg-white text-black rounded-full font-bold uppercase tracking-widest text-sm">Download Resume</a>
+            <a href="ABHICV.pdf" download
+                class="mobile-link w-full py-4 bg-white text-black rounded-full font-bold uppercase tracking-widest text-sm">Download
+                Resume</a>
         </div>
     </div>
 
@@ -233,27 +260,30 @@
         <!-- Hero Section -->
         <section id="about" class="min-h-screen flex flex-col justify-center px-6 pt-20 max-w-7xl mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center reveal active">
-                
+
                 <!-- Identity Text -->
                 <div class="lg:col-span-7 space-y-8 text-left">
                     <div class="status-pill inline-flex items-center gap-2">
                         <span class="w-2 h-2 rounded-full bg-[#30d158] animate-pulse"></span>
                         AVAILABLE FOR: Internship/Work
                     </div>
-                    
+
                     <h1 class="heading-monumental text-gradient">
-                        DESIGNER.<br/>ENGINEER.
+                        DESIGNER.<br />ENGINEER.
                     </h1>
-                    
+
                     <p class="max-w-xl text-xl md:text-2xl font-medium text-white/60 leading-relaxed">
-                        I architect digital environments where <span class="text-white">technical complexity</span> is refined into <span class="text-white">seamless human experiences</span>.
+                        I architect digital environments where <span class="text-white">technical complexity</span> is
+                        refined into <span class="text-white">seamless human experiences</span>.
                     </p>
 
                     <div class="flex flex-wrap gap-6 pt-6">
-                        <a href="#work" class="px-10 py-4 bg-white text-black rounded-full font-bold text-sm tracking-widest uppercase hover:scale-105 transition-transform shadow-2xl">
+                        <a href="#work"
+                            class="px-10 py-4 bg-white text-black rounded-full font-bold text-sm tracking-widest uppercase hover:scale-105 transition-transform shadow-2xl">
                             Explore Projects
                         </a>
-                        <button id="copy-email" class="px-10 py-4 bg-white/5 border border-white/10 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-white/10 transition-all flex items-center gap-3">
+                        <button id="copy-email"
+                            class="px-10 py-4 bg-white/5 border border-white/10 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-white/10 transition-all flex items-center gap-3">
                             <i data-lucide="mail" class="w-4 h-4"></i> Copy Email
                         </button>
                     </div>
@@ -263,12 +293,11 @@
                 <div class="lg:col-span-5">
                     <div class="bento-card static-card aspect-[4/5] relative p-1">
                         <!-- Removed black gradient overlay to prevent "black" look -->
-                        <img src="abhi.jpeg"
-                             alt="Abhishek Profile" 
-                             class="w-full h-full object-cover rounded-[2.2rem]">
+                        <img src="abhi.jpeg" alt="Abhishek Profile" class="w-full h-full object-cover rounded-[2.2rem]">
                         <div class="absolute bottom-8 left-8 z-20">
-                            <p class="text-[10px] font-black uppercase tracking-[0.4em] text-white/40">Abhishek Deshmukh</p>
-                            <p class="text-sm font-bold text-white">Data Analyst & UI/UX Designer</p>
+                            <p class="text-[10px] font-black uppercase tracking-[0.4em] text-white/40">Abhishek Deshmukh
+                            </p>
+                            <p class="text-sm font-bold text-white">UI/UX Designer</p>
                         </div>
                     </div>
                 </div>
@@ -283,10 +312,11 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-10 border-t border-white/10">
                 <div class="space-y-1">
                     <h4 class="text-2xl font-black italic">MCA</h4>
-                    <p class="text-[9px] font-black uppercase text-[#0071e3] tracking-widest leading-tight">Goa Business School • 2025 - 2027</p>
+                    <p class="text-[9px] font-black uppercase text-[#0071e3] tracking-widest leading-tight">Goa Business
+                        School • 2025 - 2027</p>
                 </div>
                 <div class="space-y-1">
-                    <h4 class="text-2xl font-black italic">7.85/10 GPA</h4>
+                    <h4 class="text-2xl font-black italic">7.85 CGPA</h4>
                     <p class="text-[9px] font-black uppercase text-green-500 tracking-widest">Cumulative Score</p>
                 </div>
                 <div class="space-y-1">
@@ -295,16 +325,17 @@
                 </div>
                 <div class="space-y-1">
                     <h4 class="text-2xl font-black italic">Versatile</h4>
-                    <p class="text-[9px] font-black uppercase text-pink-500 tracking-widest">Dev + Design + Analyst</p>
+                    <p class="text-[9px] font-black uppercase text-pink-500 tracking-widest">Dev + Design</p>
                 </div>
             </div>
         </section>
-                
+
         <!-- Technical Stack -->
         <section id="stack" class="py-32 px-6">
             <div class="max-w-7xl mx-auto space-y-16">
                 <div class="space-y-4">
-                    <span class="text-[10px] font-black uppercase tracking-[0.6em] text-[#0071e3]">Capability Toolkit</span>
+                    <span class="text-[10px] font-black uppercase tracking-[0.6em] text-[#0071e3]">Capability
+                        Toolkit</span>
                     <h2 class="text-5xl md:text-7xl font-black tracking-tighter italic text-white">Technical Stack.</h2>
                 </div>
 
@@ -312,66 +343,92 @@
                     <!-- Cards with Tilt effect -->
                     <div class="bento-card p-10 md:p-14 flex flex-col justify-between group reveal">
                         <div class="space-y-6">
-                            <div class="w-14 h-14 bg-purple-600/10 rounded-2xl flex items-center justify-center text-purple-400">
+                            <div
+                                class="w-14 h-14 bg-purple-600/10 rounded-2xl flex items-center justify-center text-purple-400">
                                 <i data-lucide="terminal" class="w-7 h-7"></i>
                             </div>
                             <h3 class="text-3xl font-bold text-white">Development</h3>
-                            <p class="text-white/40 text-lg leading-relaxed">Clean, object-oriented logic for backend services and system tools.</p>
+                            <p class="text-white/40 text-lg leading-relaxed">Clean, object-oriented logic for backend
+                                services and system tools.</p>
                         </div>
                         <div class="grid grid-cols-2 gap-4 mt-12">
-                            <div class="tool-icon-box"><i class="devicon-java-plain colored text-xl"></i> <span class="text-xs font-bold uppercase tracking-widest">Java</span></div>
-                            <div class="tool-icon-box"><i class="devicon-firebase-plain colored text-xl"></i> <span class="text-xs font-bold uppercase tracking-widest">Firebase</span></div>
-                            <div class="tool-icon-box"><i class="devicon-linux-plain colored text-xl"></i> <span class="text-xs font-bold uppercase tracking-widest">Linux</span></div>
-                            <div class="tool-icon-box"><i class="devicon-git-plain colored text-xl"></i> <span class="text-xs font-bold uppercase tracking-widest">Git</span></div>
+                            <div class="tool-icon-box"><i class="devicon-java-plain colored text-xl"></i> <span
+                                    class="text-xs font-bold uppercase tracking-widest">Java</span></div>
+                            <div class="tool-icon-box"><i class="devicon-firebase-plain colored text-xl"></i> <span
+                                    class="text-xs font-bold uppercase tracking-widest">Firebase</span></div>
+                            <div class="tool-icon-box"><i class="devicon-linux-plain colored text-xl"></i> <span
+                                    class="text-xs font-bold uppercase tracking-widest">Linux</span></div>
+                            <div class="tool-icon-box"><i class="devicon-git-plain colored text-xl"></i> <span
+                                    class="text-xs font-bold uppercase tracking-widest">Git</span></div>
                         </div>
                     </div>
 
                     <div class="bento-card p-10 md:p-14 flex flex-col justify-between group reveal">
                         <div class="space-y-6">
-                            <div class="w-14 h-14 bg-teal-600/10 rounded-2xl flex items-center justify-center text-teal-400">
+                            <div
+                                class="w-14 h-14 bg-teal-600/10 rounded-2xl flex items-center justify-center text-teal-400">
                                 <i data-lucide="cpu" class="w-7 h-7"></i>
                             </div>
                             <h3 class="text-3xl font-bold text-white">Embedded Systems</h3>
-                            <p class="text-white/40 text-lg leading-relaxed">Bridging software with the physical world using microcontrollers and IoT sensors.</p>
+                            <p class="text-white/40 text-lg leading-relaxed">Bridging software with the physical world
+                                using microcontrollers and IoT sensors.</p>
                         </div>
                         <div class="grid grid-cols-2 gap-4 mt-12">
-                            <div class="tool-icon-box"><i class="devicon-arduino-plain colored text-xl"></i> <span class="text-xs font-bold uppercase tracking-widest">Arduino</span></div>
-                            <div class="tool-icon-box"><i class="devicon-cplusplus-plain colored text-xl"></i> <span class="text-xs font-bold uppercase tracking-widest">C++</span></div>
-                            <div class="tool-icon-box"><i data-lucide="radio" class="w-4 h-4 text-teal-400"></i> <span class="text-xs font-bold uppercase tracking-widest">Sensors</span></div>
-                            <div class="tool-icon-box"><i data-lucide="circuit-board" class="w-4 h-4 text-teal-400"></i> <span class="text-xs font-bold uppercase tracking-widest">Circuits</span></div>
+                            <div class="tool-icon-box"><i class="devicon-arduino-plain colored text-xl"></i> <span
+                                    class="text-xs font-bold uppercase tracking-widest">Arduino</span></div>
+                            <div class="tool-icon-box"><i class="devicon-cplusplus-plain colored text-xl"></i> <span
+                                    class="text-xs font-bold uppercase tracking-widest">C++</span></div>
+                            <div class="tool-icon-box"><i data-lucide="radio" class="w-4 h-4 text-teal-400"></i> <span
+                                    class="text-xs font-bold uppercase tracking-widest">Sensors</span></div>
+                            <div class="tool-icon-box"><i data-lucide="circuit-board" class="w-4 h-4 text-teal-400"></i>
+                                <span class="text-xs font-bold uppercase tracking-widest">Circuits</span>
+                            </div>
                         </div>
                     </div>
 
                     <div class="bento-card p-10 md:p-14 flex flex-col justify-between group reveal">
                         <div class="space-y-6">
-                            <div class="w-14 h-14 bg-pink-500/10 rounded-2xl flex items-center justify-center text-pink-500">
+                            <div
+                                class="w-14 h-14 bg-pink-500/10 rounded-2xl flex items-center justify-center text-pink-500">
                                 <i data-lucide="palette" class="w-7 h-7"></i>
                             </div>
                             <h3 class="text-3xl font-bold text-white">UI/UX Design</h3>
-                            <p class="text-white/40 text-lg leading-relaxed">Hi-fi prototypes in Figma focused on consistency and high-fidelity visual language.</p>
+                            <p class="text-white/40 text-lg leading-relaxed">Hi-fi prototypes in Figma focused on
+                                consistency and high-fidelity visual language.</p>
                         </div>
                         <div class="grid grid-cols-2 gap-4 mt-12">
-                            <div class="tool-icon-box"><i class="devicon-figma-plain colored text-xl"></i> <span class="text-xs font-bold uppercase tracking-widest">Figma</span></div>
-                            <div class="tool-icon-box"><i class="devicon-canva-original colored text-xl"></i> <span class="text-xs font-bold uppercase tracking-widest">Canva</span></div>
-                            <div class="tool-icon-box"><i class="devicon-html5-plain colored text-xl"></i> <span class="text-xs font-bold uppercase tracking-widest">HTML5</span></div>
-                            <div class="tool-icon-box"><i class="devicon-css3-plain colored text-xl"></i> <span class="text-xs font-bold uppercase tracking-widest">CSS3</span></div>
+                            <div class="tool-icon-box"><i class="devicon-figma-plain colored text-xl"></i> <span
+                                    class="text-xs font-bold uppercase tracking-widest">Figma</span></div>
+                            <div class="tool-icon-box"><i class="devicon-canva-original colored text-xl"></i> <span
+                                    class="text-xs font-bold uppercase tracking-widest">Canva</span></div>
+                            <div class="tool-icon-box"><i class="devicon-html5-plain colored text-xl"></i> <span
+                                    class="text-xs font-bold uppercase tracking-widest">HTML5</span></div>
+                            <div class="tool-icon-box"><i class="devicon-css3-plain colored text-xl"></i> <span
+                                    class="text-xs font-bold uppercase tracking-widest">CSS3</span></div>
                         </div>
                     </div>
 
-                      <!-- Card 4: Data Analysis -->
+                    <!-- Card 4: Data Analysis -->
                     <div class="bento-card p-10 md:p-14 flex flex-col justify-between group reveal">
                         <div class="space-y-6">
-                            <div class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-500">
+                            <div
+                                class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-500">
                                 <i data-lucide="bar-chart-2" class="w-7 h-7"></i>
                             </div>
                             <h3 class="text-3xl font-bold">Data Analysis</h3>
-                            <p class="text-white/40 text-lg leading-relaxed">Visualizing trends and querying databases using modern Python libraries.</p>
+                            <p class="text-white/40 text-lg leading-relaxed">Visualizing trends and querying databases
+                                using modern Python libraries.</p>
                         </div>
                         <div class="grid grid-cols-2 gap-4 mt-12">
-                            <div class="tool-icon-box"><i class="devicon-mysql-plain colored text-xl"></i> <span class="text-xs font-bold uppercase tracking-widest">SQL</span></div>
-                            <div class="tool-icon-box"><i class="devicon-pandas-plain colored text-xl"></i> <span class="text-xs font-bold uppercase tracking-widest">Pandas</span></div>
-                            <div class="tool-icon-box"><i class="devicon-python-plain colored text-xl"></i> <span class="text-xs font-bold uppercase tracking-widest">Python</span></div>
-                            <div class="tool-icon-box"><i data-lucide="pie-chart" class="w-4 h-4 text-blue-400"></i> <span class="text-xs font-bold uppercase tracking-widest">Charts</span></div>
+                            <div class="tool-icon-box"><i class="devicon-mysql-plain colored text-xl"></i> <span
+                                    class="text-xs font-bold uppercase tracking-widest">SQL</span></div>
+                            <div class="tool-icon-box"><i class="devicon-pandas-plain colored text-xl"></i> <span
+                                    class="text-xs font-bold uppercase tracking-widest">Pandas</span></div>
+                            <div class="tool-icon-box"><i class="devicon-python-plain colored text-xl"></i> <span
+                                    class="text-xs font-bold uppercase tracking-widest">Python</span></div>
+                            <div class="tool-icon-box"><i data-lucide="pie-chart" class="w-4 h-4 text-blue-400"></i>
+                                <span class="text-xs font-bold uppercase tracking-widest">Charts</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -384,79 +441,109 @@
                 <div class="flex flex-col md:flex-row md:justify-between md:items-end gap-8 w-full">
                     <div class="space-y-4">
                         <span class="text-[10px] font-black uppercase tracking-[0.6em] text-orange-500">Portfolio</span>
-                        <h2 class="text-6xl md:text-8xl font-black tracking-tighter italic text-white">Selected Work.</h2>
+                        <h2 class="text-6xl md:text-8xl font-black tracking-tighter italic text-white">Selected Work.
+                        </h2>
                     </div>
-                    
+
                     <div class="relative min-w-[280px]">
-                        <select id="project-filter" class="w-full bg-[#111112] text-white border border-white/10 rounded-xl px-6 py-4 appearance-none outline-none focus:border-white/30 transition-colors font-bold text-sm tracking-widest uppercase cursor-pointer shadow-xl">
+                        <select id="project-filter"
+                            class="w-full bg-[#111112] text-white border border-white/10 rounded-xl px-6 py-4 appearance-none outline-none focus:border-white/30 transition-colors font-bold text-sm tracking-widest uppercase cursor-pointer shadow-xl">
                             <option value="all">All Projects</option>
                             <option value="web">Web Development</option>
                             <option value="client">Client Projects</option>
-                            <option value="ml">Data Science & Machine Learning</option>
+                            <option value="ml">Data Science & AI</option>
                             <option value="iot">IOT</option>
                         </select>
-                        <i data-lucide="chevron-down" class="absolute right-6 top-1/2 -translate-y-1/2 w-5 h-5 text-white/50 pointer-events-none"></i>
+                        <i data-lucide="chevron-down"
+                            class="absolute right-6 top-1/2 -translate-y-1/2 w-5 h-5 text-white/50 pointer-events-none"></i>
                     </div>
                 </div>
 
                 <div id="projects-container" class="space-y-24">
 
                     <!-- Artisan's Canvas -->
-                    <div class="project-item grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal" data-category="client">
+                    <div class="project-item grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal"
+                        data-category="client">
                         <div class="lg:col-span-5 space-y-8 order-2 lg:order-1 text-left">
-                            <span class="text-blue-500 font-black text-xs uppercase tracking-[0.5em]">Freelancing / Client Work</span>
-                            <h3 class="text-4xl md:text-5xl font-bold tracking-tighter italic text-white">Artisan's Canvas</h3>
+                            <span class="text-blue-500 font-black text-xs uppercase tracking-[0.5em]">Freelancing /
+                                Client Work</span>
+                            <h3 class="text-4xl md:text-5xl font-bold tracking-tighter italic text-white">Artisan's
+                                Canvas</h3>
                             <p class="text-xl text-white/50 leading-relaxed">
-                                Developed a digital storefront for local artists who lacked a platform to showcase their portfolios and receive community feedback.                        
+                                Developed a digital storefront for local artists who lacked a platform to showcase their
+                                portfolios and receive community feedback.
                             </p>
                             <div class="flex flex-wrap gap-2 pt-2">
-                                <div class="tech-tag"><i class="devicon-html5-plain colored"></i><span>HTML5</span></div>
-                                <div class="tech-tag"><i class="devicon-tailwindcss-plain colored"></i><span>Tailwind</span></div>
-                                <div class="tech-tag"><i class="devicon-javascript-plain colored"></i><span>Javascript</span></div>
-                                <div class="tech-tag"><i class="devicon-firebase-plain colored"></i><span>Firebase</span></div>
+                                <div class="tech-tag"><i class="devicon-html5-plain colored"></i><span>HTML5</span>
+                                </div>
+                                <div class="tech-tag"><i
+                                        class="devicon-tailwindcss-plain colored"></i><span>Tailwind</span></div>
+                                <div class="tech-tag"><i
+                                        class="devicon-javascript-plain colored"></i><span>Javascript</span></div>
+                                <div class="tech-tag"><i
+                                        class="devicon-firebase-plain colored"></i><span>Firebase</span></div>
                             </div>
                             <div class="flex flex-wrap gap-4 pt-4">
-                                <a href="https://canvas-art-five.vercel.app/" target="_blank" class="px-8 py-3 bg-white text-black rounded-full font-bold text-xs uppercase tracking-widest btn-apple flex items-center gap-2">
+                                <a href="https://canvas-art-five.vercel.app/" target="_blank"
+                                    class="px-8 py-3 bg-white text-black rounded-full font-bold text-xs uppercase tracking-widest btn-apple flex items-center gap-2">
                                     Launch Site <i data-lucide="external-link"></i>
                                 </a>
-                                <a href="https://github.com/abhishek18-blog/canvas-art" target="_blank" class="px-8 py-3 bg-white/5 border border-white/10 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-white/10 transition-all flex items-center gap-2">
+                                <a href="https://github.com/abhishek18-blog/canvas-art" target="_blank"
+                                    class="px-8 py-3 bg-white/5 border border-white/10 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-white/10 transition-all flex items-center gap-2">
                                     Repo <i data-lucide="github"></i>
                                 </a>
                             </div>
                         </div>
                         <div class="lg:col-span-7 order-1 lg:order-2">
-                            <div class="bento-card aspect-video group overflow-hidden border-blue-500/20 shadow-[0_0_80px_rgba(0,113,227,0.1)]">
-                                <img src="canvas.png" class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105" onerror="this.src='https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1964&auto=format&fit=crop'">
+                            <div
+                                class="bento-card aspect-video group overflow-hidden border-blue-500/20 shadow-[0_0_80px_rgba(0,113,227,0.1)]">
+                                <img src="canvas.png"
+                                    class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
+                                    onerror="this.src='https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1964&auto=format&fit=crop'">
                             </div>
                         </div>
                     </div>
 
                     <!--NovelAI Web Application  -->
-                    <div class="project-item grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal" data-category="web">
+                    <div class="project-item grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal"
+                        data-category="web">
                         <div class="lg:col-span-7">
-                            <div class="bento-card aspect-video group overflow-hidden border-purple-500/20 shadow-[0_0_80px_rgba(168,85,247,0.1)]">
-                                <img src="novel1.png" class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105" onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop'">
+                            <div
+                                class="bento-card aspect-video group overflow-hidden border-purple-500/20 shadow-[0_0_80px_rgba(168,85,247,0.1)]">
+                                <img src="novel1.png"
+                                    class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
+                                    onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop'">
                             </div>
                         </div>
                         <div class="lg:col-span-5 space-y-8 text-left">
-                            <span class="text-purple-500 font-black text-xs uppercase tracking-[0.5em]">AI Reading Ecosystem</span>
+                            <span class="text-purple-500 font-black text-xs uppercase tracking-[0.5em]">AI Reading
+                                Ecosystem</span>
                             <h3 class="text-4xl md:text-5xl font-bold tracking-tighter italic text-white">NovelAI</h3>
                             <p class="text-xl text-white/50 leading-relaxed">
-                                An intelligent PDF reader featuring <b>Gemini AI</b> for real-time storytelling analysis, live language translation, and automated progress tracking. Securely sync your library and reading history via <b>Firebase</b>.
+                                An intelligent PDF reader featuring <b>Gemini AI</b> for real-time storytelling
+                                analysis, live language translation, and automated progress tracking. Securely sync your
+                                library and reading history via <b>Firebase</b>.
                             </p>
                             <div class="flex flex-wrap gap-2 pt-2">
-                                <div class="tech-tag"><i class="devicon-python-plain colored"></i><span>Python</span></div>
-                                <div class="tech-tag"><i class="devicon-googlecloud-plain colored"></i><span>Gemini AI</span></div>
-                                <div class="tech-tag"><i class="devicon-react-original colored"></i><span>React</span></div>
-                                <div class="tech-tag"><i class="devicon-javascript-plain colored"></i><span>Javascript</span></div>
-                                <div class="tech-tag"><i class="devicon-firebase-plain colored"></i><span>Firebase</span></div>
-                                
+                                <div class="tech-tag"><i class="devicon-python-plain colored"></i><span>Python</span>
+                                </div>
+                                <div class="tech-tag"><i class="devicon-googlecloud-plain colored"></i><span>Gemini
+                                        AI</span></div>
+                                <div class="tech-tag"><i class="devicon-react-original colored"></i><span>React</span>
+                                </div>
+                                <div class="tech-tag"><i
+                                        class="devicon-javascript-plain colored"></i><span>Javascript</span></div>
+                                <div class="tech-tag"><i
+                                        class="devicon-firebase-plain colored"></i><span>Firebase</span></div>
+
                             </div>
                             <div class="flex flex-wrap gap-4 pt-4">
-                                <a href="https://novel-ai-gem.vercel.app/" target="_blank" class="px-8 py-3 bg-white text-black rounded-full font-bold text-xs uppercase tracking-widest btn-apple flex items-center gap-2">
+                                <a href="https://novel-ai-gem.vercel.app/" target="_blank"
+                                    class="px-8 py-3 bg-white text-black rounded-full font-bold text-xs uppercase tracking-widest btn-apple flex items-center gap-2">
                                     Launch Site <i data-lucide="external-link"></i>
                                 </a>
-                                <a href="https://github.com/abhishek18-blog/NovelAI-Gem/" target="_blank" class="px-8 py-3 bg-white/5 border border-white/10 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-white/10 transition-all flex items-center gap-2">
+                                <a href="https://github.com/abhishek18-blog/NovelAI-Gem/" target="_blank"
+                                    class="px-8 py-3 bg-white/5 border border-white/10 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-white/10 transition-all flex items-center gap-2">
                                     Repo <i data-lucide="github"></i>
                                 </a>
                             </div>
@@ -464,52 +551,76 @@
                     </div>
 
                     <!-- Fish Disease Detection -->
-                    <div class="project-item grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal" data-category="ml">
+                    <div class="project-item grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal"
+                        data-category="ml">
                         <div class="lg:col-span-5 space-y-8 order-2 lg:order-1 text-left">
-                            <span class="text-teal-500 font-black text-xs uppercase tracking-[0.5em]">Data Science & Machine Learning</span>
-                            <h3 class="text-4xl md:text-5xl font-bold tracking-tighter italic text-white">Fish Disease Detection</h3>
+                            <span class="text-teal-500 font-black text-xs uppercase tracking-[0.5em]">Data Science &
+                                AI</span>
+                            <h3 class="text-4xl md:text-5xl font-bold tracking-tighter italic text-white">Fish Disease
+                                Detection</h3>
                             <p class="text-xl text-white/50 leading-relaxed">
-                                A machine learning system to diagnose fish diseases using Convolutional Neural Networks (CNN), providing real-time health analysis and treatment recommendations.
+                                A machine learning system to diagnose fish diseases using Convolutional Neural Networks
+                                (CNN), providing real-time health analysis and treatment recommendations.
                             </p>
                             <div class="flex flex-wrap gap-2 pt-2">
-                                <div class="tech-tag"><i class="devicon-python-plain colored"></i><span>Python</span></div>
-                                <div class="tech-tag"><i class="devicon-pytorch-plain colored"></i><span>PyTorch</span></div>
-                                <div class="tech-tag"><i class="devicon-streamlit-plain colored"></i><span>Streamlit</span></div>
+                                <div class="tech-tag"><i class="devicon-python-plain colored"></i><span>Python</span>
+                                </div>
+                                <div class="tech-tag"><i class="devicon-pytorch-plain colored"></i><span>PyTorch</span>
+                                </div>
+                                <div class="tech-tag"><i
+                                        class="devicon-streamlit-plain colored"></i><span>Streamlit</span></div>
                             </div>
                             <div class="flex flex-wrap gap-4 pt-4">
-                                <a href="https://github.com/abhishek18-blog/fish-disease-detection" target="_blank" class="px-8 py-3 bg-white/5 border border-white/10 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-white/10 transition-all flex items-center gap-2">
+                                <a href="https://github.com/abhishek18-blog/fish-disease-detection" target="_blank"
+                                    class="px-8 py-3 bg-white/5 border border-white/10 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-white/10 transition-all flex items-center gap-2">
                                     Repo <i data-lucide="github"></i>
                                 </a>
                             </div>
                         </div>
                         <div class="lg:col-span-7 order-1 lg:order-2">
-                            <div class="bento-card aspect-video group overflow-hidden border-teal-500/20 shadow-[0_0_80px_rgba(20,184,166,0.1)]">
-                                <img src="fish_disease.png" class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105" onerror="this.src='https://images.unsplash.com/photo-1524704654690-b56c05c78a00?q=80&w=2070&auto=format&fit=crop'">
+                            <div
+                                class="bento-card aspect-video group overflow-hidden border-teal-500/20 shadow-[0_0_80px_rgba(20,184,166,0.1)]">
+                                <img src="fish_disease.png"
+                                    class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
+                                    onerror="this.src='https://images.unsplash.com/photo-1524704654690-b56c05c78a00?q=80&w=2070&auto=format&fit=crop'">
                             </div>
                         </div>
                     </div>
 
                     <!-- Agritech-IOT -->
-                    <div class="project-item grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal" data-category="iot">
+                    <div class="project-item grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal"
+                        data-category="iot">
                         <div class="lg:col-span-7">
-                            <div class="bento-card aspect-video group overflow-hidden border-green-500/20 shadow-[0_0_80px_rgba(34,197,94,0.1)]">
-                                <img src="agritech.png" class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105" onerror="this.src='https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=2070&auto=format&fit=crop'">
+                            <div
+                                class="bento-card aspect-video group overflow-hidden border-green-500/20 shadow-[0_0_80px_rgba(34,197,94,0.1)]">
+                                <img src="agritech.png"
+                                    class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
+                                    onerror="this.src='https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=2070&auto=format&fit=crop'">
                             </div>
                         </div>
                         <div class="lg:col-span-5 space-y-8 text-left">
-                            <span class="text-green-500 font-black text-xs uppercase tracking-[0.5em]">IOT & Embedded Systems</span>
-                            <h3 class="text-4xl md:text-5xl font-bold tracking-tighter italic text-white">Agritech-IOT</h3>
+                            <span class="text-green-500 font-black text-xs uppercase tracking-[0.5em]">IOT & Embedded
+                                Systems</span>
+                            <h3 class="text-4xl md:text-5xl font-bold tracking-tighter italic text-white">Agritech-IOT
+                            </h3>
                             <p class="text-xl text-white/50 leading-relaxed">
-                                An IoT-based automated irrigation system that utilizes ESP8266 and various sensors to monitor soil moisture and weather conditions, integrating with the Blynk app for remote control.
+                                An IoT-based automated irrigation system that utilizes ESP8266 and various sensors to
+                                monitor soil moisture and weather conditions, integrating with the Blynk app for remote
+                                control.
                             </p>
                             <div class="flex flex-wrap gap-2 pt-2">
-                                <div class="tech-tag"><i data-lucide="cpu" class="w-4 h-4 text-green-400"></i><span>ESP8266</span></div>
-                                <div class="tech-tag"><i class="devicon-arduino-plain colored"></i><span>Arduino</span></div>
-                                <div class="tech-tag"><i class="devicon-cplusplus-plain colored"></i><span>C++</span></div>
-                                <div class="tech-tag"><i data-lucide="radio" class="w-4 h-4 text-green-400"></i><span>Sensors</span></div>
+                                <div class="tech-tag"><i data-lucide="cpu"
+                                        class="w-4 h-4 text-green-400"></i><span>ESP8266</span></div>
+                                <div class="tech-tag"><i class="devicon-arduino-plain colored"></i><span>Arduino</span>
+                                </div>
+                                <div class="tech-tag"><i class="devicon-cplusplus-plain colored"></i><span>C++</span>
+                                </div>
+                                <div class="tech-tag"><i data-lucide="radio"
+                                        class="w-4 h-4 text-green-400"></i><span>Sensors</span></div>
                             </div>
                             <div class="flex flex-wrap gap-4 pt-4">
-                                <a href="https://github.com/abhishek18-blog/Agritech-IOT" target="_blank" class="px-8 py-3 bg-white/5 border border-white/10 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-white/10 transition-all flex items-center gap-2">
+                                <a href="https://github.com/abhishek18-blog/Agritech-IOT" target="_blank"
+                                    class="px-8 py-3 bg-white/5 border border-white/10 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-white/10 transition-all flex items-center gap-2">
                                     Repo <i data-lucide="github"></i>
                                 </a>
                             </div>
@@ -517,54 +628,78 @@
                     </div>
 
                     <!-- Natural Language to SQL -->
-                    <div class="project-item grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal" data-category="web">
+                    <div class="project-item grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal"
+                        data-category="ml">
                         <div class="lg:col-span-5 space-y-8 order-2 lg:order-1 text-left">
-                            <span class="text-orange-500 font-black text-xs uppercase tracking-[0.5em]">Web Development</span>
-                            <h3 class="text-4xl md:text-5xl font-bold tracking-tighter italic text-white">NL to SQL Agent</h3>
+                            <span class="text-teal-500 font-black text-xs uppercase tracking-[0.5em]">Data Science &
+                                AI</span>
+                            <h3 class="text-4xl md:text-5xl font-bold tracking-tighter italic text-white">Agentic
+                                Natural Language To SQL</h3>
                             <p class="text-xl text-white/50 leading-relaxed">
-                                A dynamic web application capable of converting natural language queries into accurate SQL statements using AI, executing them across multiple databases, and presenting results directly.
+                                A dynamic web application capable of converting natural language queries into accurate
+                                SQL statements using AI, executing them across multiple databases, and presenting
+                                results directly.
                             </p>
                             <div class="flex flex-wrap gap-2 pt-2">
-                                <div class="tech-tag"><i class="devicon-typescript-plain colored"></i><span>TypeScript</span></div>
-                                <div class="tech-tag"><i class="devicon-react-original colored"></i><span>React</span></div>
-                                <div class="tech-tag"><i class="devicon-python-plain colored"></i><span>Python</span></div>
+                                <div class="tech-tag"><i
+                                        class="devicon-typescript-plain colored"></i><span>TypeScript</span></div>
+                                <div class="tech-tag"><i class="devicon-react-original colored"></i><span>React</span>
+                                </div>
+                                <div class="tech-tag"><i class="devicon-python-plain colored"></i><span>Python</span>
+                                </div>
                             </div>
                             <div class="flex flex-wrap gap-4 pt-4">
-                                <a href="https://github.com/abhishek18-blog/Natural-language-to-sql" target="_blank" class="px-8 py-3 bg-white/5 border border-white/10 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-white/10 transition-all flex items-center gap-2">
+                                <a href="https://github.com/abhishek18-blog/Natural-language-to-sql" target="_blank"
+                                    class="px-8 py-3 bg-white/5 border border-white/10 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-white/10 transition-all flex items-center gap-2">
                                     Repo <i data-lucide="github"></i>
                                 </a>
                             </div>
                         </div>
                         <div class="lg:col-span-7 order-1 lg:order-2">
-                            <div class="bento-card aspect-video group overflow-hidden border-orange-500/20 shadow-[0_0_80px_rgba(249,115,22,0.1)]">
-                                <img src="nl_sql.png" class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105" onerror="this.src='https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=2070&auto=format&fit=crop'">
+                            <div
+                                class="bento-card aspect-video group overflow-hidden border-teal-500/20 shadow-[0_0_80px_rgba(20,184,166,0.1)]">
+                                <img src="nl_sql.png"
+                                    class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
+                                    onerror="this.src='https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=2070&auto=format&fit=crop'">
                             </div>
                         </div>
                     </div>
 
                     <!-- Abstracts Research Hub -->
-                    <div class="project-item grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal" data-category="web">
+                    <div class="project-item grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal"
+                        data-category="web">
                         <div class="lg:col-span-7">
-                            <div class="bento-card aspect-video group overflow-hidden border-blue-400/20 shadow-[0_0_80px_rgba(96,165,250,0.1)]">
-                                <img src="abstracts.png" class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105" onerror="this.src='https://images.unsplash.com/photo-1456406644174-8ddd4cd52a06?q=80&w=2068&auto=format&fit=crop'">
+                            <div
+                                class="bento-card aspect-video group overflow-hidden border-blue-400/20 shadow-[0_0_80px_rgba(96,165,250,0.1)]">
+                                <img src="abstracts.png"
+                                    class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
+                                    onerror="this.src='https://images.unsplash.com/photo-1456406644174-8ddd4cd52a06?q=80&w=2068&auto=format&fit=crop'">
                             </div>
                         </div>
                         <div class="lg:col-span-5 space-y-8 text-left">
-                            <span class="text-blue-400 font-black text-xs uppercase tracking-[0.5em]">Web Development</span>
-                            <h3 class="text-4xl md:text-5xl font-bold tracking-tighter italic text-white">Abstracts Research Hub</h3>
+                            <span class="text-blue-400 font-black text-xs uppercase tracking-[0.5em]">Web
+                                Development</span>
+                            <h3 class="text-4xl md:text-5xl font-bold tracking-tighter italic text-white">Abstracts
+                                Research Hub</h3>
                             <p class="text-xl text-white/50 leading-relaxed">
-                                A centralized platform for browsing, exploring, and contributing to academic abstracts and research papers with a clean, responsive UI.
+                                A centralized platform for browsing, exploring, and contributing to academic abstracts
+                                and research papers with a clean, responsive UI.
                             </p>
                             <div class="flex flex-wrap gap-2 pt-2">
-                                <div class="tech-tag"><i class="devicon-nextjs-plain colored"></i><span>Next.js</span></div>
-                                <div class="tech-tag"><i class="devicon-react-original colored"></i><span>React</span></div>
-                                <div class="tech-tag"><i class="devicon-tailwindcss-plain colored"></i><span>Tailwind</span></div>
+                                <div class="tech-tag"><i class="devicon-nextjs-plain colored"></i><span>Next.js</span>
+                                </div>
+                                <div class="tech-tag"><i class="devicon-react-original colored"></i><span>React</span>
+                                </div>
+                                <div class="tech-tag"><i
+                                        class="devicon-tailwindcss-plain colored"></i><span>Tailwind</span></div>
                             </div>
                             <div class="flex flex-wrap gap-4 pt-4">
-                                <a href="https://abstracts-research-hub.vercel.app/" target="_blank" class="px-8 py-3 bg-white text-black rounded-full font-bold text-xs uppercase tracking-widest btn-apple flex items-center gap-2">
+                                <a href="https://abstracts-research-hub.vercel.app/" target="_blank"
+                                    class="px-8 py-3 bg-white text-black rounded-full font-bold text-xs uppercase tracking-widest btn-apple flex items-center gap-2">
                                     Launch Site <i data-lucide="external-link"></i>
                                 </a>
-                                <a href="https://github.com/abhishek18-blog/Abstracts-researchHub" target="_blank" class="px-8 py-3 bg-white/5 border border-white/10 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-white/10 transition-all flex items-center gap-2">
+                                <a href="https://github.com/abhishek18-blog/Abstracts-researchHub" target="_blank"
+                                    class="px-8 py-3 bg-white/5 border border-white/10 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-white/10 transition-all flex items-center gap-2">
                                     Repo <i data-lucide="github"></i>
                                 </a>
                             </div>
@@ -584,66 +719,96 @@
 
                 <div class="max-w-6xl mx-auto w-full space-y-12">
                     <!-- Solve for Goa Hackathon Achievement -->
-                    <div class="bg-[#0a0a0a] rounded-[2.5rem] relative overflow-hidden h-full p-8 md:p-10 reveal border border-[#4285F4]/20 shadow-[0_0_80px_rgba(66,133,244,0.05)]">
+                    <div
+                        class="bg-[#0a0a0a] rounded-[2.5rem] relative overflow-hidden h-full p-8 md:p-10 reveal border border-[#4285F4]/20 shadow-[0_0_80px_rgba(66,133,244,0.05)]">
                         <div class="space-y-6 text-left">
-                            <span class="text-[#4285F4] font-black text-[10px] uppercase tracking-[0.5em]">Solve for Goa Hackathon 2026</span>
-                            <h3 class="text-3xl md:text-4xl font-bold tracking-tighter italic text-white">Google Developers Hackathon Finalist</h3>
+                            <span class="text-[#4285F4] font-black text-[10px] uppercase tracking-[0.5em]">Solve for Goa
+                                Hackathon 2026</span>
+                            <h3 class="text-3xl md:text-4xl font-bold tracking-tighter italic text-white">Google
+                                Developers Hackathon Finalist</h3>
                             <div class="space-y-4">
                                 <p class="text-lg text-white/70 leading-relaxed">
-                                    Honored to be selected as <b>Finalists</b> out of hundreds of participants in the Solve for Goa Hackathon, organized by Google for Developers in collaboration with the Government of Goa.
+                                    Honored to be selected as <b>Finalists</b> out of hundreds of participants in the
+                                    Solve for Goa Hackathon, organized by Google for Developers in collaboration with
+                                    the Government of Goa.
                                 </p>
                                 <p class="text-base text-white/60 leading-relaxed">
-                                    Working in a team, we went from intense brainstorming and hands-on coding nights to the final stage, where we formally presented our work to the judges.
+                                    Working in a team, we went from intense brainstorming and hands-on coding to the
+                                    final stage, where we formally presented our work to the judges.
                                 </p>
                                 <div class="p-4 rounded-2xl bg-[#4285F4]/5 border border-[#4285F4]/20 space-y-2">
-                                    <h4 class="font-bold text-sm uppercase tracking-wider text-[#4285F4]">Tech-Driven Public Impact</h4>
+                                    <h4 class="font-bold text-sm uppercase tracking-wider text-[#4285F4]">Tech-Driven
+                                        Public Impact</h4>
                                     <p class="text-base text-white/50 leading-relaxed">
-                                        This experience gave us invaluable real-world exposure to innovation and problem-solving for public impact. Incredibly grateful to GDG Goa for the platform to showcase our skills.
+                                        This experience gave us invaluable real-world exposure to innovation and
+                                        problem-solving for public impact. Incredibly grateful to GDG Goa for the
+                                        platform to showcase our skills.
                                     </p>
                                 </div>
                             </div>
                             <div class="flex flex-wrap gap-2 pt-2">
-                                <div class="tech-tag"><i data-lucide="code" class="w-4 h-4 text-[#4285F4]"></i><span>Hackathon</span></div>
-                                <div class="tech-tag"><i data-lucide="users" class="w-4 h-4 text-[#4285F4]"></i><span>Teamwork</span></div>
+                                <div class="tech-tag"><i data-lucide="code"
+                                        class="w-4 h-4 text-[#4285F4]"></i><span>Hackathon</span></div>
+                                <div class="tech-tag"><i data-lucide="users"
+                                        class="w-4 h-4 text-[#4285F4]"></i><span>Teamwork</span></div>
                             </div>
                         </div>
                     </div>
 
                     <!-- AquaFeeder Achievement -->
-                    <div class="bg-[#0a0a0a] rounded-[2.5rem] relative overflow-hidden h-full p-8 md:p-10 reveal border border-[#30d158]/20 shadow-[0_0_80px_rgba(48,209,88,0.05)]">
+                    <div
+                        class="bg-[#0a0a0a] rounded-[2.5rem] relative overflow-hidden h-full p-8 md:p-10 reveal border border-[#30d158]/20 shadow-[0_0_80px_rgba(48,209,88,0.05)]">
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                             <div class="space-y-6 text-left">
-                                <span class="text-[#30d158] font-black text-[10px] uppercase tracking-[0.5em]">Converge 2.0 Summit</span>
-                                <h3 class="text-3xl md:text-4xl font-bold tracking-tighter italic text-white">AquaFeeder Presentation</h3>
+                                <span class="text-[#30d158] font-black text-[10px] uppercase tracking-[0.5em]">Converge
+                                    2.0 Summit</span>
+                                <h3 class="text-3xl md:text-4xl font-bold tracking-tighter italic text-white">AquaFeeder
+                                    Presentation</h3>
                                 <div class="space-y-4">
                                     <p class="text-lg text-white/70 leading-relaxed">
-                                        Developed an innovative <b>IoT-based system</b> for automated fish feeding and health monitoring, selected for presentation at a prestigious state-level industry meet.
+                                        Developed an innovative <b>IoT-based system</b> for automated fish feeding and
+                                        health monitoring, selected for presentation at a prestigious state-level
+                                        industry meet.
                                     </p>
                                     <p class="text-base text-white/60 leading-relaxed">
-                                        Presented our final year project, <b>AquaFeeder</b>, at the prestigious Converge 2.0 Academia Industry Summit organized by DHE and GSHEC at Raj Bhavan on March 4th, 2025.
+                                        Presented our final year project, <b>AquaFeeder</b>, at the prestigious Converge
+                                        2.0 Academia Industry Summit organized by DHE and GSHEC at Raj Bhavan on March
+                                        4th, 2025.
                                     </p>
                                     <div class="p-4 rounded-2xl bg-[#30d158]/5 border border-[#30d158]/20 space-y-2">
-                                        <h4 class="font-bold text-sm uppercase tracking-wider text-[#30d158]">Led Interdisciplinary Innovation</h4>
+                                        <h4 class="font-bold text-sm uppercase tracking-wider text-[#30d158]">Led
+                                            Interdisciplinary Innovation</h4>
                                         <p class="text-base text-white/50 leading-relaxed">
-                                            Represented the only non-technical institution invited to showcase at the summit, demonstrating excellence in collaborative problem-solving and the practical application of IoT technology.
+                                            Represented the only non-technical institution invited to showcase at the
+                                            summit, demonstrating excellence in collaborative problem-solving and the
+                                            practical application of IoT technology.
                                         </p>
                                     </div>
                                 </div>
                                 <div class="flex flex-wrap gap-2 pt-2">
-                                    <div class="tech-tag"><i data-lucide="users" class="w-4 h-4 text-[#30d158]"></i><span>Teamwork</span></div>
-                                    <div class="tech-tag"><i data-lucide="cpu" class="w-4 h-4 text-green-400"></i><span>IoT Solution</span></div>
-                                    <div class="tech-tag"><i data-lucide="award" class="w-4 h-4 text-yellow-400"></i><span>Innovation</span></div>
+                                    <div class="tech-tag"><i data-lucide="users"
+                                            class="w-4 h-4 text-[#30d158]"></i><span>Teamwork</span></div>
+                                    <div class="tech-tag"><i data-lucide="cpu"
+                                            class="w-4 h-4 text-green-400"></i><span>IoT Solution</span></div>
+                                    <div class="tech-tag"><i data-lucide="award"
+                                            class="w-4 h-4 text-yellow-400"></i><span>Innovation</span></div>
                                 </div>
                             </div>
-                            
+
                             <div class="grid grid-cols-1 gap-5">
                                 <!-- Team Photo -->
-                                <div class="bg-[#0a0a0a] rounded-[2rem] relative overflow-hidden h-full aspect-video border border-green-500/20 shadow-[0_0_40px_rgba(48,209,88,0.1)]">
-                                    <img src="aquafeeder_team.jpg" alt="AquaFeeder Team at Converge 2.0" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2070&auto=format&fit=crop'">
+                                <div
+                                    class="bg-[#0a0a0a] rounded-[2rem] relative overflow-hidden h-full aspect-video border border-green-500/20 shadow-[0_0_40px_rgba(48,209,88,0.1)]">
+                                    <img src="aquafeeder_team.jpg" alt="AquaFeeder Team at Converge 2.0"
+                                        class="w-full h-full object-cover"
+                                        onerror="this.src='https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2070&auto=format&fit=crop'">
                                 </div>
                                 <!-- News Clipping -->
-                                <div class="bg-[#0a0a0a] rounded-[2rem] relative overflow-hidden h-full aspect-video border border-blue-500/20 shadow-[0_0_40px_rgba(0,113,227,0.1)]">
-                                    <img src="converge_news.jpg" alt="Newspaper Coverage" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=2070&auto=format&fit=crop'">
+                                <div
+                                    class="bg-[#0a0a0a] rounded-[2rem] relative overflow-hidden h-full aspect-video border border-blue-500/20 shadow-[0_0_40px_rgba(0,113,227,0.1)]">
+                                    <img src="converge_news.jpg" alt="Newspaper Coverage"
+                                        class="w-full h-full object-cover"
+                                        onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=2070&auto=format&fit=crop'">
                                 </div>
                             </div>
                         </div>
@@ -653,29 +818,38 @@
         </section>
 
         <!-- Footer -->
-        <footer id="contact" class="py-12 md:py-16 px-6 bg-white text-black relative overflow-hidden border-t border-black/5">
+        <footer id="contact"
+            class="py-12 md:py-16 px-6 bg-white text-black relative overflow-hidden border-t border-black/5">
             <div class="max-w-7xl mx-auto relative z-10">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-10">
                     <div class="space-y-4">
-                        <h2 class="text-4xl md:text-6xl font-black tracking-tighter leading-none italic text-gradient-dark uppercase">Initialize.<br/>Refine.</h2>
-                        <p class="text-black/50 text-lg font-medium max-w-sm italic leading-tight">Available for collaboration on meaningful projects.</p>
-                        <a href="mailto:abhishek.des674@gmail.com" class="inline-block px-10 py-4 bg-black text-white rounded-full font-black text-sm uppercase tracking-widest hover:bg-[#0071e3] transition-all shadow-lg btn-apple">
+                        <h2
+                            class="text-4xl md:text-6xl font-black tracking-tighter leading-none italic text-gradient-dark uppercase">
+                            Initialize.<br />Refine.</h2>
+                        <p class="text-black/50 text-lg font-medium max-w-sm italic leading-tight">Available for
+                            collaboration on meaningful projects.</p>
+                        <a href="mailto:abhishek.des674@gmail.com"
+                            class="inline-block px-10 py-4 bg-black text-white rounded-full font-black text-sm uppercase tracking-widest hover:bg-[#0071e3] transition-all shadow-lg btn-apple">
                             Send Email
                         </a>
                     </div>
                     <div class="flex flex-col lg:items-end">
-                        <div class="grid grid-cols-2 gap-8 text-[10px] font-black uppercase tracking-[0.3em] text-black/40">
+                        <div
+                            class="grid grid-cols-2 gap-8 text-[10px] font-black uppercase tracking-[0.3em] text-black/40">
                             <div class="space-y-3 text-left lg:text-right">
                                 <p class="text-[#0071e3]">Directory</p>
                                 <a href="#about" class="block hover:text-black transition-colors">Home</a>
                                 <a href="#stack" class="block hover:text-black transition-colors">Stack</a>
                                 <a href="#work" class="block hover:text-black transition-colors">Work</a>
-                                <a href="#achievements" class="block hover:text-black transition-colors">Achievements</a>
+                                <a href="#achievements"
+                                    class="block hover:text-black transition-colors">Achievements</a>
                             </div>
                             <div class="space-y-3 text-left lg:text-right">
                                 <p class="text-[#0071e3]">Socials</p>
-                                <a href="https://linkedin.com/in/abhishek-deshmukh-7b9b55245/" target="_blank" class="block hover:text-black transition-colors">LinkedIn</a>
-                                <a href="https://github.com/abhishek18-blog/" target="_blank" class="block hover:text-black transition-colors underline decoration-[#0071e3] underline-offset-4">GitHub</a>
+                                <a href="https://linkedin.com/in/abhishek-deshmukh-7b9b55245/" target="_blank"
+                                    class="block hover:text-black transition-colors">LinkedIn</a>
+                                <a href="https://github.com/abhishek18-blog/" target="_blank"
+                                    class="block hover:text-black transition-colors underline decoration-[#0071e3] underline-offset-4">GitHub</a>
                             </div>
                         </div>
                     </div>
@@ -686,20 +860,26 @@
                         <div class="w-7 h-7 bg-black rounded-lg flex items-center justify-center text-white">
                             <span class="font-mono text-[10px] font-bold">&lt;/&gt;</span>
                         </div>
-                        <span class="text-[10px] font-bold uppercase tracking-[0.5em] text-black/30">Abhishek • 2025</span>
+                        <span class="text-[10px] font-bold uppercase tracking-[0.5em] text-black/30">Abhishek •
+                            2026</span>
                     </div>
-                    <p class="text-[10px] font-bold uppercase tracking-[0.4em] text-black/20 italic">Built with code & curiosity.</p>
+                    <p class="text-[10px] font-bold uppercase tracking-[0.4em] text-black/20 italic">Built with code &
+                        curiosity.</p>
                 </div>
             </div>
-            <div class="absolute -bottom-1/2 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-[#0071e3]/5 blur-[120px] rounded-full pointer-events-none"></div>
+            <div
+                class="absolute -bottom-1/2 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-[#0071e3]/5 blur-[120px] rounded-full pointer-events-none">
+            </div>
         </footer>
 
     </main>
 
     <!-- Video Modal -->
-    <div id="video-modal" class="fixed inset-0 z-[300] flex items-center justify-center bg-black/95 backdrop-blur-2xl hidden opacity-0 transition-opacity duration-500">
+    <div id="video-modal"
+        class="fixed inset-0 z-[300] flex items-center justify-center bg-black/95 backdrop-blur-2xl hidden opacity-0 transition-opacity duration-500">
         <div class="relative w-full max-w-5xl mx-4">
-            <button onclick="closeVideoModal()" class="absolute -top-16 right-0 text-white/50 hover:text-white transition-all">
+            <button onclick="closeVideoModal()"
+                class="absolute -top-16 right-0 text-white/50 hover:text-white transition-all">
                 <i data-lucide="x" class="w-10 h-10"></i>
             </button>
             <div class="aspect-video bg-black rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl">
@@ -720,7 +900,7 @@
 
         function toggleMenu() {
             isMenuOpen = !isMenuOpen;
-            
+
             if (isMenuOpen) {
                 mobileNav.classList.add('active');
                 document.body.style.overflow = 'hidden';
@@ -730,9 +910,9 @@
                 document.body.style.overflow = '';
                 menuIconContainer.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
             }
-            
+
             // Re-render icons to ensure "X" vs "Menu" swap works
-            lucide.createIcons(); 
+            lucide.createIcons();
         }
 
         document.getElementById('menu-toggle').addEventListener('click', toggleMenu);
@@ -785,7 +965,7 @@
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
-                card.style.transform = `perspective(1200px) rotateX(${(y - rect.height/2)/25}deg) rotateY(${(rect.width/2 - x)/25}deg) scale(1.02)`;
+                card.style.transform = `perspective(1200px) rotateX(${(y - rect.height / 2) / 25}deg) rotateY(${(rect.width / 2 - x) / 25}deg) scale(1.02)`;
             });
             card.addEventListener('mouseleave', () => card.style.transform = 'none');
         });
@@ -813,4 +993,5 @@
         }
     </script>
 </body>
+
 </html>
