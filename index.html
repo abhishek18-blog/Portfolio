@@ -1,10 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abhishek | Aspiring Data Scientist & Designer</title>
+    <meta name="color-scheme" content="dark light">
+
+    <!-- Prevent Flash of Incorrect Theme (FOUC) -->
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = savedTheme ? savedTheme : (systemPrefersDark ? 'dark' : 'dark');
+            if (theme === 'light') {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
+            } else {
+                document.documentElement.classList.remove('light');
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -12,11 +30,132 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
+
     <style>
         :root {
             --apple-blue: #0071e3;
+            --apple-blue-hover: #0077ed;
             --apple-gray: #1d1d1f;
-            --bg-dark: #000000;
+
+            /* Dark Mode Design Tokens (Default) */
+            --bg-primary: #000000;
+            --bg-secondary: #050505;
+            --bg-card: #0a0a0a;
+            --bg-card-hover: #111112;
+            --bg-static-card: #0a0a0a;
+            --bg-surface: rgba(255, 255, 255, 0.03);
+            --bg-surface-hover: rgba(255, 255, 255, 0.08);
+            --bg-surface-active: rgba(255, 255, 255, 0.12);
+
+            --nav-bg: rgba(0, 0, 0, 0.75);
+            --nav-border: rgba(255, 255, 255, 0.08);
+            --nav-text: rgba(255, 255, 255, 0.55);
+            --nav-text-hover: #ffffff;
+            --nav-logo-bg: #ffffff;
+            --nav-logo-text: #000000;
+            --mobile-overlay-bg: rgba(0, 0, 0, 0.96);
+
+            --text-primary: #f5f5f7;
+            --text-secondary: rgba(255, 255, 255, 0.65);
+            --text-muted: rgba(255, 255, 255, 0.45);
+            --text-highlight: #ffffff;
+
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-medium: rgba(255, 255, 255, 0.15);
+            --border-hover: rgba(255, 255, 255, 0.22);
+
+            --btn-primary-bg: #ffffff;
+            --btn-primary-text: #000000;
+            --btn-primary-hover-bg: #e5e5ea;
+            --btn-secondary-bg: rgba(255, 255, 255, 0.05);
+            --btn-secondary-border: rgba(255, 255, 255, 0.12);
+            --btn-secondary-text: #ffffff;
+            --btn-secondary-hover-bg: rgba(255, 255, 255, 0.1);
+
+            --cursor-glow: radial-gradient(circle, rgba(0, 113, 227, 0.09) 0%, transparent 70%);
+            --card-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5);
+            --hero-gradient: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.6) 100%);
+
+            --filter-bg: #111112;
+            --filter-text: #ffffff;
+            --filter-border: rgba(255, 255, 255, 0.12);
+
+            --toggle-bg: rgba(255, 255, 255, 0.08);
+            --toggle-border: rgba(255, 255, 255, 0.15);
+            --toggle-icon: #f5f5f7;
+            --toggle-hover-bg: rgba(255, 255, 255, 0.15);
+
+            --footer-bg: #ffffff;
+            --footer-text: #000000;
+            --footer-muted: rgba(0, 0, 0, 0.45);
+            --footer-border: rgba(0, 0, 0, 0.06);
+            --footer-subtle: rgba(0, 0, 0, 0.25);
+            --footer-logo-bg: #000000;
+            --footer-logo-text: #ffffff;
+            --footer-gradient: linear-gradient(180deg, #1d1d1f 0%, #424245 100%);
+            --footer-btn-bg: #000000;
+            --footer-btn-text: #ffffff;
+        }
+
+        html.light {
+            /* Sophisticated Grey-Shades-of-White (Matte Platinum & Slate Theme) */
+            --bg-primary: #edf0f4;
+            --bg-secondary: #e2e6ed;
+            --bg-card: #f7f8fb;
+            --bg-card-hover: #ffffff;
+            --bg-static-card: #f7f8fb;
+            --bg-surface: #e4e8ef;
+            --bg-surface-hover: #d9dfe8;
+            --bg-surface-active: #cdd5e0;
+
+            --nav-bg: rgba(237, 240, 244, 0.85);
+            --nav-border: rgba(15, 23, 42, 0.08);
+            --nav-text: #475569;
+            --nav-text-hover: #0f172a;
+            --nav-logo-bg: #1e293b;
+            --nav-logo-text: #f8fafc;
+            --mobile-overlay-bg: rgba(237, 240, 244, 0.98);
+
+            --text-primary: #0f172a;
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            --text-highlight: #0f172a;
+
+            --border-subtle: rgba(15, 23, 42, 0.08);
+            --border-medium: rgba(15, 23, 42, 0.14);
+            --border-hover: rgba(0, 113, 227, 0.35);
+
+            --btn-primary-bg: #0f172a;
+            --btn-primary-text: #f8fafc;
+            --btn-primary-hover-bg: #1e293b;
+            --btn-secondary-bg: #e2e7ef;
+            --btn-secondary-border: rgba(15, 23, 42, 0.12);
+            --btn-secondary-text: #0f172a;
+            --btn-secondary-hover-bg: #d5dce6;
+
+            --cursor-glow: radial-gradient(circle, rgba(0, 113, 227, 0.07) 0%, transparent 70%);
+            --card-shadow: 0 12px 32px -8px rgba(15, 23, 42, 0.07), 0 1px 3px rgba(15, 23, 42, 0.05);
+            --hero-gradient: linear-gradient(180deg, #0f172a 0%, #475569 100%);
+
+            --filter-bg: #f7f8fb;
+            --filter-text: #0f172a;
+            --filter-border: rgba(15, 23, 42, 0.12);
+
+            --toggle-bg: #e2e7ef;
+            --toggle-border: rgba(15, 23, 42, 0.12);
+            --toggle-icon: #0f172a;
+            --toggle-hover-bg: #d5dce6;
+
+            --footer-bg: #0f172a;
+            --footer-text: #f8fafc;
+            --footer-muted: rgba(248, 250, 252, 0.55);
+            --footer-border: rgba(255, 255, 255, 0.08);
+            --footer-subtle: rgba(248, 250, 252, 0.25);
+            --footer-logo-bg: #ffffff;
+            --footer-logo-text: #0f172a;
+            --footer-gradient: linear-gradient(180deg, #ffffff 0%, rgba(248, 250, 252, 0.7) 100%);
+            --footer-btn-bg: #ffffff;
+            --footer-btn-text: #0f172a;
         }
 
         html, body {
@@ -26,9 +165,10 @@
 
         body {
             font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg-dark);
-            color: #f5f5f7;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
             -webkit-font-smoothing: antialiased;
+            transition: background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         /* Typography */
@@ -41,26 +181,79 @@
 
         /* Frosted Glass Navigation */
         .glass-nav {
-            background: rgba(0, 0, 0, 0.75);
+            background: var(--nav-bg);
             backdrop-filter: saturate(180%) blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid var(--nav-border);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .nav-link {
+            color: var(--nav-text);
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--nav-text-hover);
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 9999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--toggle-bg);
+            border: 1px solid var(--toggle-border);
+            color: var(--toggle-icon);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .theme-toggle-btn:hover {
+            background: var(--toggle-hover-bg);
+            transform: scale(1.08);
+            border-color: var(--apple-blue);
+        }
+
+        .theme-toggle-btn:active {
+            transform: scale(0.94);
         }
 
         /* Bento Grid Architecture */
         .bento-card {
-            background: #0a0a0a;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
             border-radius: 2.5rem;
             transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
             height: 100%;
+            box-shadow: var(--card-shadow);
         }
 
         .bento-card:hover:not(.static-card) {
-            border-color: rgba(255, 255, 255, 0.2);
-            background: #111112;
+            border-color: var(--border-hover);
+            background: var(--bg-card-hover);
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        html.light .bento-card {
+            background: linear-gradient(165deg, #fbfcfd 0%, #f0f3f8 100%);
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.04);
+        }
+
+        html.light .bento-card:hover:not(.static-card) {
+            background: #ffffff;
+            border-color: rgba(0, 113, 227, 0.35);
+            box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.1), 0 0 0 1px rgba(0, 113, 227, 0.12);
+        }
+
+        html.dark .bento-card:hover:not(.static-card) {
             box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5);
         }
 
@@ -69,18 +262,20 @@
             position: fixed;
             width: 800px;
             height: 800px;
-            background: radial-gradient(circle, rgba(0, 113, 227, 0.07) 0%, transparent 70%);
+            background: var(--cursor-glow);
             border-radius: 50%;
             pointer-events: none;
             z-index: 0;
             transform: translate(-50%, -50%);
+            transition: background 0.35s ease;
         }
 
         /* Mobile Menu */
         #mobile-nav-overlay {
             clip-path: circle(0% at 100% 0%);
-            transition: clip-path 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: clip-path 0.6s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.35s ease;
             pointer-events: none;
+            background: var(--mobile-overlay-bg);
         }
 
         #mobile-nav-overlay.active {
@@ -101,7 +296,7 @@
         }
 
         .text-gradient {
-            background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.6) 100%);
+            background: var(--hero-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -114,7 +309,7 @@
 
         .status-pill {
             background: rgba(48, 209, 88, 0.1);
-            border: 1px solid rgba(48, 209, 88, 0.2);
+            border: 1px solid rgba(48, 209, 88, 0.25);
             color: #30d158;
             padding: 8px 16px;
             border-radius: 99px;
@@ -129,27 +324,30 @@
             align-items: center;
             gap: 12px;
             padding: 12px 16px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
             border-radius: 16px;
             transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            color: var(--text-primary);
         }
 
         .tool-icon-box:hover {
-            background: rgba(255, 255, 255, 0.08);
+            background: var(--bg-surface-hover);
             transform: translateX(4px);
+            border-color: var(--border-medium);
         }
 
         .tech-tag {
             padding: 6px 14px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
             border-radius: 10px;
             display: inline-flex;
             align-items: center;
             gap: 8px;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             min-height: 32px;
+            color: var(--text-primary);
         }
 
         .tech-tag span {
@@ -157,7 +355,7 @@
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--text-secondary);
             line-height: 1;
         }
 
@@ -173,8 +371,8 @@
         }
 
         .tech-tag:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
+            background: var(--bg-surface-hover);
+            border-color: var(--border-hover);
             transform: translateY(-2px);
         }
 
@@ -186,7 +384,7 @@
             transform: scale(1.03);
         }
 
-        /* Prevent Hover effect for specific card */
+        /* Prevent Hover effect for static card */
         .static-card,
         .static-card img {
             transform: none !important;
@@ -194,10 +392,15 @@
             box-shadow: none !important;
         }
 
+        .static-card {
+            background: var(--bg-static-card) !important;
+            border-color: var(--border-subtle) !important;
+        }
+
         .static-card:hover {
             transform: none !important;
-            background: #0a0a0a !important;
-            border-color: rgba(255, 255, 255, 0.08) !important;
+            background: var(--bg-static-card) !important;
+            border-color: var(--border-subtle) !important;
         }
     </style>
 </head>
@@ -211,58 +414,89 @@
         <div class="max-w-7xl mx-auto w-full flex justify-between items-center relative">
             <div class="flex items-center gap-2 font-bold text-lg tracking-tight group cursor-pointer"
                 onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                <div
-                    class="w-8 h-8 bg-white rounded-lg flex items-center justify-center text-black group-hover:scale-110 transition-transform">
+                <div class="w-8 h-8 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform shadow-sm"
+                    style="background: var(--nav-logo-bg); color: var(--nav-logo-text);">
                     <span class="font-mono font-bold text-xs">&lt;/&gt;</span>
                 </div>
-                <span>ABHISHEK</span>
+                <span style="color: var(--text-primary);">ABHISHEK</span>
             </div>
 
-            <div
-                class="hidden md:flex items-center gap-10 text-[11px] font-bold uppercase tracking-[0.2em] text-white/50">
-                <a href="#about" class="hover:text-white transition-colors">Home</a>
-                <a href="#stack" class="hover:text-white transition-colors">Capabilities</a>
-                <a href="#work" class="hover:text-white transition-colors">Projects</a>
-                <a href="#achievements" class="hover:text-white transition-colors">Achievements</a>
-                <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+            <div class="hidden md:flex items-center gap-8 text-[11px] font-bold uppercase tracking-[0.2em]">
+                <a href="#about" class="nav-link">Home</a>
+                <a href="#stack" class="nav-link">Capabilities</a>
+                <a href="#work" class="nav-link">Projects</a>
+                <a href="#achievements" class="nav-link">Achievements</a>
+                <a href="#contact" class="nav-link">Contact</a>
+
+                <!-- Desktop Theme Toggle Button -->
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle light and dark mode" title="Toggle theme">
+                    <i id="theme-toggle-icon" data-lucide="sun" class="w-4 h-4"></i>
+                </button>
+
                 <a href="Abhishek_Vasant_Deshmukh_Resume.pdf" download
-                    class="bg-white text-black px-6 py-2 rounded-full hover:bg-[#0071e3] hover:text-white transition-all">Download
-                    Resume</a>
+                    class="px-6 py-2 rounded-full hover:bg-[#0071e3] hover:text-white transition-all font-bold text-xs tracking-wider shadow-md"
+                    style="background: var(--btn-primary-bg); color: var(--btn-primary-text);">
+                    Download Resume
+                </a>
             </div>
 
-            <!-- Hamburger Button -->
-            <button id="menu-toggle" class="md:hidden text-white p-2 focus:outline-none z-[210]">
-                <span id="menu-icon-container">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
-                </span>
-            </button>
+            <div class="flex items-center gap-3 md:hidden">
+                <!-- Mobile Top Quick Toggle -->
+                <button id="mobile-quick-theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme" title="Toggle theme">
+                    <i id="mobile-quick-theme-icon" data-lucide="sun" class="w-4 h-4"></i>
+                </button>
+
+                <!-- Hamburger Button -->
+                <button id="menu-toggle" class="p-2 focus:outline-none z-[210]" style="color: var(--text-primary);" aria-label="Toggle Navigation Menu">
+                    <span id="menu-icon-container">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </span>
+                </button>
+            </div>
         </div>
     </nav>
 
     <!-- Mobile Navigation Overlay -->
     <div id="mobile-nav-overlay"
-        class="fixed inset-0 z-[190] bg-black/95 backdrop-blur-3xl md:hidden flex flex-col justify-center items-center p-10">
-        <div class="flex flex-col gap-10 text-center w-full">
+        class="fixed inset-0 z-[190] backdrop-blur-3xl md:hidden flex flex-col justify-center items-center p-10">
+        <div class="flex flex-col gap-8 text-center w-full max-w-sm">
             <a href="#about"
-                class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors">Home</a>
+                class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors"
+                style="color: var(--text-primary);">Home</a>
             <a href="#stack"
-                class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors">Capabilities</a>
+                class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors"
+                style="color: var(--text-primary);">Capabilities</a>
             <a href="#work"
-                class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors">Projects</a>
+                class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors"
+                style="color: var(--text-primary);">Projects</a>
             <a href="#achievements"
-                class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors">Achievements</a>
+                class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors"
+                style="color: var(--text-primary);">Achievements</a>
             <a href="#contact"
-                class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors">Contact</a>
-            <div class="h-px bg-white/10 w-full my-4"></div>
-            <a href="ABHICV.pdf" download
-                class="mobile-link w-full py-4 bg-white text-black rounded-full font-bold uppercase tracking-widest text-sm">Download
-                Resume</a>
+                class="mobile-link text-4xl font-black tracking-tighter hover:text-[#0071e3] transition-colors"
+                style="color: var(--text-primary);">Contact</a>
+
+            <div class="h-px w-full my-2" style="background: var(--border-subtle);"></div>
+
+            <!-- Mobile Theme Toggle Inside Menu -->
+            <button id="mobile-theme-toggle"
+                class="mobile-link w-full py-4 rounded-full font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-3 transition-all cursor-pointer shadow-sm"
+                style="background: var(--bg-surface-hover); color: var(--text-primary); border: 1px solid var(--border-subtle);">
+                <i id="mobile-theme-toggle-icon" data-lucide="sun" class="w-4 h-4"></i>
+                <span id="mobile-theme-label">Switch to Light Mode</span>
+            </button>
+
+            <a href="Abhishek_Vasant_Deshmukh_Resume.pdf" download
+                class="mobile-link w-full py-4 rounded-full font-bold uppercase tracking-widest text-xs shadow-lg transition-transform active:scale-95"
+                style="background: var(--btn-primary-bg); color: var(--btn-primary-text);">
+                Download Resume
+            </a>
         </div>
     </div>
 
     <main class="relative z-10">
         <!-- Hero Section -->
-        <section id="about" class="min-h-screen flex flex-col justify-center px-6 pt-20 max-w-7xl mx-auto">
+        <section id="about" class="min-h-screen flex flex-col justify-center px-6 pt-24 pb-16 max-w-7xl mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center reveal active">
 
                 <!-- Identity Text -->
@@ -273,38 +507,39 @@
                     </div>
 
                     <div>
-                        <span
-                            class="text-xl md:text-2xl font-black text-white/50 tracking-[0.4em] uppercase block mb-2">Aspiring</span>
+                        <span class="text-xl md:text-2xl font-black tracking-[0.4em] uppercase block mb-2"
+                            style="color: var(--text-muted);">Aspiring</span>
                         <h1 class="heading-monumental text-gradient">
                             DATA SCIENTIST.<br />DESIGNER.
                         </h1>
                     </div>
 
-                    <p class="max-w-xl text-xl md:text-2xl font-medium text-white/60 leading-relaxed">
-                        I architect digital environments where <span class="text-white">technical complexity</span> is
-                        refined into <span class="text-white">seamless human experiences</span>.
+                    <p class="max-w-xl text-xl md:text-2xl font-medium leading-relaxed" style="color: var(--text-secondary);">
+                        I architect digital environments where <span style="color: var(--text-highlight); font-weight: 700;">technical complexity</span> is
+                        refined into <span style="color: var(--text-highlight); font-weight: 700;">seamless human experiences</span>.
                     </p>
 
-                    <div class="flex flex-wrap gap-6 pt-6">
+                    <div class="flex flex-wrap gap-6 pt-4">
                         <a href="#work"
-                            class="px-10 py-4 bg-white text-black rounded-full font-bold text-sm tracking-widest uppercase hover:scale-105 transition-transform shadow-2xl">
+                            class="px-10 py-4 rounded-full font-bold text-sm tracking-widest uppercase hover:scale-105 transition-transform shadow-xl"
+                            style="background: var(--btn-primary-bg); color: var(--btn-primary-text);">
                             Explore Projects
                         </a>
                         <button id="copy-email"
-                            class="px-10 py-4 bg-white/5 border border-white/10 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-white/10 transition-all flex items-center gap-3">
-                            <i data-lucide="mail" class="w-4 h-4"></i> Copy Email
+                            class="px-10 py-4 rounded-full font-bold text-sm tracking-widest uppercase transition-all flex items-center gap-3 cursor-pointer hover:opacity-85"
+                            style="background: var(--btn-secondary-bg); border: 1px solid var(--btn-secondary-border); color: var(--btn-secondary-text);">
+                            <i data-lucide="mail" class="w-4 h-4"></i> <span id="copy-email-text">Copy Email</span>
                         </button>
                     </div>
                 </div>
 
                 <!-- Static Photo Container -->
                 <div class="lg:col-span-5">
-                    <div class="bento-card static-card aspect-[4/5] relative p-1">
-                        <!-- Removed black gradient overlay to prevent "black" look -->
+                    <div class="bento-card static-card aspect-[4/5] relative p-1.5 shadow-2xl">
                         <img src="abhi.jpeg" alt="Abhishek Profile" class="w-full h-full object-cover rounded-[2.2rem]">
-                        <div class="absolute bottom-8 left-8 z-20">
-                            <p class="text-[10px] font-black uppercase tracking-[0.4em] text-white/40">Abhishek Deshmukh
-                            </p>
+                        <div class="absolute bottom-6 left-6 right-6 z-20"
+                            style="background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 1.4rem; padding: 0.85rem 1.25rem;">
+                            <p class="text-[10px] font-black uppercase tracking-[0.4em] text-white/60">Abhishek Deshmukh</p>
                             <p class="text-sm font-bold text-white">Aspiring Data Scientist & UI/UX Designer</p>
                         </div>
                     </div>
@@ -312,51 +547,50 @@
             </div>
 
             <!-- Scroll Indicator -->
-            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-20">
+            <div class="flex justify-center pt-12 pb-4 opacity-30 animate-bounce" style="color: var(--text-primary);">
                 <i data-lucide="chevron-down" class="w-8 h-8"></i>
             </div>
 
             <!-- Mini Stats -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-10 border-t border-white/10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-10" style="border-top: 1px solid var(--border-subtle);">
                 <div class="space-y-1">
-                    <h4 class="text-2xl font-black italic">MCA</h4>
+                    <h4 class="text-2xl font-black italic" style="color: var(--text-primary);">MCA</h4>
                     <p class="text-[9px] font-black uppercase text-[#0071e3] tracking-widest leading-tight">Goa Business
                         School • 2025 - 2027</p>
                 </div>
                 <div class="space-y-1">
-                    <h4 class="text-2xl font-black italic">7.85 CGPA</h4>
+                    <h4 class="text-2xl font-black italic" style="color: var(--text-primary);">7.85 CGPA</h4>
                     <p class="text-[9px] font-black uppercase text-green-500 tracking-widest">Cumulative Score</p>
                 </div>
                 <div class="space-y-1">
-                    <h4 class="text-2xl font-black italic">Learner</h4>
+                    <h4 class="text-2xl font-black italic" style="color: var(--text-primary);">Learner</h4>
                     <p class="text-[9px] font-black uppercase text-orange-500 tracking-widest">Always Curious</p>
                 </div>
                 <div class="space-y-1">
-                    <h4 class="text-2xl font-black italic">Versatile</h4>
+                    <h4 class="text-2xl font-black italic" style="color: var(--text-primary);">Versatile</h4>
                     <p class="text-[9px] font-black uppercase text-pink-500 tracking-widest">Dev + Design</p>
                 </div>
             </div>
         </section>
 
         <!-- Technical Stack -->
-        <section id="stack" class="py-32 px-6">
+        <section id="stack" class="py-32 px-6" style="background: var(--bg-primary);">
             <div class="max-w-7xl mx-auto space-y-16">
                 <div class="space-y-4">
                     <span class="text-[10px] font-black uppercase tracking-[0.6em] text-[#0071e3]">Capability
                         Toolkit</span>
-                    <h2 class="text-5xl md:text-7xl font-black tracking-tighter italic text-white">Technical Stack.</h2>
+                    <h2 class="text-5xl md:text-7xl font-black tracking-tighter italic" style="color: var(--text-primary);">Technical Stack.</h2>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <!-- Cards with Tilt effect -->
                     <div class="bento-card p-10 md:p-14 flex flex-col justify-between group reveal">
                         <div class="space-y-6">
-                            <div
-                                class="w-14 h-14 bg-purple-600/10 rounded-2xl flex items-center justify-center text-purple-400">
+                            <div class="w-14 h-14 bg-purple-600/10 rounded-2xl flex items-center justify-center text-purple-400">
                                 <i data-lucide="terminal" class="w-7 h-7"></i>
                             </div>
-                            <h3 class="text-3xl font-bold text-white">Development</h3>
-                            <p class="text-white/40 text-lg leading-relaxed">Clean, object-oriented logic for backend
+                            <h3 class="text-3xl font-bold" style="color: var(--text-primary);">Development</h3>
+                            <p class="text-lg leading-relaxed" style="color: var(--text-muted);">Clean, object-oriented logic for backend
                                 services and system tools.</p>
                         </div>
                         <div class="grid grid-cols-2 gap-4 mt-12">
@@ -373,12 +607,11 @@
 
                     <div class="bento-card p-10 md:p-14 flex flex-col justify-between group reveal">
                         <div class="space-y-6">
-                            <div
-                                class="w-14 h-14 bg-teal-600/10 rounded-2xl flex items-center justify-center text-teal-400">
+                            <div class="w-14 h-14 bg-teal-600/10 rounded-2xl flex items-center justify-center text-teal-400">
                                 <i data-lucide="cpu" class="w-7 h-7"></i>
                             </div>
-                            <h3 class="text-3xl font-bold text-white">Embedded Systems</h3>
-                            <p class="text-white/40 text-lg leading-relaxed">Bridging software with the physical world
+                            <h3 class="text-3xl font-bold" style="color: var(--text-primary);">Embedded Systems</h3>
+                            <p class="text-lg leading-relaxed" style="color: var(--text-muted);">Bridging software with the physical world
                                 using microcontrollers and IoT sensors.</p>
                         </div>
                         <div class="grid grid-cols-2 gap-4 mt-12">
@@ -396,12 +629,11 @@
 
                     <div class="bento-card p-10 md:p-14 flex flex-col justify-between group reveal">
                         <div class="space-y-6">
-                            <div
-                                class="w-14 h-14 bg-pink-500/10 rounded-2xl flex items-center justify-center text-pink-500">
+                            <div class="w-14 h-14 bg-pink-500/10 rounded-2xl flex items-center justify-center text-pink-500">
                                 <i data-lucide="palette" class="w-7 h-7"></i>
                             </div>
-                            <h3 class="text-3xl font-bold text-white">UI/UX Design</h3>
-                            <p class="text-white/40 text-lg leading-relaxed">Hi-fi prototypes in Figma focused on
+                            <h3 class="text-3xl font-bold" style="color: var(--text-primary);">UI/UX Design</h3>
+                            <p class="text-lg leading-relaxed" style="color: var(--text-muted);">Hi-fi prototypes in Figma focused on
                                 consistency and high-fidelity visual language.</p>
                         </div>
                         <div class="grid grid-cols-2 gap-4 mt-12">
@@ -419,12 +651,11 @@
                     <!-- Card 4: Data Science -->
                     <div class="bento-card p-10 md:p-14 flex flex-col justify-between group reveal">
                         <div class="space-y-6">
-                            <div
-                                class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-500">
+                            <div class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-500">
                                 <i data-lucide="brain" class="w-7 h-7"></i>
                             </div>
-                            <h3 class="text-3xl font-bold">Data Science</h3>
-                            <p class="text-white/40 text-lg leading-relaxed">Building AI-powered applications, machine learning models, and analyzing data using modern Python libraries.</p>
+                            <h3 class="text-3xl font-bold" style="color: var(--text-primary);">Data Science</h3>
+                            <p class="text-lg leading-relaxed" style="color: var(--text-muted);">Building AI-powered applications, machine learning models, and analyzing data using modern Python libraries.</p>
                         </div>
                         <div class="grid grid-cols-2 gap-4 mt-12">
                             <div class="tool-icon-box"><i class="devicon-python-plain colored text-xl"></i> <span
@@ -449,18 +680,18 @@
         </section>
 
         <!-- Projects Gallery -->
-        <section id="work" class="py-32 bg-[#050505]">
+        <section id="work" class="py-32" style="background: var(--bg-secondary); transition: background-color 0.35s ease;">
             <div class="max-w-7xl mx-auto px-6 space-y-24">
                 <div class="flex flex-col md:flex-row md:justify-between md:items-end gap-8 w-full">
                     <div class="space-y-4">
                         <span class="text-[10px] font-black uppercase tracking-[0.6em] text-orange-500">Portfolio</span>
-                        <h2 class="text-6xl md:text-8xl font-black tracking-tighter italic text-white">Selected Work.
-                        </h2>
+                        <h2 class="text-6xl md:text-8xl font-black tracking-tighter italic" style="color: var(--text-primary);">Selected Work.</h2>
                     </div>
 
                     <div class="relative min-w-[280px]">
                         <select id="project-filter"
-                            class="w-full bg-[#111112] text-white border border-white/10 rounded-xl px-6 py-4 appearance-none outline-none focus:border-white/30 transition-colors font-bold text-sm tracking-widest uppercase cursor-pointer shadow-xl">
+                            class="w-full rounded-xl px-6 py-4 appearance-none outline-none font-bold text-sm tracking-widest uppercase cursor-pointer shadow-lg transition-all"
+                            style="background: var(--filter-bg); color: var(--filter-text); border: 1px solid var(--filter-border);">
                             <option value="all">All Projects</option>
                             <option value="web">Web Development</option>
                             <option value="client">Client Projects</option>
@@ -468,7 +699,8 @@
                             <option value="iot">IOT</option>
                         </select>
                         <i data-lucide="chevron-down"
-                            class="absolute right-6 top-1/2 -translate-y-1/2 w-5 h-5 text-white/50 pointer-events-none"></i>
+                            class="absolute right-6 top-1/2 -translate-y-1/2 w-5 h-5 pointer-events-none"
+                            style="color: var(--text-muted);"></i>
                     </div>
                 </div>
 
@@ -478,35 +710,30 @@
                     <div class="project-item grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal"
                         data-category="ml">
                         <div class="lg:col-span-5 space-y-8 order-2 lg:order-1 text-left">
-                            <span class="text-teal-500 font-black text-xs uppercase tracking-[0.5em]">Data Science &
-                                AI</span>
-                            <h3 class="text-4xl md:text-5xl font-bold tracking-tighter italic text-white">Agentic
-                                Natural Language To SQL</h3>
-                            <p class="text-xl text-white/50 leading-relaxed">
+                            <span class="text-teal-500 font-black text-xs uppercase tracking-[0.5em]">Data Science & AI</span>
+                            <h3 class="text-4xl md:text-5xl font-bold tracking-tighter italic" style="color: var(--text-primary);">Agentic Natural Language To SQL</h3>
+                            <p class="text-xl leading-relaxed" style="color: var(--text-secondary);">
                                 A dynamic web application capable of converting natural language queries into accurate
                                 SQL statements using AI, executing them across multiple databases, and presenting
                                 results directly.
                             </p>
                             <div class="flex flex-wrap gap-2 pt-2">
-                                <div class="tech-tag"><i
-                                        class="devicon-typescript-plain colored"></i><span>TypeScript</span></div>
-                                <div class="tech-tag"><i class="devicon-react-original colored"></i><span>React</span>
-                                </div>
-                                <div class="tech-tag"><i class="devicon-python-plain colored"></i><span>Python</span>
-                                </div>
+                                <div class="tech-tag"><i class="devicon-typescript-plain colored"></i><span>TypeScript</span></div>
+                                <div class="tech-tag"><i class="devicon-react-original colored"></i><span>React</span></div>
+                                <div class="tech-tag"><i class="devicon-python-plain colored"></i><span>Python</span></div>
                                 <div class="tech-tag"><i data-lucide="brain-circuit"></i><span>LLM</span></div>
                                 <div class="tech-tag"><i class="devicon-mysql-plain colored"></i><span>SQL</span></div>
                             </div>
                             <div class="flex flex-wrap gap-4 pt-4">
                                 <a href="https://github.com/abhishek18-blog/NLS2SQL-Using-Express-Server" target="_blank"
-                                    class="px-8 py-3 bg-white/5 border border-white/10 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-white/10 transition-all flex items-center gap-2">
+                                    class="px-8 py-3 rounded-full font-bold text-xs uppercase tracking-widest hover:opacity-85 transition-all flex items-center gap-2"
+                                    style="background: var(--btn-secondary-bg); border: 1px solid var(--btn-secondary-border); color: var(--btn-secondary-text);">
                                     Repo <i data-lucide="github"></i>
                                 </a>
                             </div>
                         </div>
                         <div class="lg:col-span-7 order-1 lg:order-2">
-                            <div
-                                class="bento-card aspect-video group overflow-hidden border-teal-500/20 shadow-[0_0_80px_rgba(20,184,166,0.1)]">
+                            <div class="bento-card aspect-video group overflow-hidden border-teal-500/20 shadow-[0_0_80px_rgba(20,184,166,0.1)]">
                                 <img src="nl_sql.png"
                                     class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
                                     onerror="this.src='https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=2070&auto=format&fit=crop'">
@@ -518,40 +745,35 @@
                     <div class="project-item grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal"
                         data-category="web">
                         <div class="lg:col-span-7">
-                            <div
-                                class="bento-card aspect-video group overflow-hidden border-blue-400/20 shadow-[0_0_80px_rgba(96,165,250,0.1)]">
+                            <div class="bento-card aspect-video group overflow-hidden border-blue-400/20 shadow-[0_0_80px_rgba(96,165,250,0.1)]">
                                 <img src="abstracts.png"
                                     class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
                                     onerror="this.src='https://images.unsplash.com/photo-1456406644174-8ddd4cd52a06?q=80&w=2068&auto=format&fit=crop'">
                             </div>
                         </div>
                         <div class="lg:col-span-5 space-y-8 text-left">
-                            <span class="text-blue-400 font-black text-xs uppercase tracking-[0.5em]">Web
-                                Development</span>
-                            <h3 class="text-4xl md:text-5xl font-bold tracking-tighter italic text-white">Abstracts
-                                Research Hub</h3>
-                            <p class="text-xl text-white/50 leading-relaxed">
+                            <span class="text-blue-400 font-black text-xs uppercase tracking-[0.5em]">Web Development</span>
+                            <h3 class="text-4xl md:text-5xl font-bold tracking-tighter italic" style="color: var(--text-primary);">Abstracts Research Hub</h3>
+                            <p class="text-xl leading-relaxed" style="color: var(--text-secondary);">
                                 A centralized platform for browsing, exploring, and contributing to academic abstracts
                                 and research papers with a clean, responsive UI.
                             </p>
                             <div class="flex flex-wrap gap-2 pt-2">
-                                <div class="tech-tag"><i class="devicon-express-original"></i><span>Express.js</span>
-                                </div>
-                                <div class="tech-tag"><i class="devicon-react-original colored"></i><span>React</span>
-                                </div>
+                                <div class="tech-tag"><i class="devicon-express-original"></i><span>Express.js</span></div>
+                                <div class="tech-tag"><i class="devicon-react-original colored"></i><span>React</span></div>
                                 <div class="tech-tag"><i data-lucide="brain-circuit"></i><span>LLM</span></div>
-                                <div class="tech-tag"><i class="devicon-mongodb-plain colored"></i><span>MongoDB</span>
-                                </div>
-                                <div class="tech-tag"><i
-                                        class="devicon-tailwindcss-plain colored"></i><span>Tailwind</span></div>
+                                <div class="tech-tag"><i class="devicon-mongodb-plain colored"></i><span>MongoDB</span></div>
+                                <div class="tech-tag"><i class="devicon-tailwindcss-plain colored"></i><span>Tailwind</span></div>
                             </div>
                             <div class="flex flex-wrap gap-4 pt-4">
                                 <a href="https://abstracts-research-hub.vercel.app/" target="_blank"
-                                    class="px-8 py-3 bg-white text-black rounded-full font-bold text-xs uppercase tracking-widest btn-apple flex items-center gap-2">
+                                    class="px-8 py-3 rounded-full font-bold text-xs uppercase tracking-widest btn-apple flex items-center gap-2 shadow-lg"
+                                    style="background: var(--btn-primary-bg); color: var(--btn-primary-text);">
                                     Launch Site <i data-lucide="external-link"></i>
                                 </a>
                                 <a href="https://github.com/abhishek18-blog/Abstracts-researchHub" target="_blank"
-                                    class="px-8 py-3 bg-white/5 border border-white/10 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-white/10 transition-all flex items-center gap-2">
+                                    class="px-8 py-3 rounded-full font-bold text-xs uppercase tracking-widest hover:opacity-85 transition-all flex items-center gap-2"
+                                    style="background: var(--btn-secondary-bg); border: 1px solid var(--btn-secondary-border); color: var(--btn-secondary-text);">
                                     Repo <i data-lucide="github"></i>
                                 </a>
                             </div>
@@ -562,36 +784,30 @@
                     <div class="project-item grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal"
                         data-category="iot">
                         <div class="lg:col-span-7 order-1 lg:order-2">
-                            <div
-                                class="bento-card aspect-video group overflow-hidden border-green-500/20 shadow-[0_0_80px_rgba(34,197,94,0.1)]">
+                            <div class="bento-card aspect-video group overflow-hidden border-green-500/20 shadow-[0_0_80px_rgba(34,197,94,0.1)]">
                                 <img src="agritech.png"
                                     class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
                                     onerror="this.src='https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=2070&auto=format&fit=crop'">
                             </div>
                         </div>
                         <div class="lg:col-span-5 space-y-8 order-2 lg:order-1 text-left">
-                            <span class="text-green-500 font-black text-xs uppercase tracking-[0.5em]">IOT & Embedded
-                                Systems</span>
-                            <h3 class="text-4xl md:text-5xl font-bold tracking-tighter italic text-white">Agritech-IOT
-                            </h3>
-                            <p class="text-xl text-white/50 leading-relaxed">
+                            <span class="text-green-500 font-black text-xs uppercase tracking-[0.5em]">IOT & Embedded Systems</span>
+                            <h3 class="text-4xl md:text-5xl font-bold tracking-tighter italic" style="color: var(--text-primary);">Agritech-IOT</h3>
+                            <p class="text-xl leading-relaxed" style="color: var(--text-secondary);">
                                 An IoT-based automated irrigation system that utilizes ESP8266 and various sensors to
                                 monitor soil moisture and weather conditions, integrating with the Blynk app for remote
                                 control.
                             </p>
                             <div class="flex flex-wrap gap-2 pt-2">
-                                <div class="tech-tag"><i data-lucide="cpu"
-                                        class="w-4 h-4 text-green-400"></i><span>ESP8266</span></div>
-                                <div class="tech-tag"><i class="devicon-arduino-plain colored"></i><span>Arduino</span>
-                                </div>
-                                <div class="tech-tag"><i class="devicon-cplusplus-plain colored"></i><span>C++</span>
-                                </div>
-                                <div class="tech-tag"><i data-lucide="radio"
-                                        class="w-4 h-4 text-green-400"></i><span>Sensors</span></div>
+                                <div class="tech-tag"><i data-lucide="cpu" class="w-4 h-4 text-green-400"></i><span>ESP8266</span></div>
+                                <div class="tech-tag"><i class="devicon-arduino-plain colored"></i><span>Arduino</span></div>
+                                <div class="tech-tag"><i class="devicon-cplusplus-plain colored"></i><span>C++</span></div>
+                                <div class="tech-tag"><i data-lucide="radio" class="w-4 h-4 text-green-400"></i><span>Sensors</span></div>
                             </div>
                             <div class="flex flex-wrap gap-4 pt-4">
                                 <a href="https://github.com/abhishek18-blog/Agritech-IOT" target="_blank"
-                                    class="px-8 py-3 bg-white/5 border border-white/10 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-white/10 transition-all flex items-center gap-2">
+                                    class="px-8 py-3 rounded-full font-bold text-xs uppercase tracking-widest hover:opacity-85 transition-all flex items-center gap-2"
+                                    style="background: var(--btn-secondary-bg); border: 1px solid var(--btn-secondary-border); color: var(--btn-secondary-text);">
                                     Repo <i data-lucide="github"></i>
                                 </a>
                             </div>
@@ -602,33 +818,28 @@
                     <div class="project-item grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal"
                         data-category="ml">
                         <div class="lg:col-span-5 space-y-8 order-2 lg:order-2 text-left">
-                            <span class="text-teal-500 font-black text-xs uppercase tracking-[0.5em]">Data Science &
-                                AI</span>
-                            <h3 class="text-4xl md:text-5xl font-bold tracking-tighter italic text-white">Fish Disease
-                                Detection</h3>
-                            <p class="text-xl text-white/50 leading-relaxed">
+                            <span class="text-teal-500 font-black text-xs uppercase tracking-[0.5em]">Data Science & AI</span>
+                            <h3 class="text-4xl md:text-5xl font-bold tracking-tighter italic" style="color: var(--text-primary);">Fish Disease Detection</h3>
+                            <p class="text-xl leading-relaxed" style="color: var(--text-secondary);">
                                 A machine learning system to diagnose fish diseases using Convolutional Neural Networks
                                 (CNN), providing real-time health analysis and treatment recommendations.
                             </p>
                             <div class="flex flex-wrap gap-2 pt-2">
-                                <div class="tech-tag"><i class="devicon-python-plain colored"></i><span>Python</span>
-                                </div>
-                                <div class="tech-tag"><i class="devicon-pytorch-plain colored"></i><span>PyTorch</span>
-                                </div>
+                                <div class="tech-tag"><i class="devicon-python-plain colored"></i><span>Python</span></div>
+                                <div class="tech-tag"><i class="devicon-pytorch-plain colored"></i><span>PyTorch</span></div>
                                 <div class="tech-tag"><i data-lucide="network"></i><span>CNN</span></div>
-                                <div class="tech-tag"><i
-                                        class="devicon-streamlit-plain colored"></i><span>Streamlit</span></div>
+                                <div class="tech-tag"><i class="devicon-streamlit-plain colored"></i><span>Streamlit</span></div>
                             </div>
                             <div class="flex flex-wrap gap-4 pt-4">
                                 <a href="https://github.com/abhishek18-blog/fish-disease-detection" target="_blank"
-                                    class="px-8 py-3 bg-white/5 border border-white/10 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-white/10 transition-all flex items-center gap-2">
+                                    class="px-8 py-3 rounded-full font-bold text-xs uppercase tracking-widest hover:opacity-85 transition-all flex items-center gap-2"
+                                    style="background: var(--btn-secondary-bg); border: 1px solid var(--btn-secondary-border); color: var(--btn-secondary-text);">
                                     Repo <i data-lucide="github"></i>
                                 </a>
                             </div>
                         </div>
                         <div class="lg:col-span-7 order-1 lg:order-1">
-                            <div
-                                class="bento-card aspect-video group overflow-hidden border-teal-500/20 shadow-[0_0_80px_rgba(20,184,166,0.1)]">
+                            <div class="bento-card aspect-video group overflow-hidden border-teal-500/20 shadow-[0_0_80px_rgba(20,184,166,0.1)]">
                                 <img src="fish_disease.png"
                                     class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
                                     onerror="this.src='https://images.unsplash.com/photo-1524704654690-b56c05c78a00?q=80&w=2070&auto=format&fit=crop'">
@@ -636,89 +847,37 @@
                         </div>
                     </div>
 
-                    <!--NovelAI Web Application  
-                    <div class="project-item grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal"
-                        data-category="web">
-                        <div class="lg:col-span-7 order-1 lg:order-2">
-                            <div
-                                class="bento-card aspect-video group overflow-hidden border-purple-500/20 shadow-[0_0_80px_rgba(168,85,247,0.1)]">
-                                <img src="novel1.png"
-                                    class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
-                                    onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop'">
-                            </div>
-                        </div>
-                        <div class="lg:col-span-5 space-y-8 order-2 lg:order-1 text-left">
-                            <span class="text-purple-500 font-black text-xs uppercase tracking-[0.5em]">AI Reading
-                                Ecosystem</span>
-                            <h3 class="text-4xl md:text-5xl font-bold tracking-tighter italic text-white">NovelAI</h3>
-                            <p class="text-xl text-white/50 leading-relaxed">
-                                An intelligent PDF reader featuring <b>Gemini AI</b> for real-time storytelling
-                                analysis, live language translation, and automated progress tracking. Securely sync your
-                                library and reading history via <b>Firebase</b>.
-                            </p>
-                            <div class="flex flex-wrap gap-2 pt-2">
-                                <div class="tech-tag"><i class="devicon-python-plain colored"></i><span>Python</span>
-                                </div>
-                                <div class="tech-tag"><i class="devicon-googlecloud-plain colored"></i><span>Gemini
-                                        AI</span></div>
-                                <div class="tech-tag"><i class="devicon-react-original colored"></i><span>React</span>
-                                </div>
-                                <div class="tech-tag"><i
-                                        class="devicon-javascript-plain colored"></i><span>Javascript</span></div>
-                                <div class="tech-tag"><i
-                                        class="devicon-firebase-plain colored"></i><span>Firebase</span></div>
-
-                            </div>
-                            <div class="flex flex-wrap gap-4 pt-4">
-                                <a href="https://novel-ai-gem.vercel.app/" target="_blank"
-                                    class="px-8 py-3 bg-white text-black rounded-full font-bold text-xs uppercase tracking-widest btn-apple flex items-center gap-2">
-                                    Launch Site <i data-lucide="external-link"></i>
-                                </a>
-                                <a href="https://github.com/abhishek18-blog/NovelAI-Gem/" target="_blank"
-                                    class="px-8 py-3 bg-white/5 border border-white/10 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-white/10 transition-all flex items-center gap-2">
-                                    Repo <i data-lucide="github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    -->
-
                     <!-- Artisan's Canvas -->
                     <div class="project-item grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal"
                         data-category="client">
                         <div class="lg:col-span-5 space-y-8 order-2 lg:order-1 text-left">
-                            <span class="text-blue-500 font-black text-xs uppercase tracking-[0.5em]">Freelancing /
-                                Client Work</span>
-                            <h3 class="text-4xl md:text-5xl font-bold tracking-tighter italic text-white">Artisan's
-                                Canvas</h3>
-                            <p class="text-xl text-white/50 leading-relaxed">
+                            <span class="text-blue-500 font-black text-xs uppercase tracking-[0.5em]">Freelancing / Client Work</span>
+                            <h3 class="text-4xl md:text-5xl font-bold tracking-tighter italic" style="color: var(--text-primary);">Artisan's Canvas</h3>
+                            <p class="text-xl leading-relaxed" style="color: var(--text-secondary);">
                                 Developed a digital storefront for local artists who lacked a platform to showcase their
                                 portfolios and receive community feedback.
                             </p>
                             <div class="flex flex-wrap gap-2 pt-2">
-                                <div class="tech-tag"><i class="devicon-html5-plain colored"></i><span>HTML5</span>
-                                </div>
-                                <div class="tech-tag"><i
-                                        class="devicon-tailwindcss-plain colored"></i><span>Tailwind</span></div>
-                                <div class="tech-tag"><i
-                                        class="devicon-javascript-plain colored"></i><span>Javascript</span></div>
-                                <div class="tech-tag"><i
-                                        class="devicon-firebase-plain colored"></i><span>Firebase</span></div>
+                                <div class="tech-tag"><i class="devicon-html5-plain colored"></i><span>HTML5</span></div>
+                                <div class="tech-tag"><i class="devicon-tailwindcss-plain colored"></i><span>Tailwind</span></div>
+                                <div class="tech-tag"><i class="devicon-javascript-plain colored"></i><span>Javascript</span></div>
+                                <div class="tech-tag"><i class="devicon-firebase-plain colored"></i><span>Firebase</span></div>
                             </div>
                             <div class="flex flex-wrap gap-4 pt-4">
                                 <a href="https://canvas-art-five.vercel.app/" target="_blank"
-                                    class="px-8 py-3 bg-white text-black rounded-full font-bold text-xs uppercase tracking-widest btn-apple flex items-center gap-2">
+                                    class="px-8 py-3 rounded-full font-bold text-xs uppercase tracking-widest btn-apple flex items-center gap-2 shadow-lg"
+                                    style="background: var(--btn-primary-bg); color: var(--btn-primary-text);">
                                     Launch Site <i data-lucide="external-link"></i>
                                 </a>
                                 <a href="https://github.com/abhishek18-blog/canvas-art" target="_blank"
-                                    class="px-8 py-3 bg-white/5 border border-white/10 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-white/10 transition-all flex items-center gap-2">
+                                    class="px-8 py-3 rounded-full font-bold text-xs uppercase tracking-widest hover:opacity-85 transition-all flex items-center gap-2"
+                                    style="background: var(--btn-secondary-bg); border: 1px solid var(--btn-secondary-border); color: var(--btn-secondary-text);">
                                     Repo <i data-lucide="github"></i>
                                 </a>
                             </div>
                         </div>
                         <div class="lg:col-span-7 order-1 lg:order-2">
-                            <div
-                                class="bento-card aspect-video group overflow-hidden border-blue-500/20 shadow-[0_0_80px_rgba(0,113,227,0.1)]">
+                            <div class="bento-card aspect-video group overflow-hidden border-blue-500/20 shadow-[0_0_80px_rgba(0,113,227,0.1)]">
                                 <img src="canvas.png"
                                     class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
                                     onerror="this.src='https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1964&auto=format&fit=crop'">
@@ -731,36 +890,32 @@
         </section>
 
         <!-- Achievements Section -->
-        <section id="achievements" class="py-32 px-6">
+        <section id="achievements" class="py-32 px-6" style="background: var(--bg-primary);">
             <div class="max-w-7xl mx-auto space-y-24">
                 <div class="space-y-4">
                     <span class="text-[10px] font-black uppercase tracking-[0.6em] text-[#30d158]">Recognition</span>
-                    <h2 class="text-6xl md:text-8xl font-black tracking-tighter italic text-white">Achievements.</h2>
+                    <h2 class="text-6xl md:text-8xl font-black tracking-tighter italic" style="color: var(--text-primary);">Achievements.</h2>
                 </div>
 
                 <div class="max-w-6xl mx-auto w-full space-y-12">
                     <!-- Solve for Goa Hackathon Achievement -->
-                    <div
-                        class="bg-[#0a0a0a] rounded-[2.5rem] relative overflow-hidden h-full p-8 md:p-10 reveal border border-[#4285F4]/20 shadow-[0_0_80px_rgba(66,133,244,0.05)]">
+                    <div class="bento-card rounded-[2.5rem] relative overflow-hidden h-full p-8 md:p-10 reveal border border-[#4285F4]/30 shadow-[0_0_80px_rgba(66,133,244,0.08)]">
                         <div class="space-y-6 text-left">
-                            <span class="text-[#4285F4] font-black text-[10px] uppercase tracking-[0.5em]">Solve for Goa
-                                Hackathon 2026</span>
-                            <h3 class="text-3xl md:text-4xl font-bold tracking-tighter italic text-white">Google
-                                Developers Hackathon Finalist</h3>
+                            <span class="text-[#4285F4] font-black text-[10px] uppercase tracking-[0.5em]">Solve for Goa Hackathon 2026</span>
+                            <h3 class="text-3xl md:text-4xl font-bold tracking-tighter italic" style="color: var(--text-primary);">Google Developers Hackathon Finalist</h3>
                             <div class="space-y-4">
-                                <p class="text-lg text-white/70 leading-relaxed">
+                                <p class="text-lg leading-relaxed" style="color: var(--text-secondary);">
                                     Honored to be selected as <b>Finalists</b> out of hundreds of participants in the
                                     Solve for Goa Hackathon, organized by Google for Developers in collaboration with
                                     the Government of Goa.
                                 </p>
-                                <p class="text-base text-white/60 leading-relaxed">
+                                <p class="text-base leading-relaxed" style="color: var(--text-muted);">
                                     Working in a team, we went from intense brainstorming and hands-on coding to the
                                     final stage, where we formally presented our work to the judges.
                                 </p>
-                                <div class="p-4 rounded-2xl bg-[#4285F4]/5 border border-[#4285F4]/20 space-y-2">
-                                    <h4 class="font-bold text-sm uppercase tracking-wider text-[#4285F4]">Tech-Driven
-                                        Public Impact</h4>
-                                    <p class="text-base text-white/50 leading-relaxed">
+                                <div class="p-4 rounded-2xl border border-[#4285F4]/20 space-y-2" style="background: var(--bg-surface);">
+                                    <h4 class="font-bold text-sm uppercase tracking-wider text-[#4285F4]">Tech-Driven Public Impact</h4>
+                                    <p class="text-base leading-relaxed" style="color: var(--text-muted);">
                                         This experience gave us invaluable real-world exposure to innovation and
                                         problem-solving for public impact. Incredibly grateful to GDG Goa for the
                                         platform to showcase our skills.
@@ -768,38 +923,32 @@
                                 </div>
                             </div>
                             <div class="flex flex-wrap gap-2 pt-2">
-                                <div class="tech-tag"><i data-lucide="code"
-                                        class="w-4 h-4 text-[#4285F4]"></i><span>Hackathon</span></div>
-                                <div class="tech-tag"><i data-lucide="users"
-                                        class="w-4 h-4 text-[#4285F4]"></i><span>Teamwork</span></div>
+                                <div class="tech-tag"><i data-lucide="code" class="w-4 h-4 text-[#4285F4]"></i><span>Hackathon</span></div>
+                                <div class="tech-tag"><i data-lucide="users" class="w-4 h-4 text-[#4285F4]"></i><span>Teamwork</span></div>
                             </div>
                         </div>
                     </div>
 
                     <!-- AquaFeeder Achievement -->
-                    <div
-                        class="bg-[#0a0a0a] rounded-[2.5rem] relative overflow-hidden h-full p-8 md:p-10 reveal border border-[#30d158]/20 shadow-[0_0_80px_rgba(48,209,88,0.05)]">
+                    <div class="bento-card rounded-[2.5rem] relative overflow-hidden h-full p-8 md:p-10 reveal border border-[#30d158]/30 shadow-[0_0_80px_rgba(48,209,88,0.08)]">
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                             <div class="space-y-6 text-left">
-                                <span class="text-[#30d158] font-black text-[10px] uppercase tracking-[0.5em]">Converge
-                                    2.0 Summit</span>
-                                <h3 class="text-3xl md:text-4xl font-bold tracking-tighter italic text-white">AquaFeeder
-                                    Presentation</h3>
+                                <span class="text-[#30d158] font-black text-[10px] uppercase tracking-[0.5em]">Converge 2.0 Summit</span>
+                                <h3 class="text-3xl md:text-4xl font-bold tracking-tighter italic" style="color: var(--text-primary);">AquaFeeder Presentation</h3>
                                 <div class="space-y-4">
-                                    <p class="text-lg text-white/70 leading-relaxed">
+                                    <p class="text-lg leading-relaxed" style="color: var(--text-secondary);">
                                         Developed an innovative <b>IoT-based system</b> for automated fish feeding and
                                         health monitoring, selected for presentation at a prestigious state-level
                                         industry meet.
                                     </p>
-                                    <p class="text-base text-white/60 leading-relaxed">
+                                    <p class="text-base leading-relaxed" style="color: var(--text-muted);">
                                         Presented our final year project, <b>AquaFeeder</b>, at the prestigious Converge
                                         2.0 Academia Industry Summit organized by DHE and GSHEC at Raj Bhavan on March
                                         4th, 2025.
                                     </p>
-                                    <div class="p-4 rounded-2xl bg-[#30d158]/5 border border-[#30d158]/20 space-y-2">
-                                        <h4 class="font-bold text-sm uppercase tracking-wider text-[#30d158]">Led
-                                            Interdisciplinary Innovation</h4>
-                                        <p class="text-base text-white/50 leading-relaxed">
+                                    <div class="p-4 rounded-2xl border border-[#30d158]/20 space-y-2" style="background: var(--bg-surface);">
+                                        <h4 class="font-bold text-sm uppercase tracking-wider text-[#30d158]">Led Interdisciplinary Innovation</h4>
+                                        <p class="text-base leading-relaxed" style="color: var(--text-muted);">
                                             Represented the only non-technical institution invited to showcase at the
                                             summit, demonstrating excellence in collaborative problem-solving and the
                                             practical application of IoT technology.
@@ -807,26 +956,21 @@
                                     </div>
                                 </div>
                                 <div class="flex flex-wrap gap-2 pt-2">
-                                    <div class="tech-tag"><i data-lucide="users"
-                                            class="w-4 h-4 text-[#30d158]"></i><span>Teamwork</span></div>
-                                    <div class="tech-tag"><i data-lucide="cpu"
-                                            class="w-4 h-4 text-green-400"></i><span>IoT Solution</span></div>
-                                    <div class="tech-tag"><i data-lucide="award"
-                                            class="w-4 h-4 text-yellow-400"></i><span>Innovation</span></div>
+                                    <div class="tech-tag"><i data-lucide="users" class="w-4 h-4 text-[#30d158]"></i><span>Teamwork</span></div>
+                                    <div class="tech-tag"><i data-lucide="cpu" class="w-4 h-4 text-green-400"></i><span>IoT Solution</span></div>
+                                    <div class="tech-tag"><i data-lucide="award" class="w-4 h-4 text-yellow-400"></i><span>Innovation</span></div>
                                 </div>
                             </div>
 
                             <div class="grid grid-cols-1 gap-5">
                                 <!-- Team Photo -->
-                                <div
-                                    class="bg-[#0a0a0a] rounded-[2rem] relative overflow-hidden h-full aspect-video border border-green-500/20 shadow-[0_0_40px_rgba(48,209,88,0.1)]">
+                                <div class="bento-card rounded-[2rem] relative overflow-hidden h-full aspect-video border border-green-500/20 shadow-[0_0_40px_rgba(48,209,88,0.1)]">
                                     <img src="aquafeeder_team.jpg" alt="AquaFeeder Team at Converge 2.0"
                                         class="w-full h-full object-cover"
                                         onerror="this.src='https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2070&auto=format&fit=crop'">
                                 </div>
                                 <!-- News Clipping -->
-                                <div
-                                    class="bg-[#0a0a0a] rounded-[2rem] relative overflow-hidden h-full aspect-video border border-blue-500/20 shadow-[0_0_40px_rgba(0,113,227,0.1)]">
+                                <div class="bento-card rounded-[2rem] relative overflow-hidden h-full aspect-video border border-blue-500/20 shadow-[0_0_40px_rgba(0,113,227,0.1)]">
                                     <img src="converge_news.jpg" alt="Newspaper Coverage"
                                         class="w-full h-full object-cover"
                                         onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=2070&auto=format&fit=crop'">
@@ -840,56 +984,60 @@
 
         <!-- Footer -->
         <footer id="contact"
-            class="py-12 md:py-16 px-6 bg-white text-black relative overflow-hidden border-t border-black/5">
+            class="py-12 md:py-16 px-6 relative overflow-hidden transition-all duration-500"
+            style="background: var(--footer-bg); color: var(--footer-text); border-top: 1px solid var(--footer-border);">
             <div class="max-w-7xl mx-auto relative z-10">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-10">
                     <div class="space-y-4">
-                        <h2
-                            class="text-4xl md:text-6xl font-black tracking-tighter leading-none italic text-gradient-dark uppercase">
-                            Initialize.<br />Refine.</h2>
-                        <p class="text-black/50 text-lg font-medium max-w-sm italic leading-tight">Available for
-                            collaboration on meaningful projects.</p>
+                        <h2 class="text-4xl md:text-6xl font-black tracking-tighter leading-none italic uppercase"
+                            style="background: var(--footer-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                            Initialize.<br />Refine.
+                        </h2>
+                        <p class="text-lg font-medium max-w-sm italic leading-tight" style="color: var(--footer-muted);">
+                            Available for collaboration on meaningful projects.
+                        </p>
                         <a href="mailto:abhishek.des674@gmail.com"
-                            class="inline-block px-10 py-4 bg-black text-white rounded-full font-black text-sm uppercase tracking-widest hover:bg-[#0071e3] transition-all shadow-lg btn-apple">
+                            class="inline-block px-10 py-4 rounded-full font-black text-sm uppercase tracking-widest hover:bg-[#0071e3] hover:text-white transition-all shadow-lg btn-apple"
+                            style="background: var(--footer-btn-bg); color: var(--footer-btn-text);">
                             Send Email
                         </a>
                     </div>
                     <div class="flex flex-col lg:items-end">
-                        <div
-                            class="grid grid-cols-2 gap-8 text-[10px] font-black uppercase tracking-[0.3em] text-black/40">
+                        <div class="grid grid-cols-2 gap-8 text-[10px] font-black uppercase tracking-[0.3em]" style="color: var(--footer-muted);">
                             <div class="space-y-3 text-left lg:text-right">
                                 <p class="text-[#0071e3]">Directory</p>
-                                <a href="#about" class="block hover:text-black transition-colors">Home</a>
-                                <a href="#stack" class="block hover:text-black transition-colors">Stack</a>
-                                <a href="#work" class="block hover:text-black transition-colors">Work</a>
-                                <a href="#achievements"
-                                    class="block hover:text-black transition-colors">Achievements</a>
+                                <a href="#about" class="block hover:opacity-100 transition-opacity">Home</a>
+                                <a href="#stack" class="block hover:opacity-100 transition-opacity">Stack</a>
+                                <a href="#work" class="block hover:opacity-100 transition-opacity">Work</a>
+                                <a href="#achievements" class="block hover:opacity-100 transition-opacity">Achievements</a>
                             </div>
                             <div class="space-y-3 text-left lg:text-right">
                                 <p class="text-[#0071e3]">Socials</p>
                                 <a href="https://linkedin.com/in/abhishek-deshmukh-7b9b55245/" target="_blank"
-                                    class="block hover:text-black transition-colors">LinkedIn</a>
+                                    class="block hover:opacity-100 transition-opacity">LinkedIn</a>
                                 <a href="https://github.com/abhishek18-blog/" target="_blank"
-                                    class="block hover:text-black transition-colors underline decoration-[#0071e3] underline-offset-4">GitHub</a>
+                                    class="block hover:opacity-100 transition-opacity underline decoration-[#0071e3] underline-offset-4">GitHub</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="pt-8 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="pt-8 flex flex-col md:flex-row justify-between items-center gap-6" style="border-top: 1px solid var(--footer-border);">
                     <div class="flex items-center gap-4">
-                        <div class="w-7 h-7 bg-black rounded-lg flex items-center justify-center text-white">
-                            <span class="font-mono text-[10px] font-bold">&lt;/&gt;</span>
+                        <div class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-[10px]"
+                            style="background: var(--footer-logo-bg); color: var(--footer-logo-text);">
+                            <span class="font-mono">&lt;/&gt;</span>
                         </div>
-                        <span class="text-[10px] font-bold uppercase tracking-[0.5em] text-black/30">Abhishek •
-                            2026</span>
+                        <span class="text-[10px] font-bold uppercase tracking-[0.5em]" style="color: var(--footer-muted);">
+                            Abhishek • 2026
+                        </span>
                     </div>
-                    <p class="text-[10px] font-bold uppercase tracking-[0.4em] text-black/20 italic">Built with code &
-                        curiosity.</p>
+                    <p class="text-[10px] font-bold uppercase tracking-[0.4em] italic" style="color: var(--footer-subtle);">
+                        Built with code & curiosity.
+                    </p>
                 </div>
             </div>
-            <div
-                class="absolute -bottom-1/2 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-[#0071e3]/5 blur-[120px] rounded-full pointer-events-none">
+            <div class="absolute -bottom-1/2 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-[#0071e3]/5 blur-[120px] rounded-full pointer-events-none">
             </div>
         </footer>
 
@@ -900,7 +1048,7 @@
         class="fixed inset-0 z-[300] flex items-center justify-center bg-black/95 backdrop-blur-2xl hidden opacity-0 transition-opacity duration-500">
         <div class="relative w-full max-w-5xl mx-4">
             <button onclick="closeVideoModal()"
-                class="absolute -top-16 right-0 text-white/50 hover:text-white transition-all">
+                class="absolute -top-16 right-0 text-white/50 hover:text-white transition-all cursor-pointer">
                 <i data-lucide="x" class="w-10 h-10"></i>
             </button>
             <div class="aspect-video bg-black rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl">
@@ -914,7 +1062,111 @@
     <script>
         lucide.createIcons();
 
-        // Debugged Mobile Menu Logic
+        // Theme Toggle Controller
+        function getTheme() {
+            return document.documentElement.classList.contains('light') ? 'light' : 'dark';
+        }
+
+        function updateThemeUI(theme) {
+            const isLight = theme === 'light';
+            const desktopIcon = document.getElementById('theme-toggle-icon');
+            const mobileQuickIcon = document.getElementById('mobile-quick-theme-icon');
+            const mobileIcon = document.getElementById('mobile-theme-toggle-icon');
+            const mobileLabel = document.getElementById('mobile-theme-label');
+            
+            const nextIconName = isLight ? 'moon' : 'sun';
+            
+            if (desktopIcon) {
+                desktopIcon.setAttribute('data-lucide', nextIconName);
+            }
+            if (mobileQuickIcon) {
+                mobileQuickIcon.setAttribute('data-lucide', nextIconName);
+            }
+            if (mobileIcon) {
+                mobileIcon.setAttribute('data-lucide', nextIconName);
+            }
+            if (mobileLabel) {
+                mobileLabel.textContent = isLight ? 'Switch to Dark Mode' : 'Switch to Light Mode';
+            }
+
+            // Sync color-scheme meta tag
+            const metaColorScheme = document.querySelector('meta[name="color-scheme"]');
+            if (metaColorScheme) {
+                metaColorScheme.content = isLight ? 'light dark' : 'dark light';
+            }
+
+            lucide.createIcons();
+        }
+
+        function setTheme(theme) {
+            if (theme === 'light') {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.remove('light');
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+            updateThemeUI(theme);
+        }
+
+        function toggleTheme() {
+            const currentTheme = getTheme();
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            setTheme(newTheme);
+        }
+
+        // Attach theme toggle listeners
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', toggleTheme);
+        }
+
+        const mobileQuickThemeBtn = document.getElementById('mobile-quick-theme-toggle');
+        if (mobileQuickThemeBtn) {
+            mobileQuickThemeBtn.addEventListener('click', toggleTheme);
+        }
+
+        const mobileThemeToggleBtn = document.getElementById('mobile-theme-toggle');
+        if (mobileThemeToggleBtn) {
+            mobileThemeToggleBtn.addEventListener('click', () => {
+                toggleTheme();
+            });
+        }
+
+        // Initial UI sync
+        updateThemeUI(getTheme());
+
+        // Listen for OS system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                setTheme(e.matches ? 'dark' : 'light');
+            }
+        });
+
+        // Copy Email button with feedback
+        const copyEmailBtn = document.getElementById('copy-email');
+        const copyEmailText = document.getElementById('copy-email-text');
+        if (copyEmailBtn) {
+            copyEmailBtn.addEventListener('click', () => {
+                navigator.clipboard.writeText('abhishek.des674@gmail.com').then(() => {
+                    if (copyEmailText) {
+                        const original = copyEmailText.textContent;
+                        copyEmailText.textContent = 'Copied!';
+                        setTimeout(() => {
+                            copyEmailText.textContent = original;
+                        }, 2000);
+                    }
+                }).catch(() => {
+                    if (copyEmailText) {
+                        copyEmailText.textContent = 'abhishek.des674@gmail.com';
+                    }
+                });
+            });
+        }
+
+        // Mobile Menu Logic
         let isMenuOpen = false;
         const mobileNav = document.getElementById('mobile-nav-overlay');
         const menuIconContainer = document.getElementById('menu-icon-container');
@@ -932,17 +1184,16 @@
                 menuIconContainer.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
             }
 
-            // Re-render icons to ensure "X" vs "Menu" swap works
             lucide.createIcons();
         }
 
         document.getElementById('menu-toggle').addEventListener('click', toggleMenu);
 
         // Reset menu state when any link is clicked
-        document.querySelectorAll('.mobile-link').forEach(link => {
+        document.querySelectorAll('.mobile-link:not(#mobile-theme-toggle)').forEach(link => {
             link.addEventListener('click', () => {
                 if (isMenuOpen) {
-                    toggleMenu(); // Closes menu and resets icon
+                    toggleMenu();
                 }
             });
         });
@@ -1002,13 +1253,11 @@
                     item.classList.remove('active');
                     if (category === 'all' || item.dataset.category === category) {
                         item.style.display = '';
-                        // Short delay to allow display reset before re-triggering animation
                         setTimeout(() => item.classList.add('active'), 50);
                     } else {
                         item.style.display = 'none';
                     }
                 });
-                // Update lucide icons in case new elements are shown
                 setTimeout(() => lucide.createIcons(), 50);
             });
         }
